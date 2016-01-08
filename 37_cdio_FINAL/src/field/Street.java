@@ -8,14 +8,14 @@ public class Street extends Ownable {
 	private int[] rents;
 	private int housePrice;
 	private int houseCount;
-	private int houseRent;
+	
 
 
 	public Street(String name, int[] rents, int price, int housePrice) {
 		super(name, price);
 		this.rents = rents;
 		this.housePrice = housePrice;
-		this.houseRent = houseRent;
+		
 	}
 
 	// checks whether the territory is owned by another player or is for sale
@@ -33,7 +33,7 @@ public class Street extends Ownable {
 				p.setInformation(0);
 			}
 		}
-	}
+	
 
 	public void addHouse(){
 		houseCount++;
