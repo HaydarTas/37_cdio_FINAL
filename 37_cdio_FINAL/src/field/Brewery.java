@@ -36,7 +36,7 @@ public class Brewery extends Ownable {
 		int laborCamps = 0;
 
 		for (int i = 0; i < field.length; i++) {
-			if (field[i] instanceof LaborCamp) {
+			if (field[i] instanceof Brewery) {
 				laborCamps++;
 			}
 		}
