@@ -1,5 +1,6 @@
 package field;
 
+import entity.Player;
 import field.Ownable;
 
 public class Street extends Ownable {
@@ -21,7 +22,8 @@ public class Street extends Ownable {
 	// if field is owned by another player, checks the rent.
 	public void landOnField(Player p) {
 		if (super.getOwner() != null) {
-			if (!super.getOwner().equals(p)) {
+			if (!super.getOwner().equals(p)) 
+				
 				p.addToBalance(-getRent());
 				super.getOwner().addToBalance(getRent());
 				p.setInformation(-1);
