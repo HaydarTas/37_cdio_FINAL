@@ -1,5 +1,7 @@
 package field;
 
+import entity.Player;
+
 public class GoToJail extends Field {
 
 
