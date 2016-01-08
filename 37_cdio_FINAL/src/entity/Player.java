@@ -1,5 +1,7 @@
 package entity;
 
+import field.Field;
+
 public class Player {
 
 	private String name;
