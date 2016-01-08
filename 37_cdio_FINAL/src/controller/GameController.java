@@ -1,6 +1,6 @@
 package controller;
 
-package controller;
+
 
 import java.awt.Color;
 import desktop_codebehind.Car;
@@ -52,11 +52,15 @@ public class GameController {
 		this.switchTurn();
 		
 	}
-
 	private void playerTurn(Player player) {
 		int roll = box.roll();
-		int points = fields[roll].getPoints();
-		String fieldname = fields[roll].getName();
+		int newPosition = player.getPosition() + roll;
+		if(newPosition > 40) {
+			newPosition -= 40;
+			player.addToBalance(4000);
+		}
+		int points = fields[newPosition].getPoints();
+		String fieldname = fields[newPosition].getName();
 		boolean check_account = player.addToBalance(points);
 
 		if (check_account == true) {
@@ -68,7 +72,7 @@ public class GameController {
 		System.out.println("spiller" + player.getName() + "  har slaaet: " + roll + " han fik: " + points
 				+ " og han har landet paa felt: " + fields + ", saldo:" + player.getBalance());
 		GUI.removeAllCars(player.getName());
-		GUI.setCar(roll - 1, player.getName());
+		GUI.setCar(newPosition - 1, player.getName());
 		// Suspend excecution for 200 ms
 		try {
 			Thread.sleep(200);
