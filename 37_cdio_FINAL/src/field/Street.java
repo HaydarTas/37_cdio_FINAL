@@ -1,18 +1,18 @@
 package field;
 
-import entity.Player;
+import field.Ownable;
 
 public class Street extends Ownable {
 
-	private int rent;
+	private int[] rents;
 	private int housePrice;
 	private int houseCount;
 	private int houseRent;
-	
 
-	public Territory(String name, int rent, int price, int houseRent, int housePrice) {
+
+	public Street(String name, int[] rents, int price, int housePrice) {
 		super(name, price);
-		this.rent = rent;
+		this.rents = rents;
 		this.housePrice = housePrice;
 		this.houseRent = houseRent;
 	}
@@ -30,16 +30,16 @@ public class Street extends Ownable {
 			} else {
 				p.setInformation(0);
 			}
-		} else {
-			p.setInformation(0);
 		}
 	}
-	
+
 	public void addHouse(){
 		houseCount++;
 	}
 
 	public int getRent() {
-		return rent + houseCount*houseRent;
+		return rents[houseCount];
 	}
+
+
 }
