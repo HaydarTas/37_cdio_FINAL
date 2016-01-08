@@ -1,23 +1,18 @@
 package field;
 
-public class Shipping {
-
-}
-package entity;
-
-import entity.Field;
-import entity.Fleet;
-import entity.Ownable;
+import field.Field;
+import field.Shipping;
+import field.Ownable;
 import entity.Player;
 
-public class Fleet extends Ownable {
+public class Shipping extends Ownable {
 
 	private final int RENT_1 = 500;
 	private final int RENT_2 = 1000;
 	private final int RENT_3 = 2000;
 	private final int RENT_4 = 4000;
 
-	public Fleet(String name, int price) {
+	public Shipping(String name, int price) {
 		super(name, price);
 	}
 
@@ -47,7 +42,7 @@ public class Fleet extends Ownable {
 		int fleets = 0;
 
 		for (int i = 0; i < fields.length; i++) {
-			if (fields[i] instanceof Fleet) {
+			if (fields[i] instanceof Shipping) {
 				fleets++;
 			}
 		}
