@@ -25,15 +25,15 @@ public class Shipping extends Ownable {
 			if (!super.getOwner().equals(p)) {
 				p.addToBalance(-getRent());
 				super.getOwner().addToBalance(getRent());
-				p.setInformation(-1); // When information is =-1 the Shipping is
+//				p.setInformation(-1); // When information is =-1 the Shipping is
 										// bought by another player
 			} else if (super.getOwner().equals(p)) {
-				p.setInformation(1); // He owns the Shipping
+//				p.setInformation(1); // He owns the Shipping
 			} else {
-				p.setInformation(0); // No player owns the Shipping. Is for sale
+//				p.setInformation(0); // No player owns the Shipping. Is for sale
 			}
 		} else {
-			p.setInformation(0);
+//			p.setInformation(0);
 		}
 	}
 

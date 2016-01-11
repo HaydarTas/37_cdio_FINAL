@@ -24,36 +24,14 @@ public class GameController {
 	private String buttons;
 
 	public void run() {
-		Player tmp = players[playerTurn];
-		switch(tmp.getInformation()){
-		case -1: 
-			GUI.showMessage(String.format("Din balance er nu: %d  styre lige din økonomi", tmp.getBalance()));  
-			break;
-		case 0:
-			String answer = GUI.getUserSelection("Vil du koebe feltet?", "Ja","Nej");
-			switch(answer){
-			case "Ja": 
-				if(tmp.buyField((Ownable)fields[tmp.getPosition()])) {
-					GUI.setBalance(tmp.getName(), tmp.getBalance());
-					GUI.setOwner(tmp.getPosition()+1, tmp.getName());
-				} else {
-					GUI.showMessage("Du har ikke nok penge!");
-				}
-				break;
-			}
-			break;
-		case 1: 
-			GUI.showMessage("Du ejer feltet");
-			break;
-		case 2:
-			if(fields[tmp.getPosition()] instanceof Tax) {
-				GUI.showMessage("du har nu betalt!!!");
-			} else {
-				GUI.showMessage("SHOW ME DA MONEYYYYY!!!");
-			}
+		while (true){
+			//Kast med terninger
+			roll();
+			//Find ud af hvad der sker p� feltet!
+			landOnField();
+			this.switchTurn();
 		}
-		this.switchTurn();
-		
+
 	}
 	private void playerTurn(Player player) {
 		int roll = box.roll();
@@ -111,12 +89,12 @@ public class GameController {
 				new Property("Vesterbrogade", new int[]{4900, 2500}, 7000, 14000),
 				new Property("GL.Kongevej", new int[]{4900, 2500}, 7000, 13000),
 				new Property("h.c. andersen boulevard", new int[]{4900, 2500}, 7000, 15000),
-				
-				
 
 
-				
-				
+
+
+
+
 				new Refuge("Parking", 4000),
 				new Refuge("parking", 4000),
 				new Brewer("Coca", 2500, 5000), 
@@ -127,9 +105,9 @@ public class GameController {
 				new Shipping("CM port", 4000), 
 				new Shipping("Rødby Havn", 4000),
 				new Shipping("Helsingør Havn", 4000),
-				
 
-				
+
+
 		};
 	}
 
@@ -139,12 +117,12 @@ public class GameController {
 		desktop_fields.Field[] fields = new desktop_fields.Field[40];
 		Street st = null;
 		Start s= null;
-   
+
 		s = new Start.Builder().setBgColor(Color.RED).setTitle("Start").build();
 		s.setDescription("modtag: 4000");
 		s.setSubText("");
 		fields[0]=s;
-		        
+
 		st = new Street.Builder().setBgColor(Color.gray).setTitle("Rødovrevej").build();
 		st.setDescription("Rødovrevej");
 		st.setSubText("pris: 1000");
@@ -154,7 +132,7 @@ public class GameController {
 		st.setDescription("pris: 1400");
 		st.setSubText("pris: 1400");
 		fields[2] = st;
-		
+
 		st = new Street.Builder().setBgColor(Color.white).setTitle("Jernbane alle").build();
 		st.setDescription("Jernbane alle");
 		st.setSubText("Pris: 1600");
@@ -209,35 +187,35 @@ public class GameController {
 		st.setDescription("Trianglen");
 		st.setSubText("Pris: 8000");
 		fields[13] = st;
-		
+
 		st= new Street.Builder().setBgColor(Color.red).setTitle("Østerbrogade").build();
 		st.setDescription("Østerbrogade");
 		st.setSubText("Pris: 9000");
 		fields[14] = st;
-		
+
 		st= new Street.Builder().setBgColor(Color.red).setTitle("Grønning").build();
 		st.setDescription("Grønningen");
 		st.setSubText("Pris: 10000");
 		fields[15] =st;
-		
+
 		st= new Street.Builder().setBgColor(Color.red).setTitle("Bredgade").build();
 		st.setDescription("Bredgade");
 		st.setSubText("Pris: 12000");
 		fields[16]= st;
-		
+
 		desktop_fields.Chance c=null;
-        c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
-        c.setDescription("prøv lykken");
-        c.setSubText("better luck nextime");
-        fields[17] = c;
-        
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c.setDescription("prøv lykken");
+		c.setSubText("better luck nextime");
+		fields[17] = c;
+
 		desktop_fields.Brewery b=null;
 		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("TUBORG").build();
 		b.setDescription("Tuborg");
 		b.setSubText("Pris: 5000");
 		fields[18]= b;
-		
-        
+
+
 		desktop_fields.Refuge r = null;
 		r = new desktop_fields.Refuge.Builder().setFgColor(Color.DARK_GRAY).setTitle("Parking").build();
 		r.setDescription("parking");
@@ -261,7 +239,7 @@ public class GameController {
 		fields[22] = t;
 
 		desktop_fields.Shipping f = null;
-		
+
 		f = new desktop_fields.Shipping.Builder().setBgColor(Color.gray).setTitle("DFDS seaways").build();
 		f.setDescription("DFDS seaways");
 		f.setSubText("Pris:4000");
@@ -280,86 +258,86 @@ public class GameController {
 		f.setDescription("Helsingør Havn");
 		f.setSubText("Pris: 4000");
 		fields[26] = f;
- 
+
 		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("COCA COLA").build();
 		b.setDescription("Coca Cola");
 		b.setSubText("Pris: 5000");
 		fields[27]= b;
-		
-        st= new Street.Builder().setBgColor(Color.gray).setTitle("Kgs.Nytorv").build();
-        st.setDescription("Kgs.Nytorv");
-        st.setSubText("Pris: 13000");
+
+		st= new Street.Builder().setBgColor(Color.gray).setTitle("Kgs.Nytorv").build();
+		st.setDescription("Kgs.Nytorv");
+		st.setSubText("Pris: 13000");
 		fields[28]=st;
-		
-		 st= new Street.Builder().setBgColor(Color.gray).setTitle("Østergade").build();
-	        st.setDescription("Østergade");
-	        st.setSubText("Pris: 13000");
-			fields[29]=st;
-			
-		 st= new Street.Builder().setBgColor(Color.gray).setTitle("Amagertorv").build();
-		        st.setDescription("Amagertorv");
-		        st.setSubText("Pris: 13000");
-				fields[30]=st;
-				
-				 st= new Street.Builder().setBgColor(Color.cyan).setTitle("Vimmelskaftet").build();
-			        st.setDescription("Vimmelskaftet");
-			        st.setSubText("Pris: 14000");
-					fields[31]=st;
-	
+
+		st= new Street.Builder().setBgColor(Color.gray).setTitle("Østergade").build();
+		st.setDescription("Østergade");
+		st.setSubText("Pris: 13000");
+		fields[29]=st;
+
+		st= new Street.Builder().setBgColor(Color.gray).setTitle("Amagertorv").build();
+		st.setDescription("Amagertorv");
+		st.setSubText("Pris: 13000");
+		fields[30]=st;
+
+		st= new Street.Builder().setBgColor(Color.cyan).setTitle("Vimmelskaftet").build();
+		st.setDescription("Vimmelskaftet");
+		st.setSubText("Pris: 14000");
+		fields[31]=st;
+
 		st= new Street.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("Nygade").build();
-			        st.setDescription("Nygade");
-			        st.setSubText("Pris: 14500");
-					fields[32]=st;
-		
+		st.setDescription("Nygade");
+		st.setSubText("Pris: 14500");
+		fields[32]=st;
+
 		st= new Street.Builder().setBgColor(Color.RED).setTitle("Rådhuspladsen").build();
-			        st.setDescription("Rådhuspladsen");
-			        st.setSubText("Pris: 15000");
-					fields[33]=st;
-		           
+		st.setDescription("Rådhuspladsen");
+		st.setSubText("Pris: 15000");
+		fields[33]=st;
+
 		st= new Street.Builder().setBgColor(Color.RED).setTitle("Vesterbrogade").build();
-			        st.setDescription("Vesterbrogade");
-			        st.setSubText("Pris: 12000");
-					fields[34]=st;
-					
+		st.setDescription("Vesterbrogade");
+		st.setSubText("Pris: 12000");
+		fields[34]=st;
+
 		desktop_fields.Jail j=null;			
 		j = new desktop_fields.Jail.Builder().setBgColor(Color.WHITE).setTitle("jail").build();
 		j.displayOnCenter();
 		j.setDescription("De fængsles");
 		j.setSubText("dont drop the soap");
 		fields[35] = j ;
-				
+
 		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("jail").build();
 		j.displayOnCenter();
 		j.setDescription("fængsel");
 		j.setSubText("du er på besøg");
 		fields[36] =j;
-		
+
 		c=new desktop_fields.Chance.Builder().setBgColor(Color.red).build();
 		c.displayOnCenter();
 		c.setDescription("prøv lykken");
 		c.setSubText("tag chancen");
 		fields[37]=c;
-		
-        
+
+
 		st= new Street.Builder().setBgColor(Color.GREEN).setTitle("GL.kongevej").build();
-			        st.setDescription("GL.Kongevej");
-			        st.setSubText("Pris: 13000");
-					fields[38]=st;
-					
+		st.setDescription("GL.Kongevej");
+		st.setSubText("Pris: 13000");
+		fields[38]=st;
+
 		st= new desktop_fields.Street.Builder().setBgColor(Color.lightGray).setTitle("h.c. andersen boulevard").build();
-			        st.setDescription("h.c. andersen boulevard");
-			        st.setSubText("Pris: 15000");
-					fields[39]=st;
-		
-				
+		st.setDescription("h.c. andersen boulevard");
+		st.setSubText("Pris: 15000");
+		fields[39]=st;
+
+
 
 		GUI.create(fields);
 	}
-//
-//	private Object valueOf(String string, String[] attributes) {
-//			// TODO Auto-generated method stub
-//			return null;
-//		}
+	//
+	//	private Object valueOf(String string, String[] attributes) {
+	//			// TODO Auto-generated method stub
+	//			return null;
+	//		}
 
 	private Car getCar(int i) {
 		Car car = null;
@@ -412,59 +390,27 @@ public class GameController {
 		players[playerTurn].movePlayer(r);
 		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 	}
-
+	//TODO rewrite to something 3 lines long
 	public void switchTurn() {
-		int leif = 0;
+		int noOfPlayersInGame = 0;
 		for (int i = 0; i < players.length; i++) {
 			if (players[i] != null) {
-				leif++;
+				noOfPlayersInGame++;
 			}
 		}
-		switch (playerTurn) {
-		case 0:
-			playerTurn = 1;
-			break;
-		case 1:
-			if(leif == 2) {
-				playerTurn = 0;
-			} else {
-				playerTurn = 2;
-			}
-			break;
-		case 2:
-			if (leif == 3){
-				playerTurn = 0;
-			} else {
-				playerTurn = 3;
-			}
-			break;
-		case 3:
-			if (leif == 4) {
-				playerTurn = 0;
-			} else {
-				playerTurn = 4;
-			}
-			break;
-		case 4:
-			if (leif == 5) {
-				playerTurn = 0;
-			} else {
-				playerTurn = 5;
-			}
-			break;
-		case 5:
+		playerTurn++;
+		if (playerTurn>= noOfPlayersInGame)
 			playerTurn = 0;
-			break;
 		}
-	}
 	
-	public int landOnField(){
-		
+
+	public void landOnField(){
+
 		Player playa = players[playerTurn];
 		int position = playa.getPosition() % fields.length;
 		System.out.println("-------------------------------------");
 		fields[position].landOnField(playa);
-		
+
 		System.out.println("playa:" + playa.getName());
 		System.out.println("slag:" + playa.getLastRoll());
 
@@ -472,12 +418,11 @@ public class GameController {
 		System.out.println("playa.getPosition():" + playa.getPosition());
 		System.out.println("playa.geetMoney():" + playa.getBalance());
 
-//		System.out.println("felt:" + fields[position-1].getName());
-//		for (Field field : fields) {
-//			System.out.println(field.getName());
-//		}
-		return playa.getInformation();
+		//		System.out.println("felt:" + fields[position-1].getName());
+		//		for (Field field : fields) {
+		//			System.out.println(field.getName());
+		//		}
 	}
-	
+
 }
 

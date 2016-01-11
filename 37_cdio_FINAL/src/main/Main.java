@@ -16,12 +16,8 @@ public class Main {
 		game.addPlayer();
 		game.addPlayer();
 		game.addPlayer();
-		
-		while (true){
-		game.roll();
-		game.landOnField();
 		game.run();
-		}
+
 	}
 
 }

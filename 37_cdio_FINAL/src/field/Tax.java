@@ -22,7 +22,7 @@ public class Tax extends Field {
 
 	public void landOnField(Player p) {
 		this.p = p;
-		p.setInformation(2);
+//		p.setInformation(2);
 
 	}
 

@@ -15,7 +15,7 @@ public class Refuge extends Field {
 	}
 	public void landOnField(Player p){
 		p.addToBalance(bonus);
-		p.setInformation(2);
+//		p.setInformation(2);
 	}
 
 	int getBonus() {

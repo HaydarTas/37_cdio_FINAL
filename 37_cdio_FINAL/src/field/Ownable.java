@@ -6,8 +6,8 @@ import entity.Player;
 
 public abstract class Ownable extends Field {
 
-	private int price;
-	private Player owner;
+	protected int price;
+	protected Player owner = null;
 
 	public Ownable(String name, int price) {
 		super(name);
