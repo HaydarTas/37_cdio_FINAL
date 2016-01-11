@@ -132,7 +132,7 @@ public class GameController {
 		fields[1] = st;
 		
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[2] = c;
@@ -143,7 +143,7 @@ public class GameController {
 		fields[3] = st;
 		
 		
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.magenta).setDescription("Tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.DARK_GRAY).setDescription("Tax").build();
 		t.setDescription("tax");
 		t.setSubText("du skal betale min ven");
 		fields[4] = t;
@@ -159,7 +159,7 @@ public class GameController {
 		st.setSubText("Pris: 2000");
 		fields[6] = st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[7] = c;
@@ -211,7 +211,7 @@ public class GameController {
 		st.setSubText("Pris: 6200");
 		fields[16] = st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[17] = c;
@@ -227,7 +227,7 @@ public class GameController {
 		fields[19] = st;
 		
 		
-		r = new desktop_fields.Refuge.Builder().setFgColor(Color.DARK_GRAY).setTitle("Parking").build();
+		r = new desktop_fields.Refuge.Builder().setFgColor(Color.white).setTitle("Parking").build();
 		r.setDescription("parking");
 		r.setSubText("Modtag: 4000");
 		fields[20] = r;
@@ -237,7 +237,7 @@ public class GameController {
 		st.setSubText("Pris: 8000");
 		fields[21] = st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[22] = c;
@@ -295,7 +295,7 @@ public class GameController {
 		st.setSubText("Pris: 14000");
 		fields[32]=st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[33] = c;
@@ -310,7 +310,7 @@ public class GameController {
 		f.setSubText("Pris: 4000");
 		fields[35] = f;
 
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[36] = c;
@@ -321,7 +321,7 @@ public class GameController {
 		st.setSubText("Pris: 13000");
 		fields[37]=st;
 
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.white).setDescription("Tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.DARK_GRAY).setDescription("Tax").build();
 		t.setDescription("tax");
 		t.setSubText("betal din skat");
 		fields[38] = t;
