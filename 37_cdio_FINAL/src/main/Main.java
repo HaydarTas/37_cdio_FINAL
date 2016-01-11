@@ -12,10 +12,10 @@ public class Main {
 		game.setupGUI();
 		game.addPlayer();
 		game.addPlayer();
-//		game.addPlayer();
-//		game.addPlayer();
-//		game.addPlayer();
-//		game.addPlayer();
+		game.addPlayer();
+		game.addPlayer();
+		game.addPlayer();
+		game.addPlayer();
 		
 		while (true){
 		game.roll();
