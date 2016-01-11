@@ -16,27 +16,6 @@ public class Shipping extends Ownable {
 		super(name, price);
 	}
 
-	// landOnField checks if the player who lands on Shipping owns it. If not
-	// checks if someone else owns the Shipping; if yes the player has to pay
-	// the rent
-	@Override
-	public void landOnField(Player p) {
-		if (super.getOwner() != null) {
-			if (!super.getOwner().equals(p)) {
-				p.addToBalance(-getRent());
-				super.getOwner().addToBalance(getRent());
-//				p.setInformation(-1); // When information is =-1 the Shipping is
-										// bought by another player
-			} else if (super.getOwner().equals(p)) {
-//				p.setInformation(1); // He owns the Shipping
-			} else {
-//				p.setInformation(0); // No player owns the Shipping. Is for sale
-			}
-		} else {
-//			p.setInformation(0);
-		}
-	}
-
 	public int countShipping() {
 		Field[] fields = super.getOwner().getFields();
 		int Shippings = 0;
