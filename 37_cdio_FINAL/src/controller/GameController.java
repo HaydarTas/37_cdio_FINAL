@@ -174,10 +174,10 @@ public class GameController {
 		st.setSubText("Pris: 4000");
 		fields[9] = st;
 		
-		j =new desktop_fields.Jail.Builder().setBgColor(Color.black).setTitle("jail").build();
+		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("Jail").build();
 		j.displayOnCenter();
-		j.setDescription("fængsel");
-		j.setSubText("du er på besøg");
+		j.setDescription("Fængsel");
+		j.setSubText("Du er på besøg");
 		fields[10] =j;
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Frederiksberg Alle").build();
@@ -228,7 +228,7 @@ public class GameController {
 		
 		
 		r = new desktop_fields.Refuge.Builder().setFgColor(Color.white).setTitle("Parking").build();
-		r.setDescription("parking");
+		r.setDescription("Parking");
 		r.setSubText("Modtag: 4000");
 		fields[20] = r;
 
@@ -238,8 +238,8 @@ public class GameController {
 		fields[21] = st;
 		
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
-		c.setDescription("prøv lykken");
-		c.setSubText("better luck nextime");
+		c.setDescription("Prøv lykken");
+		c.setSubText("Better luck nextime");
 		fields[22] = c;
 
 		st= new Street.Builder().setBgColor(Color.red).setTitle("Østerbrogade").build();
