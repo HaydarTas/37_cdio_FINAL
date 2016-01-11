@@ -50,6 +50,7 @@ public class Property extends Ownable {
 				p.addToBalance(-getPrice());
 				GUI.setOwner(p.getPosition()+1, p.getName());
 				setOwner(p);
+				GUI.setBalance(p.getName(), p.getBalance());
 			} else {
 				//Player didnt buy field
 			}
