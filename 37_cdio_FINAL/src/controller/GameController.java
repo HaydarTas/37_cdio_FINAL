@@ -64,10 +64,10 @@ public class GameController {
 	public void setupGame() {
 		fields = new Field[] { 
 				new Refuge("Start",4000),
-				new Property("R�dovrevej", new int[]{200}, 200, 1000, 5), 
-				new Property("Hvidovrevej", new int[]{200}, 300, 1400, 5),
-				new Property("Roskilevej", new int[]{300}, 700, 2000, 7),
-				new Property("valby langgade", new int[]{300}, 1000, 2500, 7), 
+				new Property("R�dovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
+				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5),
+				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7),
+				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7), 
 				new Property("Allegade", new int[]{300}, 1300, 4000, 7),
 				new Property("Frederiksberg Alle", new int[]{400}, 2000, 4800, 6), 
 				new Property("Bulowsvej", new int[]{400,}, 2500, 5300, 6),
