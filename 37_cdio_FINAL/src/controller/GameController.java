@@ -64,32 +64,29 @@ public class GameController {
 	public void setupGame() {
 		fields = new Field[] { 
 				new Refuge("Start",4000),
-				new Property("R�dovrevej", new int[]{4900, 2500}, 200, 1000, 5), 
-				new Property("Hvidovrevej", new int[]{4900, 2500}, 300, 1400, 5),
-				new Property("Jernbane alle", new int[]{4900, 2500}, 500, 1600), 
-				new Property("Roskilevej", new int[]{4900, 2500}, 700, 2000, 7),
-				new Property("valby langgade", new int[]{4900, 2500}, 1000, 2500, 7), 
-				new Property("Allegade", new int[]{4900, 2500}, 1300, 4000, 7),
-				new Property("Frederiksberg Alle", new int[]{4900, 2500}, 2000, 4800, 6), 
-				new Property("Bulowsvej", new int[]{4900, 2500}, 2500, 5300, 6),
-				new Property("Gl.kongevej", new int[]{4900, 2500}, 2600, 6000, 6), 
-				new Property("Bernstorffsvej", new int[]{4900, 2500}, 3200, 6200, 3),
-				new Property("Hellerupsvej", new int[]{4900, 2500}, 4000, 7000, 3),
-				new Property("Strandvej", new int[]{4900, 2500}, 4500, 7500, 3),
-				new Property("Triaglen", new int[]{4900, 2500}, 4600, 8000, 4),
-				new Property("Østerbrogade", new int[]{4900, 2500}, 4700, 9000, 4),	
-				new Property("Grønningen", new int[]{4900, 2500}, 4900, 10000, 4),
-				new Property("Bredgade", new int[]{4900, 2500}, 5000, 12000, 2),
-				new Property("Kgs.nytorv",new int[]{4900, 2500}, 5000,13000, 2),
-				new Property("Østergade",new int[]{4900, 2500}, 5000,13000, 2),
-				new Property("Amagertorv",new int[]{4900, 2500}, 5000,13000, 1),
-				new Property("Vimmelskaftet", new int[]{4900, 2500}, 5000, 14000, 1),
-				new Property("Nygade", new int[]{4900, 2500}, 5000, 14500, 1),
-				new Property("Rådhuspladsen", new int[]{4900, 2500}, 7000, 15000, 0),
-				new Property("Frederikberggade", new int[]{4900, 2500}, 7000, 14000, 0),
-				new Property("GL.Kongevej", new int[]{4900, 2500}, 7000, 13000),
-				new Property("h.c. andersen boulevard", new int[]{4900, 2500}, 7000, 15000),
-
+				new Property("R�dovrevej", new int[]{200}, 200, 1000, 5), 
+				new Property("Hvidovrevej", new int[]{200}, 300, 1400, 5),
+				new Property("Roskilevej", new int[]{300}, 700, 2000, 7),
+				new Property("valby langgade", new int[]{300}, 1000, 2500, 7), 
+				new Property("Allegade", new int[]{300}, 1300, 4000, 7),
+				new Property("Frederiksberg Alle", new int[]{400}, 2000, 4800, 6), 
+				new Property("Bulowsvej", new int[]{400,}, 2500, 5300, 6),
+				new Property("Gl.kongevej", new int[]{400,}, 2600, 6000, 6), 
+				new Property("Bernstorffsvej", new int[]{400}, 3200, 6200, 3),
+				new Property("Hellerupsvej", new int[]{400}, 4000, 7000, 3),
+				new Property("Strandvej", new int[]{500}, 4500, 7500, 3),
+				new Property("Triaglen", new int[]{500}, 4600, 8000, 4),
+				new Property("Østerbrogade", new int[]{500}, 4700, 9000, 4),	
+				new Property("Grønningen", new int[]{600}, 4900, 10000, 4),
+				new Property("Bredgade", new int[]{600}, 5000, 12000, 2),
+				new Property("Kgs.nytorv",new int[]{600}, 5000,13000, 2),
+				new Property("Østergade",new int[]{700}, 5000,13000, 2),
+				new Property("Amagertorv",new int[]{700}, 5000,13000, 1),
+				new Property("Vimmelskaftet", new int[]{700}, 5000, 14000, 1),
+				new Property("Nygade", new int[]{800}, 5000, 14500, 1),
+				new Property("Rådhuspladsen", new int[]{1100}, 7000, 15000, 0),
+				new Property("Frederikberggade", new int[]{900}, 7000, 14000, 0),
+				
 
 
 
@@ -410,6 +407,7 @@ public class GameController {
 		int position = playa.getPosition() % fields.length;
 		System.out.println("-------------------------------------");
 		fields[position].landOnField(playa);
+		
 
 		System.out.println("playa:" + playa.getName());
 		System.out.println("slag:" + playa.getLastRoll());
