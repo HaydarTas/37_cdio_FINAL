@@ -1,18 +1,18 @@
-package field;
-
-import entity.Player;
-
-public class GoToJail extends Field {
-
-
-	private String name;
-
-	public GoToJail(String name){
-		super(name);
-		this.name = name;
-	}
-	
-	public void landOnField(Player player){
+//package field;
+//
+//import entity.Player;
+//
+//public class GoToJail extends Field {
+//
+//
+//	private String name;
+//
+//	public GoToJail(String name){
+//		super(name);
+//		this.name = name;
+//	}
+//	
+//	public void landOnField(Player player){
 //		
 //		System.out.println("Du skal i f�nsel");
 //		
@@ -22,5 +22,5 @@ public class GoToJail extends Field {
 //		
 //		player.setPosition(10);
 //		
-	}
-}
+//	}
+//}
