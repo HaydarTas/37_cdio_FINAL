@@ -62,6 +62,10 @@ public class GameController {
 
 	// creates fields in array
 	public void setupGame() {
+		ChanceCard[] cards = {
+				new MoneyCard(200, "Du vinder i lotto, modtag kr. 200,-"),
+				new MoneyCard(-100, "Du har glemt at betale told, betal kr. 100,-")
+		};
 		fields = new Field[] { 
 				new Refuge("Start",4000),
 				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
@@ -103,7 +107,7 @@ public class GameController {
 				new Shipping("Rødby Havn", 4000),
 				new Shipping("Helsingør Havn", 4000),
 
-
+				new Chance(name, points, cards),
 
 		};
 	}
