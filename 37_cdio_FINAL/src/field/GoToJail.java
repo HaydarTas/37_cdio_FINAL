@@ -8,18 +8,19 @@ public class GoToJail extends Field {
 	private String name;
 
 	public GoToJail(String name){
+		super(name);
 		this.name = name;
 	}
 	
 	public void landOnField(Player player){
-		
-		System.out.println("Du skal i fænsel");
-		
-		player.getPosition();
-		
-		System.out.println(player.getName() + " lander på " + player.getPosition() + "og rykkes i fængsel.");
-		
-		player.setPosition(10);
-		
+//		
+//		System.out.println("Du skal i fï¿½nsel");
+//		
+//		player.getPosition();
+//		
+//		System.out.println(player.getName() + " lander pï¿½ " + player.getPosition() + "og rykkes i fï¿½ngsel.");
+//		
+//		player.setPosition(10);
+//		
 	}
 }

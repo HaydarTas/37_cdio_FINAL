@@ -10,6 +10,8 @@ import desktop_fields.Start;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 import entity.*;
+import field.*;
+
 
 public class GameController {
 	private static final Color red = null;
@@ -19,6 +21,7 @@ public class GameController {
 	private Field[] fields;
 	private int playerTurn;
 	private desktop_fields.Field[] start;
+	private String buttons;
 
 	public void run() {
 		Player tmp = players[playerTurn];
@@ -54,11 +57,8 @@ public class GameController {
 	}
 	private void playerTurn(Player player) {
 		int roll = box.roll();
-		int newPosition = player.getPosition() + roll;
-		if(newPosition > 40) {
-			newPosition -= 40;
-			player.addToBalance(4000);
-		}
+		int newPosition = (player.getPosition() + roll) % fields.length;
+
 		int points = fields[newPosition].getPoints();
 		String fieldname = fields[newPosition].getName();
 		boolean check_account = player.addToBalance(points);
@@ -85,39 +85,58 @@ public class GameController {
 	// creates fields in array
 	public void setupGame() {
 		fields = new Field[] { 
-				new Territory("Rødovrevej", 200, 1000), 
-				new Territory("Hvidovrevej", 300, 1400),
-				new Territory("Jernbane alle", 500, 1600), 
-				new Territory("Roskilevej", 700, 2000),
-				new Territory("valby langgade", 1000, 2500), 
-				new Territory("Allegade", 1300, 4000),
-				new Territory("Frederiksberg Alle", 2000, 4800), 
-				new Territory("Bulowsvej", 2500, 5300),
-				new Territory("Gl.kongevej", 2600, 6000), 
-				new Territory("Bernstorffsvej", 3200, 6200),
-				new Territory("Hellerupsvej", 4000, 7000),
-				new Territory("Strandvej", 4500, 7500),
-				new Territory("Triaglen", 4600, 8000),
-				new Territory("Østerbrogade", 4700, 9000),	
-				new Territory("Grønningen", 4900, 10000),
-				new Territory("Bredgade", 5000, 12000),
+				new Refuge("Start",4000),
+				new Property("Rødovrevej", new int[]{4900, 2500}, 200, 1000), 
+				new Property("Hvidovrevej", new int[]{4900, 2500}, 300, 1400),
+				new Property("Jernbane alle", new int[]{4900, 2500}, 500, 1600), 
+				new Property("Roskilevej", new int[]{4900, 2500}, 700, 2000),
+				new Property("valby langgade", new int[]{4900, 2500}, 1000, 2500), 
+				new Property("Allegade", new int[]{4900, 2500}, 1300, 4000),
+				new Property("Frederiksberg Alle", new int[]{4900, 2500}, 2000, 4800), 
+				new Property("Bulowsvej", new int[]{4900, 2500}, 2500, 5300),
+				new Property("Gl.kongevej", new int[]{4900, 2500}, 2600, 6000), 
+				new Property("Bernstorffsvej", new int[]{4900, 2500}, 3200, 6200),
+				new Property("Hellerupsvej", new int[]{4900, 2500}, 4000, 7000),
+				new Property("Strandvej", new int[]{4900, 2500}, 4500, 7500),
+				new Property("Triaglen", new int[]{4900, 2500}, 4600, 8000),
+				new Property("Østerbrogade", new int[]{4900, 2500}, 4700, 9000),	
+				new Property("Grønningen", new int[]{4900, 2500}, 4900, 10000),
+				new Property("Bredgade", new int[]{4900, 2500}, 5000, 12000),
+				new Property("Kgs.nytorv",new int[]{4900, 2500}, 5000,13000),
+				new Property("Østergade",new int[]{4900, 2500}, 5000,13000),
+				new Property("Amagertorv",new int[]{4900, 2500}, 5000,13000),
+				new Property("Vimmelskaftet", new int[]{4900, 2500}, 5000, 14000),
+				new Property("Nygade", new int[]{4900, 2500}, 5000, 14500),
+				new Property("Rådhuspladsen", new int[]{4900, 2500}, 7000, 15000),
+				new Property("Vesterbrogade", new int[]{4900, 2500}, 7000, 14000),
+				new Property("GL.Kongevej", new int[]{4900, 2500}, 7000, 13000),
+				new Property("h.c. andersen boulevard", new int[]{4900, 2500}, 7000, 15000),
+				
+				
+
+
+				
 				
 				new Refuge("Parking", 4000),
 				new Refuge("parking", 4000),
-				new entity.Brewery("Coca", 2500, 5000), 
-				new entity.Brewery("TUBORG", 2500, 5000),
-				new Tax("Tax", 0), new Tax("Tax", 0), 
-				new Fleet("DFDS seaways", 4000),
-				new Fleet("CM port", 4000), 
-				new Fleet("Rødby Havn", 4000),
-				new Fleet("Helsingør Havn", 4000) };
-				new Territory("Kgs.nytorv",5000,13000);
+				new Brewer("Coca", 2500, 5000), 
+				new Brewer("TUBORG", 2500, 5000),
+				new Tax("Tax", 0),
+				new Tax("Tax", 0), 
+				new Shipping("DFDS seaways", 4000),
+				new Shipping("CM port", 4000), 
+				new Shipping("Rødby Havn", 4000),
+				new Shipping("Helsingør Havn", 4000),
+				
+
+				
+		};
 	}
 
 	// adds fields to GUI
 	public void setupGUI() {
 
-		desktop_fields.Field[] fields = new desktop_fields.Field[29];
+		desktop_fields.Field[] fields = new desktop_fields.Field[40];
 		Street st = null;
 		Start s= null;
    
@@ -191,26 +210,28 @@ public class GameController {
 		st.setSubText("Pris: 8000");
 		fields[13] = st;
 		
-		st= new Street.Builder().setBgColor(Color.red).setSubText("Østerbrogade").build();
+		st= new Street.Builder().setBgColor(Color.red).setTitle("Østerbrogade").build();
 		st.setDescription("Østerbrogade");
 		st.setSubText("Pris: 9000");
 		fields[14] = st;
 		
-		st= new Street.Builder().setBgColor(Color.red).setSubText("Grønningen").build();
+		st= new Street.Builder().setBgColor(Color.red).setTitle("Grønning").build();
 		st.setDescription("Grønningen");
 		st.setSubText("Pris: 10000");
 		fields[15] =st;
 		
-		st= new Street.Builder().setBgColor(Color.red).setSubText("Bredgade").build();
+		st= new Street.Builder().setBgColor(Color.red).setTitle("Bredgade").build();
 		st.setDescription("Bredgade");
 		st.setSubText("Pris: 12000");
 		fields[16]= st;
-		desktop_fields.Brewery b=null;
-		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("COCA COLA").build();
-		b.setDescription("Coca Cola");
-		b.setSubText("Pris: 5000");
-		fields[17]= b;
 		
+		desktop_fields.Chance c=null;
+        c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+        c.setDescription("prøv lykken");
+        c.setSubText("better luck nextime");
+        fields[17] = c;
+        
+		desktop_fields.Brewery b=null;
 		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("TUBORG").build();
 		b.setDescription("Tuborg");
 		b.setSubText("Pris: 5000");
@@ -230,12 +251,12 @@ public class GameController {
 
 		desktop_fields.Tax t = null;
 		t = new desktop_fields.Tax.Builder().setBgColor(Color.magenta).setTitle("Tax").build();
-		t.setDescription("Skat");
+		t.setDescription("tax");
 		t.setSubText("du skal betale min ven");
 		fields[21] = t;
 
 		t = new desktop_fields.Tax.Builder().setBgColor(Color.CYAN).setTitle("Tax").build();
-		t.setDescription("Skat");
+		t.setDescription("tax");
 		t.setSubText("betale nu din skat");
 		fields[22] = t;
 
@@ -258,26 +279,86 @@ public class GameController {
 		f.setDescription("Helsingør Havn");
 		f.setSubText("Pris: 4000");
 		fields[26] = f;
+ 
+		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("COCA COLA").build();
+		b.setDescription("Coca Cola");
+		b.setSubText("Pris: 5000");
+		fields[27]= b;
 		
-		desktop_fields.Chance c=null;
-        c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
-        c.setDescription("prøv lykken");
-        c.setSubText("better luck nextime");
-        fields[27] = c;
-        
-        st= new Street.Builder().setBgColor(Color.red).setSubText("Kgs.Nytorv").build();
+        st= new Street.Builder().setBgColor(Color.gray).setTitle("Kgs.Nytorv").build();
         st.setDescription("Kgs.Nytorv");
         st.setSubText("Pris: 13000");
 		fields[28]=st;
+		
+		 st= new Street.Builder().setBgColor(Color.gray).setTitle("Østergade").build();
+	        st.setDescription("Østergade");
+	        st.setSubText("Pris: 13000");
+			fields[29]=st;
+			
+		 st= new Street.Builder().setBgColor(Color.gray).setTitle("Amagertorv").build();
+		        st.setDescription("Amagertorv");
+		        st.setSubText("Pris: 13000");
+				fields[30]=st;
+				
+				 st= new Street.Builder().setBgColor(Color.cyan).setTitle("Vimmelskaftet").build();
+			        st.setDescription("Vimmelskaftet");
+			        st.setSubText("Pris: 14000");
+					fields[31]=st;
+	
+		st= new Street.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("Nygade").build();
+			        st.setDescription("Nygade");
+			        st.setSubText("Pris: 14500");
+					fields[32]=st;
+		
+		st= new Street.Builder().setBgColor(Color.RED).setTitle("Rådhuspladsen").build();
+			        st.setDescription("Rådhuspladsen");
+			        st.setSubText("Pris: 15000");
+					fields[33]=st;
 		           
+		st= new Street.Builder().setBgColor(Color.RED).setTitle("Vesterbrogade").build();
+			        st.setDescription("Vesterbrogade");
+			        st.setSubText("Pris: 12000");
+					fields[34]=st;
+					
+		desktop_fields.Jail j=null;			
+		j = new desktop_fields.Jail.Builder().setBgColor(Color.WHITE).setTitle("jail").build();
+		j.displayOnCenter();
+		j.setDescription("De fængsles");
+		j.setSubText("dont drop the soap");
+		fields[35] = j ;
+				
+		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("jail").build();
+		j.displayOnCenter();
+		j.setDescription("fængsel");
+		j.setSubText("du er på besøg");
+		fields[36] =j;
+		
+		c=new desktop_fields.Chance.Builder().setBgColor(Color.red).build();
+		c.displayOnCenter();
+		c.setDescription("prøv lykken");
+		c.setSubText("tag chancen");
+		fields[37]=c;
+		
+        
+		st= new Street.Builder().setBgColor(Color.GREEN).setTitle("GL.kongevej").build();
+			        st.setDescription("GL.Kongevej");
+			        st.setSubText("Pris: 13000");
+					fields[38]=st;
+					
+		st= new desktop_fields.Street.Builder().setBgColor(Color.lightGray).setTitle("h.c. andersen boulevard").build();
+			        st.setDescription("h.c. andersen boulevard");
+			        st.setSubText("Pris: 15000");
+					fields[39]=st;
+		
+				
 
 		GUI.create(fields);
 	}
-
-	private Object valueOf(String string, String[] attributes) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+//
+//	private Object valueOf(String string, String[] attributes) {
+//			// TODO Auto-generated method stub
+//			return null;
+//		}
 
 	private Car getCar(int i) {
 		Car car = null;
@@ -377,10 +458,24 @@ public class GameController {
 	}
 	
 	public int landOnField(){
-		Player unicorn = players[playerTurn];
-		int position = unicorn.getPosition() % 29;
-		fields[position].landOnField(unicorn);
-		return unicorn.getInformation();
+		
+		Player playa = players[playerTurn];
+		int position = playa.getPosition() % fields.length;
+		System.out.println("-------------------------------------");
+		fields[position].landOnField(playa);
+		
+		System.out.println("playa:" + playa.getName());
+		System.out.println("slag:" + playa.getLastRoll());
+
+		System.out.println("position:" + position);
+		System.out.println("playa.getPosition():" + playa.getPosition());
+		System.out.println("playa.geetMoney():" + playa.getBalance());
+
+		System.out.println("felt:" + fields[position-1].getName());
+		for (Field field : fields) {
+			System.out.println(field.getName());
+		}
+		return playa.getInformation();
 	}
 	
 }

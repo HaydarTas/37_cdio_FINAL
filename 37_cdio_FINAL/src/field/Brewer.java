@@ -4,11 +4,11 @@ import field.Field;
 import field.Ownable;
 import entity.Player;
 
-public class Brewery extends Ownable {
+public class Brewer extends Ownable {
 
 	int baseRent;
 
-	public Brewery(String name, int rent, int price) {
+	public Brewer(String name, int rent, int price) {
 		super(name, price);
 		this.baseRent = rent;
 	}
@@ -31,20 +31,20 @@ public class Brewery extends Ownable {
 
 	}
 
-	public int countLaborCamps() {
+	public int countBrewer() {
 		Field[] field = super.getOwner().getFields();
-		int laborCamps = 0;
+		int Brewer = 0;
 
 		for (int i = 0; i < field.length; i++) {
-			if (field[i] instanceof Brewery) {
-				laborCamps++;
+			if (field[i] instanceof Brewer) {
+				Brewer++;
 			}
 		}
-		return laborCamps;
+		return Brewer;
 	}
 
 	public int calculateTax(int roll) {
-		return roll * 100 * this.countLaborCamps();
+		return roll * 100 * this.countBrewer();
 	}
 
 	public int getRent() {

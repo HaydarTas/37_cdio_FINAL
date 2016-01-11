@@ -1,13 +1,14 @@
 package entity;
 
 import field.Field;
+import field.Ownable;
 
 public class Player {
 
 	private String name;
 	private Account account;
 	private boolean bankrupt = false;
-	private Field[] fields = new Field[21];
+	private Field[] fields = new Field[27];
 	private int number;
 	private int position;
 	private int info; // Information about whether the field is bought or not
@@ -64,10 +65,11 @@ public class Player {
 	}
 
 	public void movePlayer(int dice) {
-		position = position + dice;
-		if (position >= 21) {
-			position = position - 21;
+		if((position + dice) > fields.length) {
+			this.addToBalance(4000);
 		}
+		position = (position + dice) % fields.length;
+
 	}
 
 	@Override

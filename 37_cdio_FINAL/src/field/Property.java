@@ -3,7 +3,7 @@ package field;
 import entity.Player;
 import field.Ownable;
 
-public class Street extends Ownable {
+public class Property extends Ownable {
 
 	private int[] rents;
 	private int housePrice;
@@ -11,7 +11,7 @@ public class Street extends Ownable {
 	private int houseRent;
 
 
-	public Street(String name, int[] rents, int price, int housePrice) {
+	public Property(String name, int[] rents, int price, int housePrice) {
 		super(name, price);
 		this.rents = rents;
 		this.housePrice = housePrice;
@@ -21,8 +21,8 @@ public class Street extends Ownable {
 	// checks whether the territory is owned by another player or is for sale
 	// if field is owned by another player, checks the rent.
 	public void landOnField(Player p) {
-		if (super.getOwner() != null) {
-			if (!super.getOwner().equals(p)) 
+		if (super.getOwner() instanceof Player) {
+			if (!super.getOwner().equals(p)){ 
 				
 				p.addToBalance(-getRent());
 				super.getOwner().addToBalance(getRent());
@@ -35,8 +35,9 @@ public class Street extends Ownable {
 		}
 	}
 
-	public void addHouse(){
+	public Field addHouse(){
 		houseCount++;
+		return null;
 	}
 
 	public int getRent() {
