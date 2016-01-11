@@ -105,10 +105,12 @@ public class GameController {
 				new Chance("lykke", 5, cards),
 				new Property("Nygade", new int[]{800}, 5000, 14500, 1),
 				new Shipping("Helsingør Havn", 4000),
+
 				new Chance("lykke", 6, cards),
 				new Property("Frederikberggade", new int[]{900}, 7000, 14000, 0),
 				new Tax("Tax", 500), 
 				new Property("Rådhuspladsen", new int[]{1100}, 7000, 15000, 0),		
+
 
 		};
 	}
