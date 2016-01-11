@@ -15,8 +15,6 @@ import field.*;
 
 public class GameController {
 	private static final Color red = null;
-	private static final int points = 0;
-	private static final String name = null;
 	private Dicebox box = new Dicebox();
 	private Player[] players = new Player[6];
 	private int playerCount;
@@ -64,14 +62,9 @@ public class GameController {
 
 	// creates fields in array
 	public void setupGame() {
-		ChanceCard[] cards = {
-				new MoneyCard(200, "Du vinder i lotto, modtag kr. 200,-"),
-				new MoneyCard(-100, "Du har glemt at betale told, betal kr. 100,-")
-		};
-		
 		fields = new Field[] { 
 				new Refuge("Start",4000),
-				new Property("R�dovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
+				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
 				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5),
 				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7),
 				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7), 
@@ -103,15 +96,15 @@ public class GameController {
 				new Refuge("parking", 4000),
 				new Brewer("Coca", 2500, 5000), 
 				new Brewer("TUBORG", 2500, 5000),
-				new Tax("Tax", 0),
-				new Tax("Tax", 0), 
+				new Tax("Tax", 1000, 10),
+				new Tax("Tax", 500), 
 				new Shipping("DFDS seaways", 4000),
 				new Shipping("CM port", 4000), 
 				new Shipping("Rødby Havn", 4000),
 				new Shipping("Helsingør Havn", 4000),
-				
-			
-				new Chance(name, points, cards),
+
+
+
 		};
 	}
 
@@ -328,7 +321,7 @@ public class GameController {
 		st.setSubText("Pris: 13000");
 		fields[37]=st;
 
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.DARK_GRAY).setDescription("Tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.DARK_GRAY).setDescription("tax").build();
 		t.setDescription("tax");
 		t.setSubText("betal din skat");
 		fields[38] = t;
@@ -377,6 +370,7 @@ public class GameController {
 
 		if (playerName.length() != 0) {
 			GUI.addPlayer(playerName, 30000, getCar(playerCount));
+			GUI.setCar(1, playerName);
 			playerCount++;
 			for (int i = 0; i < players.length; i++) {
 				if (players[i] == null) {
@@ -433,4 +427,5 @@ public class GameController {
 	}
 
 }
+
 

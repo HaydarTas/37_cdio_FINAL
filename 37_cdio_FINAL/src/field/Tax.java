@@ -1,6 +1,7 @@
 package field;
 
 import field.Field;
+import desktop_resources.GUI;
 import entity.Player;
 
 public class Tax extends Field {
@@ -22,6 +23,15 @@ public class Tax extends Field {
 
 	public void landOnField(Player p) {
 		this.p = p;
+		if(taxRate == -1){
+			pay();
+		}else{
+			final String btn1 = "kr. "+taxAmount+",-";
+			final String btn2 = taxRate+"%";
+			String res = GUI.getUserButtonPressed("Hvad vil du betale", btn1, btn2);
+			if(btn1.equals(res)) pay();
+			else payPercent();
+		}
 //		p.setInformation(2);
 
 	}
@@ -35,3 +45,4 @@ public class Tax extends Field {
 		p.addToBalance(-tax);
 	}
 }
+
