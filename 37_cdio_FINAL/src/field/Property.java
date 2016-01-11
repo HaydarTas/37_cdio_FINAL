@@ -5,18 +5,21 @@ import entity.Player;
 import field.Ownable;
 
 public class Property extends Ownable {
+	
+	public static final int LILLA = 0;
 
 	private int[] rents;
 	private int housePrice;
 	private int houseCount;
 	private int houseRent;
+	private int group;
 
 
-	public Property(String name, int[] rents, int price, int housePrice) {
+	public Property(String name, int[] rents, int price, int housePrice, int group) {
 		super(name, price);
 		this.rents = rents;
 		this.housePrice = housePrice;
-		this.houseRent = houseRent;
+		this.group = group;
 	}
 
 	// checks whether the territory is owned by another player or is for sale
