@@ -114,6 +114,12 @@ public class GameController {
 		desktop_fields.Field[] fields = new desktop_fields.Field[40];
 		Street st = null;
 		Start s= null;
+		desktop_fields.Shipping f = null;
+		desktop_fields.Chance c=null;
+		desktop_fields.Tax t = null;
+		desktop_fields.Jail j=null;
+		desktop_fields.Refuge r = null;
+		
 
 		s = new Start.Builder().setBgColor(Color.RED).setTitle("Start").build();
 		s.setDescription("modtag: 4000");
@@ -124,209 +130,211 @@ public class GameController {
 		st.setDescription("Rødovrevej");
 		st.setSubText("pris: 1000");
 		fields[1] = st;
+		
+		
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c.setDescription("prøv lykken");
+		c.setSubText("better luck nextime");
+		fields[2] = c;
 
 		st = new Street.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("Hvidovrevej").build();
 		st.setDescription("pris: 1400");
 		st.setSubText("pris: 1400");
-		fields[2] = st;
-
-		st = new Street.Builder().setBgColor(Color.white).setTitle("Jernbane alle").build();
-		st.setDescription("Jernbane alle");
-		st.setSubText("Pris: 1600");
 		fields[3] = st;
+		
+		
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.magenta).setDescription("Tax").build();
+		t.setDescription("tax");
+		t.setSubText("du skal betale min ven");
+		fields[4] = t;
+		
+		f = new desktop_fields.Shipping.Builder().setBgColor(Color.gray).setTitle("DFDS seaways").build();
+		f.setDescription("DFDS seaways");
+		f.setSubText("Pris:4000");
+		fields[5] = f;
+
 
 		st = new Street.Builder().setBgColor(Color.gray).setTitle("Roskildevej").build();
 		st.setDescription("Roskildevej");
 		st.setSubText("Pris: 2000");
-		fields[4] = st;
+		fields[6] = st;
+		
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c.setDescription("prøv lykken");
+		c.setSubText("better luck nextime");
+		fields[7] = c;
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Valby langgade").build();
 		st.setDescription("Valby langgade");
 		st.setSubText("Pris: 2500");
-		fields[5] = st;
+		fields[8] = st;
 
 		st = new Street.Builder().setBgColor(Color.orange).setTitle("Allegade").build();
 		st.setDescription("Allegade");
 		st.setSubText("Pris: 4000");
-		fields[6] = st;
+		fields[9] = st;
+		
+		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("jail").build();
+		j.displayOnCenter();
+		j.setDescription("fængsel");
+		j.setSubText("du er på besøg");
+		fields[10] =j;
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Frederiksberg Alle").build();
 		st.setDescription("Frederiksberg Alle");
 		st.setSubText("Pris:4800");
-		fields[7] = st;
+		fields[11] = st;
+		
+		desktop_fields.Brewery b=null;
+		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("SQUASH").build();
+		b.setDescription("Squash");
+		b.setSubText("Pris: 5000");
+		fields[12]= b;
 
 		st = new Street.Builder().setBgColor(Color.magenta).setTitle("Bulowsvej").build();
 		st.setDescription("Bulowsvej");
 		st.setSubText("Pris: 5300");
-		fields[8] = st;
+		fields[13] = st;
 
 		st= new Street.Builder().setBgColor(Color.CYAN).setTitle("Gl.kongevej").build();
 		st.setDescription("Gl.kongevej");
 		st.setSubText("Pris: 6000");
-		fields[9] = st;
+		fields[14] = st;
+		
+		f = new desktop_fields.Shipping.Builder().setBgColor(Color.blue).setTitle("CM port").build();
+		f.setDescription("CM port");
+		f.setSubText("Pris:4000");
+		fields[15] = f;
 
 		st = new Street.Builder().setBgColor(Color.gray).setTitle("Bernstorffsvej").build();
 		st.setDescription("Bernstorffsvej");
 		st.setSubText("Pris: 6200");
-		fields[10] = st;
-
-		st = new Street.Builder().setBgColor(Color.blue).setTitle("Hellerupsvej").build();
-		st.setDescription("Hellerupsvej");
-		st.setSubText("Pris: 7000");
-		fields[11] = st;
-
-		st = new Street.Builder().setBgColor(Color.white).setTitle("Strandvej").build();
-		st.setDescription("Strandvej");
-		st.setSubText("Pris: 7500");
-		fields[12] = st;
-
-		st = new Street.Builder().setBgColor(Color.green).setTitle("Trianglen").build();
-		st.setDescription("Trianglen");
-		st.setSubText("Pris: 8000");
-		fields[13] = st;
-
-		st= new Street.Builder().setBgColor(Color.red).setTitle("Østerbrogade").build();
-		st.setDescription("Østerbrogade");
-		st.setSubText("Pris: 9000");
-		fields[14] = st;
-
-		st= new Street.Builder().setBgColor(Color.red).setTitle("Grønning").build();
-		st.setDescription("Grønningen");
-		st.setSubText("Pris: 10000");
-		fields[15] =st;
-
-		st= new Street.Builder().setBgColor(Color.red).setTitle("Bredgade").build();
-		st.setDescription("Bredgade");
-		st.setSubText("Pris: 12000");
-		fields[16]= st;
-
-		desktop_fields.Chance c=null;
+		fields[16] = st;
+		
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[17] = c;
 
-		desktop_fields.Brewery b=null;
-		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("TUBORG").build();
-		b.setDescription("Tuborg");
-		b.setSubText("Pris: 5000");
-		fields[18]= b;
+		st = new Street.Builder().setBgColor(Color.blue).setTitle("Hellerupsvej").build();
+		st.setDescription("Hellerupsvej");
+		st.setSubText("Pris: 7000");
+		fields[18] = st;
 
-
-		desktop_fields.Refuge r = null;
+		st = new Street.Builder().setBgColor(Color.white).setTitle("Strandvej").build();
+		st.setDescription("Strandvej");
+		st.setSubText("Pris: 7500");
+		fields[19] = st;
+		
+		
 		r = new desktop_fields.Refuge.Builder().setFgColor(Color.DARK_GRAY).setTitle("Parking").build();
 		r.setDescription("parking");
 		r.setSubText("Modtag: 4000");
-		fields[19] = r;
-
-		r = new desktop_fields.Refuge.Builder().setBgColor(Color.DARK_GRAY).setTitle("Parking").build();
-		r.setDescription("parking");
-		r.setSubText("modtag: 4000");
 		fields[20] = r;
 
-		desktop_fields.Tax t = null;
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.magenta).setDescription("Tax").build();
-		t.setDescription("tax");
-		t.setSubText("du skal betale min ven");
-		fields[21] = t;
+		st = new Street.Builder().setBgColor(Color.green).setTitle("Trianglen").build();
+		st.setDescription("Trianglen");
+		st.setSubText("Pris: 8000");
+		fields[21] = st;
+		
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c.setDescription("prøv lykken");
+		c.setSubText("better luck nextime");
+		fields[22] = c;
 
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.CYAN).setDescription("Tax").build();
-		t.setDescription("tax");
-		t.setSubText("betale nu din skat");
-		fields[22] = t;
+		st= new Street.Builder().setBgColor(Color.red).setTitle("Østerbrogade").build();
+		st.setDescription("Østerbrogade");
+		st.setSubText("Pris: 9000");
+		fields[23] = st;
 
-		desktop_fields.Shipping f = null;
-
-		f = new desktop_fields.Shipping.Builder().setBgColor(Color.gray).setTitle("DFDS seaways").build();
-		f.setDescription("DFDS seaways");
-		f.setSubText("Pris:4000");
-		fields[23] = f;
-
-		f = new desktop_fields.Shipping.Builder().setBgColor(Color.blue).setTitle("CM port").build();
-		f.setDescription("CM port");
-		f.setSubText("Pris:4000");
-		fields[24] = f;
+		st= new Street.Builder().setBgColor(Color.red).setTitle("Grønning").build();
+		st.setDescription("Grønningen");
+		st.setSubText("Pris: 10000");
+		fields[24] =st;
+		
 		f = new desktop_fields.Shipping.Builder().setBgColor(Color.CYAN).setTitle("Rødby havn").build();
 		f.setDescription("Rødby Havn");
 		f.setSubText("Pris: 4000");
 		fields[25] = f;
 
-		f = new desktop_fields.Shipping.Builder().setBgColor(Color.green).setTitle("Helsingør Havn").build();
-		f.setDescription("Helsingør Havn");
-		f.setSubText("Pris: 4000");
-		fields[26] = f;
+		st= new Street.Builder().setBgColor(Color.red).setTitle("Bredgade").build();
+		st.setDescription("Bredgade");
+		st.setSubText("Pris: 12000");
+		fields[26]= st;
+
+		
+		st= new Street.Builder().setBgColor(Color.gray).setTitle("Kgs.Nytorv").build();
+		st.setDescription("Kgs.Nytorv");
+		st.setSubText("Pris: 13000");
+		fields[27]=st;
 
 		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("COCA COLA").build();
 		b.setDescription("Coca Cola");
 		b.setSubText("Pris: 5000");
-		fields[27]= b;
-
-		st= new Street.Builder().setBgColor(Color.gray).setTitle("Kgs.Nytorv").build();
-		st.setDescription("Kgs.Nytorv");
-		st.setSubText("Pris: 13000");
-		fields[28]=st;
-
+		fields[28]= b;
+		
 		st= new Street.Builder().setBgColor(Color.gray).setTitle("Østergade").build();
 		st.setDescription("Østergade");
 		st.setSubText("Pris: 13000");
 		fields[29]=st;
 
-		st= new Street.Builder().setBgColor(Color.gray).setTitle("Amagertorv").build();
-		st.setDescription("Amagertorv");
-		st.setSubText("Pris: 13000");
-		fields[30]=st;
 
-		st= new Street.Builder().setBgColor(Color.cyan).setTitle("Vimmelskaftet").build();
-		st.setDescription("Vimmelskaftet");
-		st.setSubText("Pris: 14000");
-		fields[31]=st;
-
-		st= new Street.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("Nygade").build();
-		st.setDescription("Nygade");
-		st.setSubText("Pris: 14500");
-		fields[32]=st;
-
-		st= new Street.Builder().setBgColor(Color.RED).setTitle("Rådhuspladsen").build();
-		st.setDescription("Rådhuspladsen");
-		st.setSubText("Pris: 15000");
-		fields[33]=st;
-
-		st= new Street.Builder().setBgColor(Color.RED).setTitle("Vesterbrogade").build();
-		st.setDescription("Vesterbrogade");
-		st.setSubText("Pris: 12000");
-		fields[34]=st;
-
-		desktop_fields.Jail j=null;			
 		j = new desktop_fields.Jail.Builder().setBgColor(Color.WHITE).setTitle("jail").build();
 		j.displayOnCenter();
 		j.setDescription("De fængsles");
 		j.setSubText("dont drop the soap");
-		fields[35] = j ;
-
-		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("jail").build();
-		j.displayOnCenter();
-		j.setDescription("fængsel");
-		j.setSubText("du er på besøg");
-		fields[36] =j;
-
-		c=new desktop_fields.Chance.Builder().setBgColor(Color.red).build();
-		c.displayOnCenter();
-		c.setDescription("prøv lykken");
-		c.setSubText("tag chancen");
-		fields[37]=c;
-
-
-		st= new Street.Builder().setBgColor(Color.GREEN).setTitle("GL.kongevej").build();
-		st.setDescription("GL.Kongevej");
+		fields[30] = j ;
+		
+		st= new Street.Builder().setBgColor(Color.gray).setTitle("Amagertorv").build();
+		st.setDescription("Amagertorv");
 		st.setSubText("Pris: 13000");
-		fields[38]=st;
+		fields[30]=st;
+		
+		st= new Street.Builder().setBgColor(Color.cyan).setTitle("Vimmelskaftet").build();
+		st.setDescription("Vimmelskaftet");
+		st.setSubText("Pris: 14000");
+		fields[31]=st;
+		
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c.setDescription("prøv lykken");
+		c.setSubText("better luck nextime");
+		fields[32] = c;
 
-		st= new desktop_fields.Street.Builder().setBgColor(Color.lightGray).setTitle("h.c. andersen boulevard").build();
-		st.setDescription("h.c. andersen boulevard");
+		st= new Street.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("Nygade").build();
+		st.setDescription("Nygade");
+		st.setSubText("Pris: 14500");
+		fields[33]=st;
+
+		f = new desktop_fields.Shipping.Builder().setBgColor(Color.green).setTitle("Helsingør Havn").build();
+		f.setDescription("Helsingør Havn");
+		f.setSubText("Pris: 4000");
+		fields[34] = f;
+
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c.setDescription("prøv lykken");
+		c.setSubText("better luck nextime");
+		fields[35] = c;
+		
+
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c.setDescription("prøv lykken");
+		c.setSubText("better luck nextime");
+		fields[36] = c;
+
+		st= new Street.Builder().setBgColor(Color.GREEN).setTitle("Frederiksberggade").build();
+		st.setDescription("Frederiksberggade");
+		st.setSubText("Pris: 13000");
+		fields[37]=st;
+
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.CYAN).setDescription("Tax").build();
+		t.setDescription("tax");
+		t.setSubText("betal din skat");
+		fields[38] = t;
+
+		st= new Street.Builder().setBgColor(Color.RED).setTitle("Rådhuspladsen").build();
+		st.setDescription("Rådhuspladsen");
 		st.setSubText("Pris: 15000");
 		fields[39]=st;
-
-
 
 		GUI.create(fields);
 	}
