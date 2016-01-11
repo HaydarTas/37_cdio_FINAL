@@ -107,7 +107,7 @@ public class GameController {
 				new Shipping("Rødby Havn", 4000),
 				new Shipping("Helsingør Havn", 4000),
 
-				new Chance(name, points, cards),
+				new Chance("lykke", 0, cards),
 
 		};
 	}
