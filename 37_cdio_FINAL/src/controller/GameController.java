@@ -86,7 +86,7 @@ public class GameController {
 	public void setupGame() {
 		fields = new Field[] { 
 				new Refuge("Start",4000),
-				new Property("RÃ¸dovrevej", new int[]{4900, 2500}, 200, 1000), 
+				new Property("Rådovrevej", new int[]{4900, 2500}, 200, 1000), 
 				new Property("Hvidovrevej", new int[]{4900, 2500}, 300, 1400),
 				new Property("Jernbane alle", new int[]{4900, 2500}, 500, 1600), 
 				new Property("Roskilevej", new int[]{4900, 2500}, 700, 2000),
@@ -472,10 +472,10 @@ public class GameController {
 		System.out.println("playa.getPosition():" + playa.getPosition());
 		System.out.println("playa.geetMoney():" + playa.getBalance());
 
-		System.out.println("felt:" + fields[position-1].getName());
-		for (Field field : fields) {
-			System.out.println(field.getName());
-		}
+//		System.out.println("felt:" + fields[position-1].getName());
+//		for (Field field : fields) {
+//			System.out.println(field.getName());
+//		}
 		return playa.getInformation();
 	}
 	

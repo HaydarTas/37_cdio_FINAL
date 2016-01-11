@@ -8,7 +8,7 @@ public class Player {
 	private String name;
 	private Account account;
 	private boolean bankrupt = false;
-	private Field[] fields = new Field[27];
+	private Field[] fields = new Field[40];
 	private int number;
 	private int position;
 	private int info; // Information about whether the field is bought or not
