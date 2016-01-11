@@ -126,18 +126,18 @@ public class GameController {
 		s.setSubText("");
 		fields[0]=s;
 
-		st = new Street.Builder().setBgColor(Color.gray).setTitle("Rødovrevej").build();
+		st = new Street.Builder().setBgColor(Color.blue).setTitle("Rødovrevej").build();
 		st.setDescription("Rødovrevej");
 		st.setSubText("pris: 1000");
 		fields[1] = st;
 		
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[2] = c;
 
-		st = new Street.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("Hvidovrevej").build();
+		st = new Street.Builder().setBgColor(Color.blue).setTitle("Hvidovrevej").build();
 		st.setDescription("pris: 1400");
 		st.setSubText("pris: 1400");
 		fields[3] = st;
@@ -148,23 +148,23 @@ public class GameController {
 		t.setSubText("du skal betale min ven");
 		fields[4] = t;
 		
-		f = new desktop_fields.Shipping.Builder().setBgColor(Color.gray).setTitle("DFDS seaways").build();
+		f = new desktop_fields.Shipping.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("DFDS seaways").build();
 		f.setDescription("DFDS seaways");
 		f.setSubText("Pris:4000");
 		fields[5] = f;
 
 
-		st = new Street.Builder().setBgColor(Color.gray).setTitle("Roskildevej").build();
+		st = new Street.Builder().setBgColor(Color.orange).setTitle("Roskildevej").build();
 		st.setDescription("Roskildevej");
 		st.setSubText("Pris: 2000");
 		fields[6] = st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[7] = c;
 
-		st = new Street.Builder().setBgColor(Color.green).setTitle("Valby langgade").build();
+		st = new Street.Builder().setBgColor(Color.orange).setTitle("Valby langgade").build();
 		st.setDescription("Valby langgade");
 		st.setSubText("Pris: 2500");
 		fields[8] = st;
@@ -174,7 +174,7 @@ public class GameController {
 		st.setSubText("Pris: 4000");
 		fields[9] = st;
 		
-		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("jail").build();
+		j =new desktop_fields.Jail.Builder().setBgColor(Color.black).setTitle("jail").build();
 		j.displayOnCenter();
 		j.setDescription("fængsel");
 		j.setSubText("du er på besøg");
@@ -191,17 +191,17 @@ public class GameController {
 		b.setSubText("Pris: 5000");
 		fields[12]= b;
 
-		st = new Street.Builder().setBgColor(Color.magenta).setTitle("Bulowsvej").build();
+		st = new Street.Builder().setBgColor(Color.green).setTitle("Bulowsvej").build();
 		st.setDescription("Bulowsvej");
 		st.setSubText("Pris: 5300");
 		fields[13] = st;
 
-		st= new Street.Builder().setBgColor(Color.CYAN).setTitle("Gl.kongevej").build();
+		st= new Street.Builder().setBgColor(Color.green).setTitle("Gl.kongevej").build();
 		st.setDescription("Gl.kongevej");
 		st.setSubText("Pris: 6000");
 		fields[14] = st;
 		
-		f = new desktop_fields.Shipping.Builder().setBgColor(Color.blue).setTitle("CM port").build();
+		f = new desktop_fields.Shipping.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("CM port").build();
 		f.setDescription("CM port");
 		f.setSubText("Pris:4000");
 		fields[15] = f;
@@ -211,17 +211,17 @@ public class GameController {
 		st.setSubText("Pris: 6200");
 		fields[16] = st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[17] = c;
 
-		st = new Street.Builder().setBgColor(Color.blue).setTitle("Hellerupsvej").build();
+		st = new Street.Builder().setBgColor(Color.gray).setTitle("Hellerupsvej").build();
 		st.setDescription("Hellerupsvej");
 		st.setSubText("Pris: 7000");
 		fields[18] = st;
 
-		st = new Street.Builder().setBgColor(Color.white).setTitle("Strandvej").build();
+		st = new Street.Builder().setBgColor(Color.gray).setTitle("Strandvej").build();
 		st.setDescription("Strandvej");
 		st.setSubText("Pris: 7500");
 		fields[19] = st;
@@ -232,12 +232,12 @@ public class GameController {
 		r.setSubText("Modtag: 4000");
 		fields[20] = r;
 
-		st = new Street.Builder().setBgColor(Color.green).setTitle("Trianglen").build();
+		st = new Street.Builder().setBgColor(Color.red).setTitle("Trianglen").build();
 		st.setDescription("Trianglen");
 		st.setSubText("Pris: 8000");
 		fields[21] = st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[22] = c;
@@ -257,81 +257,76 @@ public class GameController {
 		f.setSubText("Pris: 4000");
 		fields[25] = f;
 
-		st= new Street.Builder().setBgColor(Color.red).setTitle("Bredgade").build();
+		st= new Street.Builder().setBgColor(Color.white).setTitle("Bredgade").build();
 		st.setDescription("Bredgade");
 		st.setSubText("Pris: 12000");
 		fields[26]= st;
 
 		
-		st= new Street.Builder().setBgColor(Color.gray).setTitle("Kgs.Nytorv").build();
+		st= new Street.Builder().setBgColor(Color.white).setTitle("Kgs.Nytorv").build();
 		st.setDescription("Kgs.Nytorv");
 		st.setSubText("Pris: 13000");
 		fields[27]=st;
 
-		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("COCA COLA").build();
+		b=new desktop_fields.Brewery.Builder().setBgColor(Color.red).setTitle("COCA COLA").build();
 		b.setDescription("Coca Cola");
 		b.setSubText("Pris: 5000");
 		fields[28]= b;
 		
-		st= new Street.Builder().setBgColor(Color.gray).setTitle("Østergade").build();
+		st= new Street.Builder().setBgColor(Color.white).setTitle("Østergade").build();
 		st.setDescription("Østergade");
 		st.setSubText("Pris: 13000");
 		fields[29]=st;
 
 
-		j = new desktop_fields.Jail.Builder().setBgColor(Color.WHITE).setTitle("jail").build();
+		j = new desktop_fields.Jail.Builder().setBgColor(Color.black).setTitle("jail").build();
 		j.displayOnCenter();
 		j.setDescription("De fængsles");
 		j.setSubText("dont drop the soap");
 		fields[30] = j ;
 		
-		st= new Street.Builder().setBgColor(Color.gray).setTitle("Amagertorv").build();
+		st= new Street.Builder().setBgColor(Color.yellow).setTitle("Amagertorv").build();
 		st.setDescription("Amagertorv");
 		st.setSubText("Pris: 13000");
-		fields[30]=st;
-		
-		st= new Street.Builder().setBgColor(Color.cyan).setTitle("Vimmelskaftet").build();
-		st.setDescription("Vimmelskaftet");
-		st.setSubText("Pris: 14000");
 		fields[31]=st;
 		
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		st= new Street.Builder().setBgColor(Color.yellow).setTitle("Vimmelskaftet").build();
+		st.setDescription("Vimmelskaftet");
+		st.setSubText("Pris: 14000");
+		fields[32]=st;
+		
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
-		fields[32] = c;
+		fields[33] = c;
 
-		st= new Street.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("Nygade").build();
+		st= new Street.Builder().setBgColor(Color.yellow).setTitle("Nygade").build();
 		st.setDescription("Nygade");
 		st.setSubText("Pris: 14500");
-		fields[33]=st;
+		fields[34]=st;
 
-		f = new desktop_fields.Shipping.Builder().setBgColor(Color.green).setTitle("Helsingør Havn").build();
+		f = new desktop_fields.Shipping.Builder().setBgColor(Color.blue).setTitle("Helsingør Havn").build();
 		f.setDescription("Helsingør Havn");
 		f.setSubText("Pris: 4000");
-		fields[34] = f;
+		fields[35] = f;
 
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
-		c.setDescription("prøv lykken");
-		c.setSubText("better luck nextime");
-		fields[35] = c;
-		
-
-		c =new desktop_fields.Chance.Builder().setBgColor(Color.RED).build();
+		c =new desktop_fields.Chance.Builder().setBgColor(Color.black).build();
 		c.setDescription("prøv lykken");
 		c.setSubText("better luck nextime");
 		fields[36] = c;
+		
 
-		st= new Street.Builder().setBgColor(Color.GREEN).setTitle("Frederiksberggade").build();
+		st= new Street.Builder().setBgColor(Color.magenta).setTitle("Frederiksberggade").build();
 		st.setDescription("Frederiksberggade");
 		st.setSubText("Pris: 13000");
 		fields[37]=st;
 
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.CYAN).setDescription("Tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.white).setDescription("Tax").build();
 		t.setDescription("tax");
 		t.setSubText("betal din skat");
 		fields[38] = t;
 
-		st= new Street.Builder().setBgColor(Color.RED).setTitle("Rådhuspladsen").build();
+		st= new Street.Builder().setBgColor(Color.magenta).setTitle("Rådhuspladsen").build();
 		st.setDescription("Rådhuspladsen");
 		st.setSubText("Pris: 15000");
 		fields[39]=st;
