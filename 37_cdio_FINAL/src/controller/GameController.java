@@ -250,17 +250,18 @@ public class GameController {
 		fields[20] = r;
 
 		desktop_fields.Tax t = null;
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.magenta).setTitle("Tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.magenta).setDescription("Tax").build();
 		t.setDescription("tax");
 		t.setSubText("du skal betale min ven");
 		fields[21] = t;
 
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.CYAN).setTitle("Tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.CYAN).setDescription("Tax").build();
 		t.setDescription("tax");
 		t.setSubText("betale nu din skat");
 		fields[22] = t;
 
 		desktop_fields.Shipping f = null;
+		
 		f = new desktop_fields.Shipping.Builder().setBgColor(Color.gray).setTitle("DFDS seaways").build();
 		f.setDescription("DFDS seaways");
 		f.setSubText("Pris:4000");
