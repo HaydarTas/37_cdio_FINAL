@@ -99,6 +99,7 @@ public class Player {
 		boolean bought = false;
 		if (this.getBalance() > field.getPrice()) {
 			this.addToBalance(-field.getPrice());
+			GUI.setBalance(this.name, this.getBalance());
 			for (int i = 0; i < fields.length; i++) {
 				if (fields[i] == null) {
 					fields[i] = field;
