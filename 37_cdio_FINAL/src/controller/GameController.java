@@ -13,6 +13,7 @@ import entity.*;
 import field.*;
 
 
+
 public class GameController {
 	private static final Color red = null;
 	private Dicebox box = new Dicebox();
@@ -22,6 +23,7 @@ public class GameController {
 	private int playerTurn;
 	private desktop_fields.Field[] start;
 	private String buttons;
+
 
 	public void run() {
 		while (true){
@@ -69,45 +71,44 @@ public class GameController {
 		fields = new Field[] { 
 				new Refuge("Start",4000),
 				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
+				new Chance("lykke", 0, cards),
 				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5),
+				new Tax("Tax", 1000, 10),
+				new Shipping("DFDS seaways", 4000),
 				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7),
+				new Chance("lykke", 1, cards),
 				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7), 
 				new Property("Allegade", new int[]{300}, 1300, 4000, 7),
+				new GoToJail("jail"),
 				new Property("Frederiksberg Alle", new int[]{400}, 2000, 4800, 6), 
+				new Brewer("Squash", 2500, 5000),
 				new Property("Bulowsvej", new int[]{400,}, 2500, 5300, 6),
 				new Property("Gl.kongevej", new int[]{400,}, 2600, 6000, 6), 
+				new Shipping("CM port", 4000),
 				new Property("Bernstorffsvej", new int[]{400}, 3200, 6200, 3),
+				new Chance("lykke", 3, cards),
 				new Property("Hellerupsvej", new int[]{400}, 4000, 7000, 3),
 				new Property("Strandvej", new int[]{500}, 4500, 7500, 3),
+				new Refuge("Parking", 0),
 				new Property("Triaglen", new int[]{500}, 4600, 8000, 4),
+				new Chance("lykke", 4, cards),
 				new Property("Østerbrogade", new int[]{500}, 4700, 9000, 4),	
 				new Property("Grønningen", new int[]{600}, 4900, 10000, 4),
+				new Shipping("Rødby Havn", 4000),
 				new Property("Bredgade", new int[]{600}, 5000, 12000, 2),
 				new Property("Kgs.nytorv",new int[]{600}, 5000,13000, 2),
+				new Brewer("Coca", 2500, 5000), 
 				new Property("Østergade",new int[]{700}, 5000,13000, 2),
+				new GoToJail("jail"),
 				new Property("Amagertorv",new int[]{700}, 5000,13000, 1),
 				new Property("Vimmelskaftet", new int[]{700}, 5000, 14000, 1),
+				new Chance("lykke", 5, cards),
 				new Property("Nygade", new int[]{800}, 5000, 14500, 1),
-				new Property("Rådhuspladsen", new int[]{1100}, 7000, 15000, 0),
-				new Property("Frederikberggade", new int[]{900}, 7000, 14000, 0),
-				
-
-
-
-
-
-				new Refuge("Parking", 4000),
-				new Refuge("parking", 4000),
-				new Brewer("Coca", 2500, 5000), 
-				new Brewer("TUBORG", 2500, 5000),
-				new Tax("Tax", 1000, 10),
-				new Tax("Tax", 500), 
-				new Shipping("DFDS seaways", 4000),
-				new Shipping("CM port", 4000), 
-				new Shipping("Rødby Havn", 4000),
 				new Shipping("Helsingør Havn", 4000),
-
-				new Chance(name, points, cards),
+				new Chance("lykke", 6, cards),
+				new Property("Frederikberggade", new int[]{900}, 7000, 14000, 0),
+				new Tax("Tax", 500), 
+				new Property("Rådhuspladsen", new int[]{1100}, 7000, 15000, 0),		
 
 		};
 	}
@@ -123,6 +124,7 @@ public class GameController {
 		desktop_fields.Tax t = null;
 		desktop_fields.Jail j=null;
 		desktop_fields.Refuge r = null;
+		
 		
 
 		s = new Start.Builder().setBgColor(Color.RED).setTitle("Start").build();
