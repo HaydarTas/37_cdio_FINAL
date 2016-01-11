@@ -122,7 +122,7 @@ public class GameController {
 		
 
 		s = new Start.Builder().setBgColor(Color.RED).setTitle("Start").build();
-		s.setDescription("modtag: 4000");
+		s.setDescription("Modtag: 4000");
 		s.setSubText("");
 		fields[0]=s;
 
@@ -133,8 +133,8 @@ public class GameController {
 		
 		
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
-		c.setDescription("prøv lykken");
-		c.setSubText("better luck nextime");
+		c.setDescription("Prøv lykken");
+		c.setSubText("Better luck nextime");
 		fields[2] = c;
 
 		st = new Street.Builder().setBgColor(Color.blue).setTitle("Hvidovrevej").build();
@@ -145,7 +145,7 @@ public class GameController {
 		
 		t = new desktop_fields.Tax.Builder().setBgColor(Color.DARK_GRAY).setDescription("Tax").build();
 		t.setDescription("tax");
-		t.setSubText("du skal betale min ven");
+		t.setSubText("Du skal betale min ven");
 		fields[4] = t;
 		
 		f = new desktop_fields.Shipping.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("DFDS seaways").build();
@@ -160,8 +160,8 @@ public class GameController {
 		fields[6] = st;
 		
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
-		c.setDescription("prøv lykken");
-		c.setSubText("better luck nextime");
+		c.setDescription("Prøv lykken");
+		c.setSubText("Better luck nextime");
 		fields[7] = c;
 
 		st = new Street.Builder().setBgColor(Color.orange).setTitle("Valby langgade").build();
@@ -186,7 +186,7 @@ public class GameController {
 		fields[11] = st;
 		
 		desktop_fields.Brewery b=null;
-		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("SQUASH").build();
+		b=new desktop_fields.Brewery.Builder().setBgColor(Color.magenta).setTitle("Squash").build();
 		b.setDescription("Squash");
 		b.setSubText("Pris: 5000");
 		fields[12]= b;
@@ -196,8 +196,8 @@ public class GameController {
 		st.setSubText("Pris: 5300");
 		fields[13] = st;
 
-		st= new Street.Builder().setBgColor(Color.green).setTitle("Gl.kongevej").build();
-		st.setDescription("Gl.kongevej");
+		st= new Street.Builder().setBgColor(Color.green).setTitle("Gl. Kongevej").build();
+		st.setDescription("Gl. Kongevej");
 		st.setSubText("Pris: 6000");
 		fields[14] = st;
 		
@@ -212,8 +212,8 @@ public class GameController {
 		fields[16] = st;
 		
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
-		c.setDescription("prøv lykken");
-		c.setSubText("better luck nextime");
+		c.setDescription("Prøv lykken");
+		c.setSubText("Better luck nextime");
 		fields[17] = c;
 
 		st = new Street.Builder().setBgColor(Color.gray).setTitle("Hellerupsvej").build();
