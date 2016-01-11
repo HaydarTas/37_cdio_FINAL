@@ -37,3 +37,4 @@ public class Brewer extends Ownable {
 		this.baseRent = baseRent;
 	}
 }
+

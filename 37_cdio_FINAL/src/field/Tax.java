@@ -45,3 +45,4 @@ public class Tax extends Field {
 		p.addToBalance(-tax);
 	}
 }
+
