@@ -3,6 +3,7 @@ package field;
 import field.Field;
 import field.Shipping;
 import field.Ownable;
+import controller.GameController;
 import entity.Player;
 
 public class Shipping extends Ownable {
@@ -12,8 +13,8 @@ public class Shipping extends Ownable {
 	private final int RENT_3 = 2000;
 	private final int RENT_4 = 4000;
 
-	public Shipping(String name, int price) {
-		super(name, price);
+	public Shipping(String name, int price, GameController gc) {
+		super(name, price, gc );
 	}
 
 	public int countShipping() {

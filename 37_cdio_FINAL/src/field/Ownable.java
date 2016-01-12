@@ -2,6 +2,7 @@ package field;
 
 
 import field.Field;
+import controller.GameController;
 import desktop_resources.GUI;
 import entity.Player;
 
@@ -9,10 +10,12 @@ public abstract class Ownable extends Field {
 
 	protected int price;
 	protected Player owner = null;
+	protected GameController gc;
 
-	public Ownable(String name, int price) {
+	public Ownable(String name, int price, GameController gc) {
 		super(name);
 		this.price = price;
+		this.gc = gc;
 	}
 	
 	public int getPrice() {
@@ -46,6 +49,17 @@ public abstract class Ownable extends Field {
 			//Tell user that it is his own field
 			GUI.showMessage("Du er landet på dit eget felt");
 		    GUI.getUserLeftButtonPressed("Vil du købe et hus?", "Ja tak", "Nej tak");
+		    String[] properties = new String[25];
+		    for(int i =0; i<8;i++)
+		   { 
+		    	if (gc.canBuild(p,i )){
+		    	for (int j=0; j<gc.getPropertisFromGroup(i).length;j++)
+		    		properties[i*3+j] = gc.getPropertisFromGroup(i)[j].getName();
+		    	}
+		    	 
+		   }
+		   GUI.getUserSelection("Køb på", properties);
+		    
 			//				p.setInformation(1);
 		} else {
 			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
