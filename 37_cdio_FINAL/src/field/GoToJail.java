@@ -13,18 +13,21 @@ public class GoToJail extends Field {
 	}
 	
 	public void landOnField(Player p) {
-		if(p.getPosition() == GoToJail);
+//		if(p.getPosition() == GoToJail)
 			p.setJailTime(3);
-			p.setPosition(VESTERFÆNGSEL-1);
+			p.movePlayer(11);
+			
 			GUI.setCar(p.getPosition()+1, p.getName());
-			GUI.showMessage("en tur til fængsel"+ GoToJail);
-		}
+			GUI.removeCar(31, p.getName());
+			GUI.showMessage("en tur til fængsel");
+//			p.setPosition(VESTERFÆNGSEL-1);
+			
+		
 	   // else {
 	   
 		//	GUI.showMessage("vent 3 rundt");
 		
 //}
-player.isJailed = true;
-GUI.removeAllCars(player.getPlayer());
-player.setCurrentField(11);
-GUI.setCar(player.getCurrentField, player.getPlayerName);
+
+}
+}
