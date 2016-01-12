@@ -388,6 +388,16 @@ public class GameController {
 		}
 	}
 
+	public static int[] availabilityOfGroups(Player player){
+		boolean[] groupsNotOwned = {false,false,false,false,false,false,false,false};
+		int[] groupsOwned = {0,0,0,0,0,0,0,0};
+		int size = 0;
+		
+		for (int i=0; i<fields.length; i++){
+			
+		}
+	}
+	
 	public void roll() {
 		GUI.getUserButtonPressed("Kast terning", "Dice");
 		int r = box.roll();
