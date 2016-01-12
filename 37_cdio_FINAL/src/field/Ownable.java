@@ -48,17 +48,35 @@ public abstract class Ownable extends Field {
 		} else if (owner !=null) {
 			//Tell user that it is his own field
 			GUI.showMessage("Du er landet på dit eget felt");
-		    GUI.getUserLeftButtonPressed("Vil du købe et hus?", "Ja tak", "Nej tak");
-		    String[] properties = new String[25];
-		    for(int i =0; i<8;i++)
-		   { 
-		    	if (gc.canBuild(p,i )){
-		    	for (int j=0; j<gc.getPropertisFromGroup(i).length;j++)
-		    		properties[i*3+j] = gc.getPropertisFromGroup(i)[j].getName();
-		    	}
-		    	 
-		   }
-		   GUI.getUserSelection("Køb på", properties);
+			boolean canBuy = false;
+			for(Field owned : p.getFields()){
+				if(owned instanceof Property){
+					Property prop = (Property)owned;
+					if(gc.canBuild(p, prop.getGroup())){
+						canBuy = true;
+						break;
+					}
+				}
+			}
+			if(canBuy){
+				boolean jaTak = GUI.getUserLeftButtonPressed("Vil du købe et hus?", "Ja tak", "Nej tak");
+				if(jaTak){
+					String[] properties = new String[25];
+					for(int i =0; i<8;i++)
+					{ 
+						if (gc.canBuild(p,i )){
+							for (int j=0; j<gc.getPropertisFromGroup(i).length;j++)
+								properties[i*3+j] = gc.getPropertisFromGroup(i)[j].getName();
+						}
+						
+					}
+					GUI.getUserSelection("Køb på", properties);
+					
+				} else {
+					
+				}
+				
+			}
 		    
 			//				p.setInformation(1);
 		} else {
