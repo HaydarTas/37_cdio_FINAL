@@ -27,9 +27,10 @@ public class GameController {
 
 	public void run() {
 		while (true){
-			//Kast med terninger
+			
 			Player activePlayer = players[playerTurn];
 			if (activePlayer.getJailed()){
+				activePlayer.setJailTime(activePlayer.getJailTime()-1);
 				jailTurn(activePlayer);
 			} else {
 				playerTurn(activePlayer);

@@ -1,3 +1,4 @@
+
 package entity;
 
 import desktop_resources.GUI;
@@ -14,7 +15,7 @@ public class Player {
 	private int position;
 //	private int info; // Information about whether the field is bought or not
 	private int lastRoll;
-
+	private int jailTime = 0;
 
 	public Player(String name, int number) {
 		this.name = name;
@@ -65,6 +66,10 @@ public class Player {
 		return position;
 	}
 
+	public void setPosition(int position) {
+		this.position = position;
+	}
+	
 	public void movePlayer(int dice) {
 	System.out.println("flytter spiller");
 		if((position + dice) > fields.length) {
@@ -132,19 +137,17 @@ public class Player {
 	}
 
 	public boolean getJailed() {
-		// TODO Auto-generated method stub
-		return false;
+		return jailTime > 0; 
 	}
 
 	public int getJailTime() {
-		// TODO Auto-generated method stub
-		return 0;
+		return jailTime;
 	}
-
-	public void JailTime() {
-		// TODO Auto-generated method stub
-		
+	
+	public void setJailTime(int jailTime) {
+		this.jailTime = jailTime;
 	}
+	
 
 	public boolean getJailCard() {
 		// TODO Auto-generated method stub
@@ -160,5 +163,7 @@ public class Player {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }
