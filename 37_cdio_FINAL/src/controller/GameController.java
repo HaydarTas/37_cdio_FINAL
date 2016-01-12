@@ -401,15 +401,36 @@ public class GameController {
 		}
 	}
 
-	public static int[] availabilityOfGroups(Player player){
+	public int[] availabilityOfGroups(Player player){
 		boolean[] groupsNotOwned = {false,false,false,false,false,false,false,false};
 		int[] groupsOwned = {0,0,0,0,0,0,0,0};
-		int size = 0;
-		
-		for (int i=0; i<fields.length; i++){
-			
+		int[] groupsExist = {0,0,0,0,0,0,0,0};
+  		int size = 0;
+ 	
+        //Tæller hvor mange ledige grupper der er
+		for(Field field : fields){
+			if(field instanceof Property){
+				Property p = (Property)field;
+				int group = p.getGroup();
+				groupsExist[group]++;
+			}
 		}
-	}
+		//Tæller om en spiller ejer en gruppe eller flere
+		for(Field owned : player.getFields()){
+			if(owned instanceof Property){
+ 				Property p = (Property)owned;
+ 				int group = p.getGroup();
+ 				groupsOwned[group]++;
+ 			}
+ 		}
+ 
+ 		for(int i=0; i<groupsOwned.length; i++){
+ 			groupsNotOwned[i] = groupsOwned[i] == groupsExist[i];
+  		}
+  	}
+			
+}
+	
 	
 	public void roll() {
 		GUI.getUserButtonPressed("Kast terning", "Dice");
