@@ -22,5 +22,9 @@ public class GoToJail extends Field {
 	   // else {
 	   
 		//	GUI.showMessage("vent 3 rundt");
-		}
+		
 //}
+player.isJailed = true;
+GUI.removeAllCars(player.getPlayer());
+player.setCurrentField(11);
+GUI.setCar(player.getCurrentField, player.getPlayerName);
