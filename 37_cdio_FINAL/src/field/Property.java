@@ -42,5 +42,11 @@ public class Property extends Ownable {
 	}
 
 
+
+	public int getGroup() {
+		return group;
+	}
+
+	
 }
 
