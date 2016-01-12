@@ -427,8 +427,8 @@ public class GameController {
 		for(int i=0; i<groupsOwned.length; i++){
 			groupsNotOwned[i] = groupsOwned[i] == groupsExist[i];
 		
-			
 		}
+		return groupsOwned;
 	}
 
 
