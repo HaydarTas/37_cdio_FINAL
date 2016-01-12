@@ -2,7 +2,6 @@
 package field;
 import entity.Player;
 
-
 public class Chance extends Field {
 
 
@@ -16,9 +15,12 @@ public class Chance extends Field {
 		// TODO Auto-generated constructor stub
 		this.cards = cards;
 	}
+	
+	
 // her udføres i hvilken rækkefølge kortene skal tages/vælges
 	public void landOnField(Player p){
-		cards[0].docard(p);
+		int r = (int) (Math.random()*cards.length);
+		cards[r].docard(p);
 	}
 	
 	

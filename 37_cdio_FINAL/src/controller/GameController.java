@@ -23,6 +23,7 @@ public class GameController {
 	private int playerTurn =0;
 	private desktop_fields.Field[] start;
 	private String buttons;
+	private ChanceCard[] list;
 
 
 	public void run() {
@@ -74,10 +75,12 @@ public class GameController {
 
 	// creates fields in array
 	public void setupGame() {
+		list   = new ChanceCard [6];
 		ChanceCard[] cards = {
-				new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
-				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-")
-		};
+			new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
+			new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-"),
+			new MoveCar("Du rykker 2 felter frem", 2)
+			};
 		fields = new Field[] { 
 				new Refuge("Start",4000),
 				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
@@ -398,38 +401,68 @@ public class GameController {
 			}
 		}
 	}
-
-	public int[] availabilityOfGroups(Player player){
-		boolean[] groupsNotOwned = {false,false,false,false,false,false,false,false};
-		int[] groupsOwned = {0,0,0,0,0,0,0,0};
-		int[] groupsExist = {0,0,0,0,0,0,0,0};
-		int size = 0;
-
+	
+	public boolean canBuild(Player player, int group){
+		int groupsOwned = 0;
+		int groupsExist = 0;
 		//Tæller hvor mange ledige grupper der er
 		for(Field field : fields){
 			if(field instanceof Property){
 				Property p = (Property)field;
-				int group = p.getGroup();
-				groupsExist[group]++;
+				if(p.getGroup() == group) groupsExist++;
 			}
 		}
 		//Tæller om en spiller ejer en gruppe eller flere
 		for(Field owned : player.getFields()){
 			if(owned instanceof Property){
 				Property p = (Property)owned;
-				int group = p.getGroup();
-				groupsOwned[group]++;
+				if(p.getGroup() == group) groupsOwned++;
 			}
 		}
 
-		for(int i=0; i<groupsOwned.length; i++){
-			groupsNotOwned[i] = groupsOwned[i] == groupsExist[i];
-
-		}
-		return groupsOwned;
+			return groupsOwned == groupsExist;
 	}
+	
+	public Property[] getPropertisFromGroup(int group){
+		int pCount = 0;
+		for(Field f : fields){
+			if(f instanceof Property){
+				Property p = (Property) f;
+				if(p.getGroup() == group) {
+					pCount++;
+				}
+			}
+		}
+		Property[] properties = new Property[pCount];
+		int i = 0;
+		for(Field f : fields){
+			if(f instanceof Property){
+				Property p = (Property) f;
+				if(p.getGroup() == group) {
+					properties[i++] = p;
+				}
+			}
+		}
+		return properties;
+	}
+	
+	
+	
 
+    
+//	//Undersøger om et felt tilhører en gruppe og smider det ind i et array
+//	public void buyPropertyGroup(Player player, int group, int Field[]){
+//		Field[] buy = new fields;
+//		int count = 0;
+//		for (int i = 0; i < fields.length; i++){
+//			if ((fields instanceof Property) && ((Property) fields[i]).getGroup() == group))   {
+//				buy[count] = fields[i];
+//				count++;
+//			}
+//		}
+//	}
 
+	
 
 
 	public void roll() {

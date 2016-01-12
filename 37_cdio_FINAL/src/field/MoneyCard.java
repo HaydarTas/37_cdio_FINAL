@@ -11,7 +11,8 @@ public class MoneyCard extends ChanceCard {
 		this.amount = amount;
 		this.msg = msg;
 	}
-
+//Her bliver efter der er trukket et kort lagt / trukket fra player´s konto og der
+	//bliver udskrevet text på GUI,// 
 	@Override
 	public void docard(Player p) {
 		p.addToBalance(amount);
