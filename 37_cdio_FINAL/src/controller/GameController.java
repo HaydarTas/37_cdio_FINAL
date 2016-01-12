@@ -43,12 +43,13 @@ public class GameController {
 	private void jailTurn(Player activePlayer) {
 
 		if(activePlayer.getJailTime() == 1){
-			//TODO pay or tell or roll
- GUI.getUserButtonPressed("afsoner eller betale", "betal", "3 rundt");
+
+
 			activePlayer.setJailTime(0);
+
 		}else{
-			//TODO roll dice or pay
-			String res = GUI.getUserButtonPressed("vil betale eller slå med terninger", "Slå", "Betal");
+
+			String res = GUI.getUserButtonPressed("vil du betal eller slå med terning", "Slå", "Betal");
 			switch (res) {
 			case "Slå":
 				Dicebox db = new Dicebox();
@@ -85,10 +86,10 @@ public class GameController {
 	public void setupGame() {
 		list   = new ChanceCard [6];
 		ChanceCard[] cards = {
-			new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
-			new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-"),
-			new MoveCar("Du rykker 2 felter frem", 2)
-			};
+				new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
+				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-"),
+				new MoveCar("Du rykker 2 felter frem", 2)
+		};
 		fields = new Field[] { 
 				new Refuge("Start",4000),
 				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
@@ -204,12 +205,12 @@ public class GameController {
 		fields[9] = st;
 
 		fields[10] = new desktop_fields.Refuge.Builder().setPicture(null).build();
-		
-//		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("VESTERFÆNGSEL").build();
-//		j.displayOnCenter();
-//		j.setDescription("VESTERFÆNGSEL");
-//		j.setSubText("Du er på besøg");
-//		fields[10] =j;
+
+		//		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("VESTERFÆNGSEL").build();
+		//		j.displayOnCenter();
+		//		j.setDescription("VESTERFÆNGSEL");
+		//		j.setSubText("Du er på besøg");
+		//		fields[10] =j;
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Frederiksberg Alle").build();
 		st.setDescription("Frederiksberg Alle");
@@ -411,7 +412,7 @@ public class GameController {
 			}
 		}
 	}
-	
+
 	public boolean canBuild(Player player, int group){
 		int groupsOwned = 0;
 		int groupsExist = 0;
@@ -430,9 +431,9 @@ public class GameController {
 			}
 		}
 
-			return groupsOwned == groupsExist;
+		return groupsOwned == groupsExist;
 	}
-	
+
 	public Property[] getPropertisFromGroup(int group){
 		int pCount = 0;
 		for(Field f : fields){
@@ -455,24 +456,24 @@ public class GameController {
 		}
 		return properties;
 	}
-	
-	
-	
 
-    
-//	//Undersøger om et felt tilhører en gruppe og smider det ind i et array
-//	public void buyPropertyGroup(Player player, int group, int Field[]){
-//		Field[] buy = new fields;
-//		int count = 0;
-//		for (int i = 0; i < fields.length; i++){
-//			if ((fields instanceof Property) && ((Property) fields[i]).getGroup() == group))   {
-//				buy[count] = fields[i];
-//				count++;
-//			}
-//		}
-//	}
 
-	
+
+
+
+	//	//Undersøger om et felt tilhører en gruppe og smider det ind i et array
+	//	public void buyPropertyGroup(Player player, int group, int Field[]){
+	//		Field[] buy = new fields;
+	//		int count = 0;
+	//		for (int i = 0; i < fields.length; i++){
+	//			if ((fields instanceof Property) && ((Property) fields[i]).getGroup() == group))   {
+	//				buy[count] = fields[i];
+	//				count++;
+	//			}
+	//		}
+	//	}
+
+
 
 
 	public void roll() {
@@ -485,7 +486,7 @@ public class GameController {
 		players[playerTurn].movePlayer(r);
 		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 	}
-		public void switchTurn() {
+	public void switchTurn() {
 		int noOfPlayersInGame = 0;
 		for (int i = 0; i < players.length; i++) {
 			if (players[i] != null) {
