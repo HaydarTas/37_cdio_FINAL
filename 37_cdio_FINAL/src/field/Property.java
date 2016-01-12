@@ -1,5 +1,6 @@
 package field;
 
+import controller.GameController;
 import desktop_resources.GUI;
 import entity.Player;
 import field.Ownable;
@@ -23,8 +24,8 @@ public class Property extends Ownable {
 	private int group;
 
 
-	public Property(String name, int[] rents, int price, int housePrice, int group) {
-		super(name, price);
+	public Property(String name, int[] rents, int price, int housePrice, int group, GameController gc) {
+		super(name, price, gc);
 		this.rents = rents;
 		this.housePrice = housePrice;
 		this.group = group;
