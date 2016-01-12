@@ -2,14 +2,15 @@ package field;
 
 import field.Field;
 import field.Ownable;
+import controller.GameController;
 import entity.Player;
 
 public class Brewer extends Ownable {
 
 	int baseRent;
 
-	public Brewer(String name, int rent, int price) {
-		super(name, price);
+	public Brewer(String name, int rent, int price, GameController gc) {
+		super(name, price, gc);
 		this.baseRent = rent;
 	}
 
