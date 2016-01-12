@@ -65,8 +65,8 @@ public class GameController {
 	// creates fields in array
 	public void setupGame() {
 		ChanceCard[] cards = {
-				new MoneyCard(200, "Du vinder i lotto, modtag kr. 200,-"),
-				new MoneyCard(-100, "Du har glemt at betale told, betal kr. 100,-")
+				new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
+				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-")
 		};
 		fields = new Field[] { 
 				new Refuge("Start",4000),
@@ -92,24 +92,23 @@ public class GameController {
 				new Refuge("Parking", 0),
 				new Property("Triaglen", new int[]{500, 1300, 1700, 2100, 2500, 2900 }, 2900, 8000, 4),
 				new Chance("lykke4", 4, cards),
-				new Property("Østerbrogade", new int[]{500}, 4700, 9000, 4),	
-				new Property("Grønningen", new int[]{600}, 4900, 10000, 4),
+				new Property("Østerbrogade", new int[]{500, 1300, 1700, 2100, 2500, 2900 }, 2900, 9000, 4),	
+				new Property("Grønningen", new int[]{600, 1500, 1900, 2300, 2700, 3100 }, 3000, 10000, 4),
 				new Shipping("Rødby Havn", 4000),
-				new Property("Bredgade", new int[]{600}, 5000, 12000, 2),
-				new Property("Kgs.nytorv",new int[]{600}, 5000,13000, 2),
+				new Property("Bredgade", new int[]{600, 1600, 2000, 2400, 2800, 3200 }, 3100, 12000, 2),
+				new Property("Kgs.nytorv",new int[]{600, 1700, 2100, 2500, 2900, 3300 }, 3200, 13000, 2),
 				new Brewer("Coca", 2500, 5000), 
-				new Property("Østergade",new int[]{700}, 5000,13000, 2),
+				new Property("Østergade",new int[]{700, 1800, 2200, 2600, 3000, 3400 }, 3300, 13000, 2),
 				new GoToJail("jail"),
-				new Property("Amagertorv",new int[]{700}, 5000,13000, 1),
-				new Property("Vimmelskaftet", new int[]{700}, 5000, 14000, 1),
+				new Property("Amagertorv",new int[]{700, 1800, 2200, 2600, 3000, 3400 }, 3300, 13000, 1),
+				new Property("Vimmelskaftet", new int[]{700, 1900, 2300, 2700, 3100, 3500 }, 3400, 14000, 1),
 				new Chance("lykke5", 5, cards),
-				new Property("Nygade", new int[]{800}, 5000, 14500, 1),
+				new Property("Nygade", new int[]{800, 2000, 2400, 2800, 3200, 3600 }, 3500, 13500, 1),
 				new Shipping("Helsingør Havn", 4000),
-
-				new Chance("lykke6", 6, cards),
-				new Property("Frederikberggade", new int[]{900}, 7000, 14000, 0),
+                new Chance("lykke6", 6, cards),
+				new Property("Frederikberggade", new int[]{1000, 2200, 2600, 3000, 3400, 3800 }, 3700, 14500, 0),
 				new Tax("Tax", 500), 
-				new Property("Rådhuspladsen", new int[]{1100}, 7000, 15000, 0),		
+				new Property("Rådhuspladsen", new int[]{1100, 2300, 2700, 3100, 3500, 3900 }, 3800, 15000, 0),		
 
 
 		};
@@ -151,7 +150,7 @@ public class GameController {
 		fields[3] = st;
 		
 		
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.DARK_GRAY).setDescription("Tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.white).setDescription("Tax").build();
 		t.setDescription("tax");
 		t.setSubText("Du skal betale min ven");
 		fields[4] = t;
@@ -329,7 +328,7 @@ public class GameController {
 		st.setSubText("Pris: 13000");
 		fields[37]=st;
 
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.DARK_GRAY).setDescription("tax").build();
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.white).setDescription("tax").build();
 		t.setDescription("tax");
 		t.setSubText("betal din skat");
 		fields[38] = t;
@@ -374,7 +373,7 @@ public class GameController {
 
 	//
 	public void addPlayer() {
-		String playerName = GUI.getUserString("Write user name, minum 2-6 names, after x - names/player, leave empty space press OK");
+		String playerName = GUI.getUserString("Indtast spillernes navne og derefter lad feltet stå tomt og tryk 'OK' (2 - 6 spillere).");
 
 		if (playerName.length() != 0) {
 			GUI.addPlayer(playerName, 30000, getCar(playerCount));
