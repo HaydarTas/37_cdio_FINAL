@@ -85,7 +85,7 @@ public class GameController {
 	public void setupGame() {
 
 		ChanceCard[] cards = {
-			new MoneyCard(300, "Du vinder i lotto, modtag kr. 3 00,-"),
+			new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
 			new MoneyCard(-100, "Du har glemt at betale told, betal kr. 100,-"),
 			new MoveCar("Du rykker 2 felter frem", 2)
 			};
