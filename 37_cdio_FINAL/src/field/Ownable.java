@@ -65,8 +65,8 @@ public abstract class Ownable extends Field {
 					for(int i =0; i<8;i++)
 					{ 
 						if (gc.canBuild(p,i )){
-							for (int j=0; j<gc.getPropertisFromGroup(i).length;j++)
-								properties[i*3+j] = gc.getPropertisFromGroup(i)[j].getName();
+							for (int j=0; j<gc.getPropertiesFromGroup(i).length;j++)
+								properties[i*3+j] = gc.getPropertiesFromGroup(i)[j].getName();
 						}
 						
 					}
