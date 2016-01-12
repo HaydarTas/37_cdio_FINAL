@@ -149,10 +149,10 @@ public class Player {
 	}
 	
 
-	public boolean getJailCard() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	public boolean getJailCard() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 	public void getOutOfJail() {
 		// TODO Auto-generated method stub
