@@ -23,7 +23,7 @@ public class GameController {
 	private int playerTurn =0;
 	private desktop_fields.Field[] start;
 	private String buttons;
-	private ChanceCard[] list;
+
 
 
 	public void run() {
@@ -87,8 +87,8 @@ public class GameController {
 	public void setupGame() {
 
 		ChanceCard[] cards = {
-				new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
-				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-"),
+				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
+				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
 				new MoveCar("Du rykker 2 felter frem", 2)
 		};
 
@@ -523,4 +523,8 @@ public class GameController {
 		//			System.out.println(field.getName());
 		//		}
 	}
-}	
+	
+
+}
+
+
