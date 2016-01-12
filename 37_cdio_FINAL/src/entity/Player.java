@@ -69,7 +69,7 @@ public class Player {
 	System.out.println("flytter spiller");
 		if((position + dice) > fields.length) {
 			this.addToBalance(4000);
-			System.out.println("får 4000");
+			System.out.println("fï¿½r 4000");
 			GUI.setBalance(this.getName(), this.getBalance());
 		}
 		position = (position + dice) % fields.length;
@@ -129,6 +129,36 @@ public class Player {
 
 	public void setLastRoll(int diceValues) {
 		lastRoll = diceValues;
+	}
+
+	public boolean getJailed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public int getJailTime() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void JailTime() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean getJailCard() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void getOutOfJail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void GoToJail() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
