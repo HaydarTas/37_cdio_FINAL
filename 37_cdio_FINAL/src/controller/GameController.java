@@ -437,7 +437,7 @@ public class GameController {
 		return groupsOwned == groupsExist;
 	}
 
-	public Property[] getPropertisFromGroup(int group){
+	public Property[] getPropertiesFromGroup(int group){
 		int pCount = 0;
 		for(Field f : fields){
 			if(f instanceof Property){
@@ -526,4 +526,5 @@ public class GameController {
 	
 
 }
+
 
