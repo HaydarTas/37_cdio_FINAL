@@ -15,7 +15,7 @@ public class GoToJail extends Field {
 	public void landOnField(Player p) {
 //		if(p.getPosition() == GoToJail)
 			p.setJailTime(3);
-			p.movePlayer(-20);
+			p.movePlayer(11);
 			
 			GUI.setCar(p.getPosition()+1, p.getName());
 			GUI.removeCar(31, p.getName());

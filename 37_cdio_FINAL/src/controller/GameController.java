@@ -42,6 +42,7 @@ public class GameController {
 	private void jailTurn(Player activePlayer) {
 		if(activePlayer.getJailTime() == 1){
 			//TODO pay or tell or roll
+			
 			activePlayer.setJailTime(0);
 		}else{
 			//TODO roll dice or pay
@@ -53,32 +54,7 @@ public class GameController {
 		landOnField();
 
 	}
-	//		int roll = box.roll();
-	//		int newPosition = (player.getPosition() + roll) % fields.length;
-	//
-	//		int points = fields[newPosition].getPoints();
-	//		String fieldname = fields[newPosition].getName();
-	//		boolean check_account = player.addToBalance(points);
-	//
-	//		if (check_account == true) {
-	//			GUI.setBalance(player.getName(), player.getBalance());
-	//		} else {
-	//			player.setBankrupt();
-	//		}
-	//
-	//		System.out.println("spiller" + player.getName() + "  har slaaet: " + roll + " han fik: " + points
-	//				+ " og han har landet paa felt: " + fields + ", saldo:" + player.getBalance());
-	//		GUI.removeAllCars(player.getName());
-	//		GUI.setCar(newPosition - 1, player.getName());
-	//		// Suspend excecution for 200 ms
-	//		try {
-	//			Thread.sleep(200);
-	//		} catch (InterruptedException e) {
-	//			e.printStackTrace();
-	//		}
-	//
-	//	}
-
+	
 	// creates fields in array
 	public void setupGame() {
 		ChanceCard[] cards = {
