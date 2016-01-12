@@ -23,6 +23,7 @@ public class GameController {
 	private int playerTurn =0;
 	private desktop_fields.Field[] start;
 	private String buttons;
+	private ChanceCard[] list;
 
 
 	public void run() {
@@ -64,10 +65,12 @@ public class GameController {
 
 	// creates fields in array
 	public void setupGame() {
+		list   = new ChanceCard [6];
 		ChanceCard[] cards = {
-				new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
-				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-")
-		};
+			new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
+			new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-"),
+			new MoveCar("Du rykker 2 felter frem", 2)
+			};
 		fields = new Field[] { 
 				new Refuge("Start",4000),
 				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5), 
