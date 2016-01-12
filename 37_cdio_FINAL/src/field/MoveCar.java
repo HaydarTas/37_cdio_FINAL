@@ -4,10 +4,10 @@ import entity.Player;
 
 public class MoveCar extends ChanceCard {
 
-	private int i;
+	private int changeFieldPosition ;
 	
-	public MoveCar(String string, int i) {
-		this.i = i;
+	public MoveCar(String string, int changeinfieldposition) {
+		this.changeFieldPosition = changeinfieldposition;
 		// TODO Auto-generated constructor stub
 		
 	}
@@ -15,7 +15,7 @@ public class MoveCar extends ChanceCard {
 	@Override
 	public void docard(Player p) {
 		
-		p.movePlayer(i);
+		p.movePlayer(changeFieldPosition);
 		// TODO Auto-generated method stub
 
 	}

@@ -23,7 +23,7 @@ public class GameController {
 	private int playerTurn =0;
 	private desktop_fields.Field[] start;
 	private String buttons;
-	private ChanceCard[] list;
+
 
 
 	public void run() {
@@ -523,26 +523,7 @@ public class GameController {
 		//			System.out.println(field.getName());
 		//		}
 	}
-	public void landOnField(){
 	
-		Player playa = players[playerTurn];
-		int position = playa.getPosition() % fields.length;
-		System.out.println("-------------------------------------");
-		fields[position].landOnField(playa);
-	
-	
-		System.out.println("playa:" + playa.getName());
-		System.out.println("slag:" + playa.getLastRoll());
-	
-		System.out.println("position:" + position);
-		System.out.println("playa.getPosition():" + playa.getPosition());
-		System.out.println("playa.geetMoney():" + playa.getBalance());
-	
-		//		System.out.println("felt:" + fields[position-1].getName());
-		//		for (Field field : fields) {
-		//			System.out.println(field.getName());
-		//		}
-	}
 
 }
 
