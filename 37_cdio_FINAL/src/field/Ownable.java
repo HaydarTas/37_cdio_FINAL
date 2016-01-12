@@ -59,7 +59,7 @@ public abstract class Ownable extends Field {
 				}
 			}
 			if(canBuy){
-				boolean jaTak = GUI.getUserLeftButtonPressed("Vil du købe et hus?", "Ja tak", "Nej tak");
+				boolean jaTak = GUI.getUserLeftButtonPressed("Vil du købe et hus?", "Ja køb et hus tak", "Nej tak");
 				if(jaTak){
 					String[] properties = new String[25];
 					for(int i =0; i<8;i++)

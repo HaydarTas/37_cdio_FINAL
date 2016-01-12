@@ -437,7 +437,7 @@ public class GameController {
 		return groupsOwned == groupsExist;
 	}
 
-	public Property[] getPropertisFromGroup(int group){
+	public Property[] getPropertiesFromGroup(int group){
 		int pCount = 0;
 		for(Field f : fields){
 			if(f instanceof Property){
@@ -523,26 +523,4 @@ public class GameController {
 		//			System.out.println(field.getName());
 		//		}
 	}
-	public void landOnField(){
-	
-		Player playa = players[playerTurn];
-		int position = playa.getPosition() % fields.length;
-		System.out.println("-------------------------------------");
-		fields[position].landOnField(playa);
-	
-	
-		System.out.println("playa:" + playa.getName());
-		System.out.println("slag:" + playa.getLastRoll());
-	
-		System.out.println("position:" + position);
-		System.out.println("playa.getPosition():" + playa.getPosition());
-		System.out.println("playa.geetMoney():" + playa.getBalance());
-	
-		//		System.out.println("felt:" + fields[position-1].getName());
-		//		for (Field field : fields) {
-		//			System.out.println(field.getName());
-		//		}
-	}
-
-}
-
+}	
