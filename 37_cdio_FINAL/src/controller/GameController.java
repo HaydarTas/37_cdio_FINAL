@@ -18,8 +18,8 @@ public class GameController {
 	private static final Color red = null;
 	private Dicebox box = new Dicebox();
 	private Player[] players = new Player[6];
-	private int playerCount;
 	private Field[] fields;
+	private int playerCount;
 	private int playerTurn =0;
 	private desktop_fields.Field[] start;
 	private String buttons;
@@ -40,21 +40,28 @@ public class GameController {
 
 	}
 	private void jailTurn(Player activePlayer) {
+
 		if(activePlayer.getJailTime() == 1){
 			//TODO pay or tell or roll
-			
+
 			activePlayer.setJailTime(0);
 		}else{
 			//TODO roll dice or pay
 			activePlayer.setJailTime(activePlayer.getJailTime()-1);
 		}	
+
+		// TODO Auto-generated method stub
+
 	}
 	private void playerTurn(Player player) {
 		roll();
 		landOnField();
 
+
+
 	}
-	
+
+
 	// creates fields in array
 	public void setupGame() {
 		ChanceCard[] cards = {
@@ -407,7 +414,7 @@ public class GameController {
 
 		for(int i=0; i<groupsOwned.length; i++){
 			groupsNotOwned[i] = groupsOwned[i] == groupsExist[i];
-		
+
 		}
 		return groupsOwned;
 	}
@@ -415,49 +422,50 @@ public class GameController {
 
 
 
-public void roll() {
-	GUI.getUserButtonPressed("Kast terning", "Dice");
-	int r = box.roll();
-	GUI.setDice(box.getDice()[0].getValue(), box.getDice()[1].getValue());
-	players[playerTurn].setLastRoll(r);
-	if(players[playerTurn].getPosition() >= 0)
-		GUI.removeCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
-	players[playerTurn].movePlayer(r);
-	GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
-}
-//TODO rewrite to something 3 lines long
-public void switchTurn() {
-	int noOfPlayersInGame = 0;
-	for (int i = 0; i < players.length; i++) {
-		if (players[i] != null) {
-			noOfPlayersInGame++;
-		}
+	public void roll() {
+		GUI.getUserButtonPressed("Kast terning", "Dice");
+		int r = box.roll();
+		GUI.setDice(box.getDice()[0].getValue(), box.getDice()[1].getValue());
+		players[playerTurn].setLastRoll(r);
+		if(players[playerTurn].getPosition() >= 0)
+			GUI.removeCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
+		players[playerTurn].movePlayer(r);
+		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 	}
-	playerTurn++;
-	if (playerTurn>= noOfPlayersInGame)
-		playerTurn = 0;
+	//TODO rewrite to something 3 lines long
+	public void switchTurn() {
+		int noOfPlayersInGame = 0;
+		for (int i = 0; i < players.length; i++) {
+			if (players[i] != null) {
+				noOfPlayersInGame++;
+			}
+		}
+		playerTurn++;
+		if (playerTurn>= noOfPlayersInGame)
+			playerTurn = 0;
+	}
+
+
+	public void landOnField(){
+
+		Player playa = players[playerTurn];
+		int position = playa.getPosition() % fields.length;
+		System.out.println("-------------------------------------");
+		fields[position].landOnField(playa);
+
+
+		System.out.println("playa:" + playa.getName());
+		System.out.println("slag:" + playa.getLastRoll());
+
+		System.out.println("position:" + position);
+		System.out.println("playa.getPosition():" + playa.getPosition());
+		System.out.println("playa.geetMoney():" + playa.getBalance());
+
+		//		System.out.println("felt:" + fields[position-1].getName());
+		//		for (Field field : fields) {
+		//			System.out.println(field.getName());
+		//		}
+	}
+
 }
 
-
-public void landOnField(){
-
-	Player playa = players[playerTurn];
-	int position = playa.getPosition() % fields.length;
-	System.out.println("-------------------------------------");
-	fields[position].landOnField(playa);
-
-
-	System.out.println("playa:" + playa.getName());
-	System.out.println("slag:" + playa.getLastRoll());
-
-	System.out.println("position:" + position);
-	System.out.println("playa.getPosition():" + playa.getPosition());
-	System.out.println("playa.geetMoney():" + playa.getBalance());
-
-	//		System.out.println("felt:" + fields[position-1].getName());
-	//		for (Field field : fields) {
-	//			System.out.println(field.getName());
-	//		}
-}
-
-}
