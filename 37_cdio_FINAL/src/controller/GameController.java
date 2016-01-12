@@ -44,18 +44,26 @@ public class GameController {
 
 		if(activePlayer.getJailTime() == 1){
 			//TODO pay or tell or roll
-
+ GUI.getUserButtonPressed("afsoner eller betale", "betal", "3 rundt");
 			activePlayer.setJailTime(0);
 		}else{
 			//TODO roll dice or pay
 			String res = GUI.getUserButtonPressed("vil betale eller slå med terninger", "Slå", "Betal");
 			switch (res) {
 			case "Slå":
-				
+				Dicebox db = new Dicebox();
+				db.roll();
+				GUI.setDice(2, 4);
+				System.out.println(db.getDice()[0].getValue()+", "+ db.getDice()[1].getValue());
+				GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
+				if(db.isEqual()){
+					activePlayer.setJailTime(0);
+				}
 				break;
 
 			case "Betal":
-				
+				activePlayer.addToBalance(-1000);
+				activePlayer.setJailTime(0);
 				break;
 			}
 			activePlayer.setJailTime(activePlayer.getJailTime()-1);
@@ -92,7 +100,7 @@ public class GameController {
 				new Chance("lykke2", 1, cards),
 				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7), 
 				new Property("Allegade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7),
-				new GoToJail("jail", playerCount),
+				new Refuge("VESTERFÆNGSEL",0),
 				new Property("Frederiksberg Alle", new int[]{400, 900, 1300, 1700, 2100, 2500}, 2300, 1300, 6), 
 				new Brewer("Squash", 2500, 5000),
 				new Property("Bulowsvej", new int[]{400, 900, 1300, 1700, 2100, 2500 }, 2500, 5300, 6),
@@ -195,11 +203,13 @@ public class GameController {
 		st.setSubText("Pris: 4000");
 		fields[9] = st;
 
-		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("Jail").build();
-		j.displayOnCenter();
-		j.setDescription("Fængsel");
-		j.setSubText("Du er på besøg");
-		fields[10] =j;
+		fields[10] = new desktop_fields.Refuge.Builder().setPicture(null).build();
+		
+//		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("VESTERFÆNGSEL").build();
+//		j.displayOnCenter();
+//		j.setDescription("VESTERFÆNGSEL");
+//		j.setSubText("Du er på besøg");
+//		fields[10] =j;
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Frederiksberg Alle").build();
 		st.setDescription("Frederiksberg Alle");
