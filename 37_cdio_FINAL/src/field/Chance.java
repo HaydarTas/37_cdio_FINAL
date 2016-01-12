@@ -2,6 +2,7 @@
 package field;
 import entity.Player;
 
+
 public class Chance extends Field {
 
 
