@@ -413,12 +413,12 @@ public class GameController {
 			return groupsOwned == groupsExist;
 	}
 	
-	public Property[] getPropertisFromGroup(int g){
+	public Property[] getPropertisFromGroup(int group){
 		int pCount = 0;
 		for(Field f : fields){
 			if(f instanceof Property){
 				Property p = (Property) f;
-				if(p.getGroup() == g) {
+				if(p.getGroup() == group) {
 					pCount++;
 				}
 			}
@@ -428,7 +428,7 @@ public class GameController {
 		for(Field f : fields){
 			if(f instanceof Property){
 				Property p = (Property) f;
-				if(p.getGroup() == g) {
+				if(p.getGroup() == group) {
 					properties[i++] = p;
 				}
 			}
