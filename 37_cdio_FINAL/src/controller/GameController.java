@@ -400,38 +400,68 @@ public class GameController {
 			}
 		}
 	}
-
-	public int[] availabilityOfGroups(Player player){
-		boolean[] groupsNotOwned = {false,false,false,false,false,false,false,false};
-		int[] groupsOwned = {0,0,0,0,0,0,0,0};
-		int[] groupsExist = {0,0,0,0,0,0,0,0};
-		int size = 0;
-
+	
+	public boolean canBuild(Player player, int group){
+		int groupsOwned = 0;
+		int groupsExist = 0;
 		//Tæller hvor mange ledige grupper der er
 		for(Field field : fields){
 			if(field instanceof Property){
 				Property p = (Property)field;
-				int group = p.getGroup();
-				groupsExist[group]++;
+				if(p.getGroup() == group) groupsExist++;
 			}
 		}
 		//Tæller om en spiller ejer en gruppe eller flere
 		for(Field owned : player.getFields()){
 			if(owned instanceof Property){
 				Property p = (Property)owned;
-				int group = p.getGroup();
-				groupsOwned[group]++;
+				if(p.getGroup() == group) groupsOwned++;
 			}
 		}
 
-		for(int i=0; i<groupsOwned.length; i++){
-			groupsNotOwned[i] = groupsOwned[i] == groupsExist[i];
-		
-		}
-		return groupsOwned;
+			return groupsOwned == groupsExist;
 	}
+	
+	public Property[] getPropertisFromGroup(int g){
+		int pCount = 0;
+		for(Field f : fields){
+			if(f instanceof Property){
+				Property p = (Property) f;
+				if(p.getGroup() == g) {
+					pCount++;
+				}
+			}
+		}
+		Property[] properties = new Property[pCount];
+		int i = 0;
+		for(Field f : fields){
+			if(f instanceof Property){
+				Property p = (Property) f;
+				if(p.getGroup() == g) {
+					properties[i++] = p;
+				}
+			}
+		}
+		return properties;
+	}
+	
+	
+	
 
+    
+//	//Undersøger om et felt tilhører en gruppe og smider det ind i et array
+//	public void buyPropertyGroup(Player player, int group, int Field[]){
+//		Field[] buy = new fields;
+//		int count = 0;
+//		for (int i = 0; i < fields.length; i++){
+//			if ((fields instanceof Property) && ((Property) fields[i]).getGroup() == group))   {
+//				buy[count] = fields[i];
+//				count++;
+//			}
+//		}
+//	}
 
+	
 
 
 public void roll() {
