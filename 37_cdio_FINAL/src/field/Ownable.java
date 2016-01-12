@@ -39,15 +39,16 @@ public abstract class Ownable extends Field {
 
 		if (owner !=null && owner != p){ 
 			//TODO tell user that he landed on an owned field 
-			GUI.showMessage("You landed on" + getOwner() + "'s field - pay up!");
+			GUI.showMessage("Du er landet på" + getOwner() + "'s felt - Betal venligst!");
 			p.addToBalance(-getRent());
 			getOwner().addToBalance(getRent());
 		} else if (owner !=null) {
 			//Tell user that it is his own field
-			GUI.showMessage("You landed on your own field");
+			GUI.showMessage("Du er landet på dit eget felt");
+		    GUI.getUserLeftButtonPressed("Vil du købe et hus?", "Ja tak", "Nej tak");
 			//				p.setInformation(1);
 		} else {
-			boolean input = GUI.getUserLeftButtonPressed("You landed on an unowned fi - Buy?", "Ja tak", "Nej tak");
+			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
 				//Todo buy field
 				p.addToBalance(-getPrice());
