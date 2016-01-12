@@ -48,7 +48,7 @@ public abstract class Ownable extends Field {
 		    GUI.getUserLeftButtonPressed("Vil du købe et hus?", "Ja tak", "Nej tak");
 			//				p.setInformation(1);
 		} else {
-			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der er ejet af en anden spiller, vil du købe feltet?", "Ja tak", "Nej tak");
+			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
 				//Todo buy field
 				p.addToBalance(-getPrice());
