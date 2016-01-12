@@ -286,10 +286,10 @@ public class GameController {
 		fields[29]=st;
 
 
-		j = new desktop_fields.Jail.Builder().setBgColor(Color.black).setTitle("jail").build();
+		j = new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("jail").build();
 		j.displayOnCenter();
-		j.setDescription("De fængsles");
-		j.setSubText("dont drop the soap");
+		j.setDescription("Don't drop the soap");
+		j.setSubText("De fængsles");
 		fields[30] = j ;
 		
 		st= new Street.Builder().setBgColor(Color.yellow).setTitle("Amagertorv").build();
