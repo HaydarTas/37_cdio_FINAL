@@ -47,6 +47,16 @@ public class GameController {
 			activePlayer.setJailTime(0);
 		}else{
 			//TODO roll dice or pay
+			String res = GUI.getUserButtonPressed("vil betale eller slå med terninger", "Slå", "Betal");
+			switch (res) {
+			case "Slå":
+				
+				break;
+
+			case "Betal":
+				
+				break;
+			}
 			activePlayer.setJailTime(activePlayer.getJailTime()-1);
 		}	
 
@@ -432,8 +442,7 @@ public class GameController {
 		players[playerTurn].movePlayer(r);
 		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 	}
-	//TODO rewrite to something 3 lines long
-	public void switchTurn() {
+		public void switchTurn() {
 		int noOfPlayersInGame = 0;
 		for (int i = 0; i < players.length; i++) {
 			if (players[i] != null) {

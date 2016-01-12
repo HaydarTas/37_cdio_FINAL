@@ -74,7 +74,7 @@ public class Player {
 	System.out.println("flytter spiller");
 		if((position + dice) > fields.length) {
 			this.addToBalance(4000);
-			System.out.println("f�r 4000");
+			System.out.println("får 4000");
 			GUI.setBalance(this.getName(), this.getBalance());
 		}
 		position = (position + dice) % fields.length;

@@ -6,7 +6,7 @@ public class Dicebox {
 	private Dice d2 = new Dice();
 
 	public int roll() {
-		return 30;//d1.roll() + d2.roll();
+		return d1.roll() + d2.roll();
 	}
 
 	public boolean isEqual() {
