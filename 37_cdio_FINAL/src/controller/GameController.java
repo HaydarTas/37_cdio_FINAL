@@ -83,7 +83,7 @@ public class GameController {
 
 	// creates fields in array
 	public void setupGame() {
-		list   = new ChanceCard [6];
+
 		ChanceCard[] cards = {
 			new MoneyCard(300, "Du vinder i lotto, modtag kr. 200,-"),
 			new MoneyCard(-500, "Du har glemt at betale told, betal kr. 100,-"),
