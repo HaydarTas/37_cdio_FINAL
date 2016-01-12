@@ -20,7 +20,7 @@ public class GameController {
 	private Player[] players = new Player[6];
 	private int playerCount;
 	private Field[] fields;
-	private int playerTurn;
+	private int playerTurn =0;
 	private desktop_fields.Field[] start;
 	private String buttons;
 
@@ -28,39 +28,51 @@ public class GameController {
 	public void run() {
 		while (true){
 			//Kast med terninger
-			roll();
-			//Find ud af hvad der sker p� feltet!
-			landOnField();
+			Player activePlayer = players[playerTurn];
+			if (activePlayer.getJailed()){
+				jailTurn(activePlayer);
+			} else {
+				playerTurn(activePlayer);
+			}
+
 			this.switchTurn();
 		}
 
 	}
-	private void playerTurn(Player player) {
-		int roll = box.roll();
-		int newPosition = (player.getPosition() + roll) % fields.length;
-
-		int points = fields[newPosition].getPoints();
-		String fieldname = fields[newPosition].getName();
-		boolean check_account = player.addToBalance(points);
-
-		if (check_account == true) {
-			GUI.setBalance(player.getName(), player.getBalance());
-		} else {
-			player.setBankrupt();
-		}
-
-		System.out.println("spiller" + player.getName() + "  har slaaet: " + roll + " han fik: " + points
-				+ " og han har landet paa felt: " + fields + ", saldo:" + player.getBalance());
-		GUI.removeAllCars(player.getName());
-		GUI.setCar(newPosition - 1, player.getName());
-		// Suspend excecution for 200 ms
-		try {
-			Thread.sleep(200);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
+	private void jailTurn(Player activePlayer) {
+		// TODO Auto-generated method stub
+		
 	}
+	private void playerTurn(Player player) {
+		roll();
+		landOnField();
+		
+	}
+//		int roll = box.roll();
+//		int newPosition = (player.getPosition() + roll) % fields.length;
+//
+//		int points = fields[newPosition].getPoints();
+//		String fieldname = fields[newPosition].getName();
+//		boolean check_account = player.addToBalance(points);
+//
+//		if (check_account == true) {
+//			GUI.setBalance(player.getName(), player.getBalance());
+//		} else {
+//			player.setBankrupt();
+//		}
+//
+//		System.out.println("spiller" + player.getName() + "  har slaaet: " + roll + " han fik: " + points
+//				+ " og han har landet paa felt: " + fields + ", saldo:" + player.getBalance());
+//		GUI.removeAllCars(player.getName());
+//		GUI.setCar(newPosition - 1, player.getName());
+//		// Suspend excecution for 200 ms
+//		try {
+//			Thread.sleep(200);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
 
 	// creates fields in array
 	public void setupGame() {
