@@ -48,6 +48,12 @@ public class Property extends Ownable {
 		return group;
 	}
 
+
+
+	public int getHousePrice() {
+		return housePrice;
+				}
+
 	
 }
 
