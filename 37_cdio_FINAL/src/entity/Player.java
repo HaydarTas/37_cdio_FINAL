@@ -13,7 +13,7 @@ public class Player {
 	private Field[] fields = new Field[40];
 	private int number;
 	private int position;
-//	private int info; // Information about whether the field is bought or not
+	//	private int info; // Information about whether the field is bought or not
 	private int lastRoll;
 	private int jailTime = 0;
 	private boolean isjail;
@@ -71,11 +71,11 @@ public class Player {
 	public void setPosition(int position) {
 		this.position = position;
 	}
-	
+
 	public void movePlayer(int dice) {
-	System.out.println("flytter spiller");
-	GUI.removeCar(position+1, name);
-	
+		System.out.println("flytter spiller");
+		GUI.removeCar(position+1, name);
+
 		if((position + dice) > fields.length) {
 			this.addToBalance(4000);
 			System.out.println("får 4000");
@@ -121,18 +121,18 @@ public class Player {
 			this.addToBalance(-field.getPrice());
 			GUI.setBalance(this.name, this.getBalance());
 			GUI.setOwner(this.position+1, this.getName());
-//			this.setInformation(1);
+			//			this.setInformation(1);
 		}
 		return bought;
 	}
 
-//	public int getInformation() {
-//		return info;
-//	}
+	//	public int getInformation() {
+	//		return info;
+	//	}
 
-//	public void setInformation(int i) {
-//		info = i;
-//	}
+	//	public void setInformation(int i) {
+	//		info = i;
+	//	}
 
 	public int getLastRoll() {
 		return lastRoll;
@@ -148,32 +148,32 @@ public class Player {
 	public void setJail(boolean setjail) {
 		isjail=setjail;
 	}
-		 
+
 
 	public int getJailTime() {
 		return jailTime;
 	}
-	
+
 	public void setJailTime(int jailTime) {
 		this.jailTime = jailTime;
 	}
-	
 
-//	public boolean getJailCard() {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+
+	//	public boolean getJailCard() {
+	//		// TODO Auto-generated method stub
+	//		return false;
+	//	}
 
 
 
 	public void GoToJail() {
 		// TODO Auto-generated method stub
-		
+
 	}
 	public void subjailtimecounter() {
 		jailTime--;
-		
+
 	}
-	
+
 
 }
