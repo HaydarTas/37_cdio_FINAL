@@ -39,7 +39,9 @@ public abstract class Ownable extends Field {
 	// checks whether the territory is owned by another player or is for sale
 	// if field is owned by another player, checks the rent.
 	public void landOnField(Player p) {
-
+		for(Field f : p.getFields()){
+			System.out.println(f);
+		}
 		if (owner !=null && owner != p){ 
 			//TODO tell user that he landed on an owned field 
 			GUI.showMessage("Du er landet på" + getOwner() + "'s felt - Betal venligst!");
