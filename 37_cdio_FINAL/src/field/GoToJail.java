@@ -22,6 +22,7 @@ public class GoToJail extends Field {
 		GUI.removeCar(GoToJail, p.getName());
 		GUI.showMessage("Du rykkes til fængsel feltet");
 		
+		GUI.showMessage("En tur til vester");
 
 	}
 }

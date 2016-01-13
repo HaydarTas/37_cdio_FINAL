@@ -4,7 +4,7 @@ public class Dicebox {
 
 	private Dice d1 = new Dice();
 	private Dice d2 = new Dice();
-	
+
 	public int roll() {
 		d1.roll();
 		d2.roll();
