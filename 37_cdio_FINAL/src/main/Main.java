@@ -10,12 +10,7 @@ public class Main {
 		game.setupGame();
 		
 		game.setupGUI();
-		game.addPlayer();
-		game.addPlayer();
-		game.addPlayer();
-		game.addPlayer();
-		game.addPlayer();
-		game.addPlayer();
+		game.initPlayers();
 		game.run();
 
 	}
