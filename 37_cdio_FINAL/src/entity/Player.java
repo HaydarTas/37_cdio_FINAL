@@ -26,6 +26,7 @@ public class Player {
 
 	}
 
+
 	public int getNumber() {
 		return number;
 	}

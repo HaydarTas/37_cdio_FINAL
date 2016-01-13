@@ -17,7 +17,7 @@ import field.*;
 public class GameController {
 	private static final Color red = null;
 	private Dicebox box = new Dicebox();
-	private Player[] players = new Player[6];
+	private Player[] players;
 	private Field[] fields;
 	private int playerCount;
 	private int playerTurn =0;
@@ -42,19 +42,16 @@ public class GameController {
 	}
 	private void jailTurn(Player activePlayer) {
 		System.out.println(activePlayer.getJailTime());
-		
-		if(activePlayer.getJailed()){
-			
-			if(activePlayer.getJailTime()==3){
-				activePlayer.addToBalance(-1000);
-				GUI.showMessage("du har nu betalt 1000 dk.kr");
-					activePlayer.setJailTime(0);
-					activePlayer.setJail(false);
-				
-			}
-			
-		
-			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning t ", "Slå", "Betal");
+
+		if(activePlayer.getJailTime() == 0){
+			activePlayer.addToBalance(-1000);
+			GUI.showMessage("du har nu betalt 1000 dk.kr");
+			activePlayer.setJailTime(0);
+
+
+		}else{
+
+			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
 			switch (res) {
 			case "Slå":
 				Dicebox db = new Dicebox();
@@ -64,18 +61,21 @@ public class GameController {
 				GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
 				if(db.isEqual()){
 					activePlayer.setJailTime(0);
-					break;
 				}
-			case "betal":
-			
-				activePlayer.addToBalance(-1000);
-		GUI.showMessage("du har nu betalt 1000 dk.kr");
-			activePlayer.setJailTime(0);
-			
-			break;
-			
-			}
-			activePlayer.addjailtimecounter();
+				break;
+
+			case "Betal":
+				GUI.showMessage("du har nu betalt 1000 dk.kr"+ activePlayer.addToBalance(-1000));
+				activePlayer.setJailTime(0);
+
+
+				break;
+
+			case "afsone":
+				activePlayer.addToBalance(0);
+				activePlayer.setJailTime(3);
+				GUI.showMessage("du afsoner 3 rundter");
+			}	
 		}
 
 	}
@@ -92,25 +92,25 @@ public class GameController {
 	public void setupGame() {
 
 		ChanceCard[] cards = {
-			
-//				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
-//				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
+
+				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
+				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
 				new MoveCar("Du rykker 2 felter frem", 2),
 		};
 
 		fields = new Field[] { 
 				new Refuge("Start",4000),
-				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 4000, 5, this), 
+				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5, this), 
 				new Chance("lykke1", 0, cards),
-				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 4000, 5, this),
+				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5, this),
 				new Tax("Tax", 1000, 10),
 				new Shipping("DFDS seaways", 4000, this),
-				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 4500, 7, this),
+				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7, this),
 				new Chance("lykke2", 1, cards),
-				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 5000, 7, this), 
-				new Property("Allegade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 5000, 7, this),
+				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7, this), 
+				new Property("Allegade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7, this),
 				new Refuge("VESTERFÆNGSEL",0),
-				new Property("Frederiksberg Alle", new int[]{400, 900, 1300, 1700, 2100, 2500}, 2300, 5500, 6, this), 
+				new Property("Frederiksberg Alle", new int[]{400, 900, 1300, 1700, 2100, 2500}, 2300, 1300, 6, this), 
 				new Brewer("Squash", 2500, 5000, this),
 				new Property("Bulowsvej", new int[]{400, 900, 1300, 1700, 2100, 2500 }, 2500, 5300, 6, this),
 				new Property("Gl.kongevej", new int[]{400, 1000, 1400, 1800, 2200, 2600 }, 2600, 6000, 6, this), 
@@ -405,22 +405,83 @@ public class GameController {
 		return car;
 	}
 
+	//	GAMLE METODE TIL AT OPRETTE SPILLER MED (Bruges ikke mere)
+	//	
+	//	public void addPlayer() {
+	//		String playerName = GUI.getUserString("Indtast spillernes navne og derefter lad feltet stå tomt og tryk 'OK' (2 - 6 spillere).");
 	//
-	public void addPlayer() {
-		String playerName = GUI.getUserString("Indtast spillernes navne og derefter lad feltet stå tomt og tryk 'OK' (2 - 6 spillere).");
+	//		if (playerName.length() != 0) {
+	//			GUI.addPlayer(playerName, 30000, getCar(playerCount));
+	//			GUI.setCar(1, playerName);
+	//			playerCount++;
+	//			for (int i = 0; i < players.length; i++) {
+	//				if (players[i] == null) {
+	//					players[i] = new Player(playerName, i);
+	//					break;
+	//				}
+	//			}
+	//		}
+	//	}
 
-		if (playerName.length() != 0) {
-			GUI.addPlayer(playerName, 30000, getCar(playerCount));
-			GUI.setCar(1, playerName);
-			playerCount++;
-			for (int i = 0; i < players.length; i++) {
-				if (players[i] == null) {
-					players[i] = new Player(playerName, i);
-					break;
-				}
-			}
+	public void initPlayers() 
+	{	
+		//Lets the user decide how many players should be in the game.
+		String playersCountChoosenByUser = GUI.getUserButtonPressed("Valg antal apillere", "2", "3", "4", "5", "6");
+		//Converts the String to an int.
+		playerCount = Integer.parseInt(playersCountChoosenByUser);
+		//Initializes the Player array with the amount of players
+		players = new Player[playerCount];
+		//Initializes the Car array with the amount of players
+		Car[] car = new Car[playerCount];
+		//Initializes a boolean array to keep track of how many players are bankrupt.
+
+
+		for(int i = 0; i < playerCount; i++)
+		{
+			//Makes sure the players start at 1 and counts to playerCount.
+			int playerNumber = i + 1; 
+			//Lets the user decide the name of the player.
+			String playerNameTypedInByTheUser = GUI.getUserString(("Indtast Navn") + playerNumber);
+			Player player = new Player(playerNameTypedInByTheUser, playerNumber);
+			player.setName(playerNameTypedInByTheUser);
+			//Stores the newly created player in the Player array at index i.
+			players[i] = player;
+			//Creates the car the player needs to travel the board.
+			car[i] = new Car.Builder()
+					.typeUfo()
+					.patternHorizontalDualColor()
+					.primaryColor(Color.lightGray)
+					.secondaryColor(getChangedColor(playerNumber))
+					.build();
+			//Adds the player to the GUI.
+			GUI.addPlayer(player.getName(), players[i].getBalance(), car[i]);
+			//Puts their car on the Startfield.
+			GUI.setCar(1, player.getName());
+			player.setPosition(0);
+			//Makes sure the game knows that the player is NOT bankrupt.
 		}
 	}
+
+
+	private Color getChangedColor(int playerNumber)
+	{
+		switch (playerNumber)
+		{
+		case 1:
+			return Color.BLUE;
+		case 2:
+			return Color.RED;
+		case 3:
+			return Color.ORANGE;
+		case 4:
+			return Color.GRAY;
+		case 5:
+			return Color.YELLOW;
+		default:
+			return Color.MAGENTA;
+		}
+	}
+
 
 	public boolean canBuild(Player player, int group){
 		int groupsOwned = 0;
@@ -490,10 +551,10 @@ public class GameController {
 		int r = box.roll();
 		GUI.setDice(box.getDice()[0].getValue(), box.getDice()[1].getValue());
 		players[playerTurn].setLastRoll(r);
-//		if(players[playerTurn].getPosition() >= 0)
-//			GUI.removeCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
+		//		if(players[playerTurn].getPosition() >= 0)
+		//			GUI.removeCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 		players[playerTurn].movePlayer(r);
-//		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
+		//		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 	}
 	//TODO rewrite to something 3 lines long
 	public void switchTurn() {
@@ -530,10 +591,10 @@ public class GameController {
 		//		}
 	}
 	public Field[] getProperties() {
-		return fields;
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 
 }
 
