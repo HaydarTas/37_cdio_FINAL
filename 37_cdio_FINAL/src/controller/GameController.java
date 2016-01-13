@@ -69,7 +69,7 @@ public class GameController {
 
 			case "afsone":
 				activePlayer.addToBalance(0);
-				activePlayer.setJailTime(activePlayer.getJailTime()-3);
+				activePlayer.setJailTime(activePlayer.getJailTime()+3);
 			}	
 		}
 
