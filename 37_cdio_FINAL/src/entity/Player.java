@@ -72,6 +72,8 @@ public class Player {
 	
 	public void movePlayer(int dice) {
 	System.out.println("flytter spiller");
+	GUI.removeCar(position+1, name);
+	
 		if((position + dice) > fields.length) {
 			this.addToBalance(4000);
 			System.out.println("får 4000");
@@ -79,6 +81,7 @@ public class Player {
 		}
 		position = (position + dice) % fields.length;
 
+		GUI.setCar(position+1, name);
 	}
 
 	@Override
