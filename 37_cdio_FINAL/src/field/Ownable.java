@@ -47,7 +47,7 @@ public abstract class Ownable extends Field {
 		}
 		if (owner !=null && owner != p){ 
 			//TODO tell user that he landed on an owned field 
-			GUI.showMessage("Du er landet på" + getOwner() + "'s felt - Betal venligst!");
+			GUI.showMessage("Du er landet på" + getOwner().getName() + "'s felt - Betal venligst!");
 			p.addToBalance(-getRent());
 			getOwner().addToBalance(getRent());
 		} else if (owner !=null) {
@@ -57,7 +57,7 @@ public abstract class Ownable extends Field {
 			for(Field owned : p.getFields()){
 				if(owned instanceof Property){
 					Property prop = (Property)owned;
-					System.out.println("aaaaaaaaaa"+prop);
+					
 					if(gc.canBuild(p, prop.getGroup())){
 						canBuy = true;
 						System.out.println("canbuy");
@@ -79,14 +79,17 @@ public abstract class Ownable extends Field {
 						
 					}
 					String selection = GUI.getUserSelection("Køb på", properties);
-					Field[] fields = gc.getProperties();
+					Field[] fields = gc.getFields();
+					int i =0;
 					for (Field field : fields) {
+						i++;
 						if (field.getName().equals(selection)){
 							//Buy house
 							((Property)field).addHouse();
 							p.addToBalance(-((Property)field).getHousePrice());
-							GUI.showMessage("Du har nu betalt "+ p.addToBalance(-((Property)field).getHousePrice()));
-							
+							GUI.showMessage("Du har nu betalt "+ ((Property)field).getHousePrice());
+							GUI.setBalance(p.getName(), p.getBalance());
+							GUI.setHouses(i, ((Property)field).getHouseCount());
 						}
 					}
 					

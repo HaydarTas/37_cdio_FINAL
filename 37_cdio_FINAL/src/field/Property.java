@@ -54,6 +54,13 @@ public class Property extends Ownable {
 		return housePrice;
 				}
 
+
+
+	public int getHouseCount() {
+		// TODO Auto-generated method stub
+		return houseCount;
+	}
+
 	
 }
 

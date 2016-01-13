@@ -529,7 +529,7 @@ public class GameController {
 		//			System.out.println(field.getName());
 		//		}
 	}
-	public Field[] getProperties() {
+	public Field[] getFields() {
 		return fields;
 		
 	}
