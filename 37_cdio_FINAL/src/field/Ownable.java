@@ -2,6 +2,9 @@ package field;
 
 
 import field.Field;
+
+import javax.swing.text.Position;
+
 import controller.GameController;
 import desktop_resources.GUI;
 import entity.Player;
@@ -67,6 +70,7 @@ public abstract class Ownable extends Field {
 				if(jaTak){
 					String[] properties = new String[25];
 					for(int i =0; i<8;i++)
+						
 					{ 
 						if (gc.canBuild(p,i )){
 							for (int j=0; j<gc.getPropertiesFromGroup(i).length;j++)
@@ -74,7 +78,17 @@ public abstract class Ownable extends Field {
 						}
 						
 					}
-					GUI.getUserSelection("Køb på", properties);
+					String selection = GUI.getUserSelection("Køb på", properties);
+					Field[] fields = gc.getProperties();
+					for (Field field : fields) {
+						if (field.getName().equals(selection)){
+							//Buy house
+							((Property)field).addHouse();
+							p.addToBalance(-((Property)field).getHousePrice());
+							GUI.showMessage("Du har nu betalt "+ p.addToBalance(-((Property)field).getHousePrice()));
+							
+						}
+					}
 					
 				} else {
 					
