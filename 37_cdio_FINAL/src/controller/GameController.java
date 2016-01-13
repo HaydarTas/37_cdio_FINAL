@@ -43,15 +43,10 @@ public class GameController {
 	private void jailTurn(Player activePlayer) {
 		System.out.println(activePlayer.getJailTime());
 		
-		if(activePlayer.getJailTime() == 0){
-			activePlayer.addToBalance(-1000);
-		GUI.showMessage("du har nu betalt 1000 dk.kr");
-			activePlayer.setJailTime(0);
+		if(activePlayer.getJailTime() == 1){
 			
-
-		}else{
-
-			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
+		
+			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal");
 			switch (res) {
 			case "Slå":
 				Dicebox db = new Dicebox();
@@ -61,21 +56,17 @@ public class GameController {
 				GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
 				if(db.isEqual()){
 					activePlayer.setJailTime(0);
+					break;
 				}
-				break;
-
-			case "Betal":
-				GUI.showMessage("du har nu betalt 1000 dk.kr"+ activePlayer.addToBalance(-1000));
-				activePlayer.setJailTime(0);
-				
-				
-				break;
-
-			case "afsone":
-				activePlayer.addToBalance(0);
-				activePlayer.setJailTime(3);
-				GUI.showMessage("du afsoner 3 rundter");
-			}	
+			case "betal":
+			
+				activePlayer.addToBalance(-1000);
+		GUI.showMessage("du har nu betalt 1000 dk.kr");
+			activePlayer.setJailTime(0);
+			
+			break;
+			
+			}
 		}
 
 	}
