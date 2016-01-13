@@ -41,11 +41,13 @@ public class GameController {
 
 	}
 	private void jailTurn(Player activePlayer) {
-
-		if(activePlayer.getJailTime() == 1){
-
-
+		System.out.println(activePlayer.getJailTime());
+		
+		if(activePlayer.getJailTime() == 0){
+			activePlayer.addToBalance(-1000);
+		GUI.showMessage("du har nu betalt 1000 dk.kr");
 			activePlayer.setJailTime(0);
+			
 
 		}else{
 
@@ -54,7 +56,7 @@ public class GameController {
 			case "Slå":
 				Dicebox db = new Dicebox();
 				db.roll();
-				GUI.setDice(2, 4);
+				//GUI.setDice(2, 4);
 				System.out.println(db.getDice()[0].getValue()+", "+ db.getDice()[1].getValue());
 				GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
 				if(db.isEqual()){
@@ -63,13 +65,16 @@ public class GameController {
 				break;
 
 			case "Betal":
-				activePlayer.addToBalance(-1000);
+				GUI.showMessage("du har nu betalt 1000 dk.kr"+ activePlayer.addToBalance(-1000));
 				activePlayer.setJailTime(0);
+				
+				
 				break;
 
 			case "afsone":
 				activePlayer.addToBalance(0);
-				activePlayer.setJailTime(activePlayer.getJailTime()+3);
+				activePlayer.setJailTime(3);
+				GUI.showMessage("du afsoner 3 rundter");
 			}	
 		}
 

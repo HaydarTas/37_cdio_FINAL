@@ -155,7 +155,7 @@ public class Player {
 //	}
 
 	public void getOutOfJail() {
-		// TODO Auto-generated method stub
+		this.jailTime=3;
 		
 	}
 
