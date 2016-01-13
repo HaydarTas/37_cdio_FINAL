@@ -52,6 +52,18 @@ public class GameController {
 		}else{
 
 			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
+		if(activePlayer.getJailed()){
+
+			if(activePlayer.getJailTime()==1){
+				activePlayer.addToBalance(-1000);
+				GUI.showMessage("du har nu betalt 1000kr");
+//					activePlayer.setJailTime(0);
+				activePlayer.setJail(false);
+
+			} else {
+
+
+			String res = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
 			switch (res) {
 			case "Slå":
 				Dicebox db = new Dicebox();
@@ -76,7 +88,17 @@ public class GameController {
 				activePlayer.setJailTime(3);
 				GUI.showMessage("du afsoner 3 rundter");
 			}	
-		}
+			case "Betal":
+
+				activePlayer.addToBalance(-1000);
+				GUI.showMessage("du har nu betalt 1000 kr");
+				activePlayer.setJailTime(0);
+
+				break;
+
+			}
+			activePlayer.subjailtimecounter();
+			}
 
 	}
 	private void playerTurn(Player player) {
@@ -95,6 +117,8 @@ public class GameController {
 
 				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
 				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
+				//				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
+				//				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
 				new MoveCar("Du rykker 2 felter frem", 2),
 		};
 
@@ -590,9 +614,10 @@ public class GameController {
 		//			System.out.println(field.getName());
 		//		}
 	}
-	public Field[] getProperties() {
-		// TODO Auto-generated method stub
-		return null;
+
+	public Field[] getFields() {
+		return fields;
+
 	}
 
 
