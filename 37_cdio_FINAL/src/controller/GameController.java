@@ -73,6 +73,8 @@ public class GameController {
 				GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
 				if(db.isEqual()){
 					activePlayer.setJailTime(0);
+					activePlayer.setJail(false);
+					break;
 				}
 				break;
 
@@ -93,7 +95,7 @@ public class GameController {
 				activePlayer.addToBalance(-1000);
 				GUI.showMessage("du har nu betalt 1000 kr");
 				activePlayer.setJailTime(0);
-
+				activePlayer.setJail(false);
 				break;
 
 			}
