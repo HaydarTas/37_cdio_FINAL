@@ -106,8 +106,6 @@ public class Player {
 	public boolean buyField(Ownable field) {
 		boolean bought = false;
 		if (this.getBalance() > field.getPrice()) {
-			this.addToBalance(-field.getPrice());
-			GUI.setBalance(this.name, this.getBalance());
 			for (int i = 0; i < fields.length; i++) {
 				if (fields[i] == null) {
 					fields[i] = field;
@@ -118,6 +116,9 @@ public class Player {
 		}
 		if(bought){
 			field.setOwner(this);
+			this.addToBalance(-field.getPrice());
+			GUI.setBalance(this.name, this.getBalance());
+			GUI.setOwner(this.position+1, this.getName());
 //			this.setInformation(1);
 		}
 		return bought;

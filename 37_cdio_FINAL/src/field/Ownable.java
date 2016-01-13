@@ -39,7 +39,9 @@ public abstract class Ownable extends Field {
 	// checks whether the territory is owned by another player or is for sale
 	// if field is owned by another player, checks the rent.
 	public void landOnField(Player p) {
-
+		for(Field f : p.getFields()){
+			System.out.println(f);
+		}
 		if (owner !=null && owner != p){ 
 			//TODO tell user that he landed on an owned field 
 			GUI.showMessage("Du er landet på" + getOwner() + "'s felt - Betal venligst!");
@@ -52,8 +54,10 @@ public abstract class Ownable extends Field {
 			for(Field owned : p.getFields()){
 				if(owned instanceof Property){
 					Property prop = (Property)owned;
+					System.out.println("aaaaaaaaaa"+prop);
 					if(gc.canBuild(p, prop.getGroup())){
 						canBuy = true;
+						System.out.println("canbuy");
 						break;
 					}
 				}
@@ -82,12 +86,9 @@ public abstract class Ownable extends Field {
 		} else {
 			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
-				//Todo buy field
 				
-				p.addToBalance(-getPrice());
-				GUI.setOwner(p.getPosition()+1, p.getName());
-				setOwner(p);
-				GUI.setBalance(p.getName(), p.getBalance());
+				p.buyField(this);
+				
 			} else {
 				//Player didnt buy field
 			}
