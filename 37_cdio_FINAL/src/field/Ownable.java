@@ -85,6 +85,7 @@ public abstract class Ownable extends Field {
 			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
 				//Todo buy field
+				
 				p.addToBalance(-getPrice());
 				GUI.setOwner(p.getPosition()+1, p.getName());
 				setOwner(p);
