@@ -64,8 +64,8 @@ public class GameController {
 			} else {
 
 
-			String res = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
-			switch (res) {
+			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
+			switch (rs) {
 			case "Slå":
 				Dicebox db = new Dicebox();
 				db.roll();
@@ -77,21 +77,10 @@ public class GameController {
 					activePlayer.setJail(false);
 					break;
 				}
+				
 				break;
-
 			case "Betal":
-				GUI.showMessage("du har nu betalt 1000 dk.kr"+ activePlayer.addToBalance(-1000));
-				activePlayer.setJailTime(0);
-
-
-				break;
-
-			case "afsone":
-				activePlayer.addToBalance(0);
-				activePlayer.setJailTime(3);
-				GUI.showMessage("du afsoner 3 rundter");
-			}	
-			case "Betal":
+		
 
 				activePlayer.addToBalance(-1000);
 				GUI.showMessage("du har nu betalt 1000 kr");
@@ -102,7 +91,7 @@ public class GameController {
 			}
 			
 			activePlayer.subjailtimecounter();
-			}
+			
 
 	}
 	private void playerTurn(Player player) {
