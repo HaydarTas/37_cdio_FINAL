@@ -51,7 +51,7 @@ public class GameController {
 
 		}else{
 
-			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
+			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal");
 		if(activePlayer.getJailed()){
 
 			if(activePlayer.getJailTime()==1){
