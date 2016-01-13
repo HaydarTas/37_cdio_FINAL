@@ -16,6 +16,7 @@ public class Player {
 //	private int info; // Information about whether the field is bought or not
 	private int lastRoll;
 	private int jailTime = 0;
+	private boolean isjail;
 
 	public Player(String name, int number) {
 		this.name = name;
@@ -141,8 +142,12 @@ public class Player {
 	}
 
 	public boolean getJailed() {
-		return jailTime > 0; 
+		return isjail; 
 	}
+	public void setJail(boolean setjail) {
+		isjail=setjail;
+	}
+		 
 
 	public int getJailTime() {
 		return jailTime;
@@ -158,16 +163,16 @@ public class Player {
 //		return false;
 //	}
 
-	public void getOutOfJail() {
-		this.jailTime=3;
-		
-	}
+
 
 	public void GoToJail() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	public void addjailtimecounter() {
+		jailTime++;
+		
+	}
 	
 
 }
