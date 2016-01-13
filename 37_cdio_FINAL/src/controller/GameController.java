@@ -49,6 +49,7 @@ public class GameController {
 				activePlayer.addToBalance(-1000);
 				GUI.showMessage("du har nu betalt 1000kr");
 //					activePlayer.setJailTime(0);
+				
 				activePlayer.setJail(false);
 
 			} else {
@@ -76,6 +77,7 @@ public class GameController {
 				break;
 
 			}
+			
 			activePlayer.subjailtimecounter();
 			}
 		}
