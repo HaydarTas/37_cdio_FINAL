@@ -16,6 +16,7 @@ public class Player {
 //	private int info; // Information about whether the field is bought or not
 	private int lastRoll;
 	private int jailTime = 0;
+	private boolean isjail;
 
 	public Player(String name, int number) {
 		this.name = name;
@@ -72,6 +73,8 @@ public class Player {
 	
 	public void movePlayer(int dice) {
 	System.out.println("flytter spiller");
+	GUI.removeCar(position+1, name);
+	
 		if((position + dice) > fields.length) {
 			this.addToBalance(4000);
 			System.out.println("får 4000");
@@ -79,6 +82,7 @@ public class Player {
 		}
 		position = (position + dice) % fields.length;
 
+		GUI.setCar(position+1, name);
 	}
 
 	@Override
@@ -138,8 +142,12 @@ public class Player {
 	}
 
 	public boolean getJailed() {
-		return jailTime > 0; 
+		return isjail; 
 	}
+	public void setJail(boolean setjail) {
+		isjail=setjail;
+	}
+		 
 
 	public int getJailTime() {
 		return jailTime;
@@ -155,16 +163,16 @@ public class Player {
 //		return false;
 //	}
 
-	public void getOutOfJail() {
-		this.jailTime=3;
-		
-	}
+
 
 	public void GoToJail() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	public void addjailtimecounter() {
+		jailTime++;
+		
+	}
 	
 
 }

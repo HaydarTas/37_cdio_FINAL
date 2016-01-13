@@ -12,11 +12,16 @@ public class GoToJail extends Field {
 
 	public void landOnField(Player p) {
 		p.setJailTime(3);
+	
+		
+//		GUI.removeCar(p.getPosition()+1, p.getName());
 		p.movePlayer(-(GoToJail-VESTERFÆNGSEL));
+//		GUI.setCar(p.getPosition()+1, p.getName());
 
 		GUI.setCar(p.getPosition()+1, p.getName());
 		GUI.removeCar(GoToJail, p.getName());
 		GUI.showMessage("Du rykkes til fængsel feltet");
+		
 
 	}
 }

@@ -43,10 +43,18 @@ public class GameController {
 	private void jailTurn(Player activePlayer) {
 		System.out.println(activePlayer.getJailTime());
 		
-		if(activePlayer.getJailTime() == 1){
+		if(activePlayer.getJailed()){
+			
+			if(activePlayer.getJailTime()==3){
+				activePlayer.addToBalance(-1000);
+				GUI.showMessage("du har nu betalt 1000 dk.kr");
+					activePlayer.setJailTime(0);
+					activePlayer.setJail(false);
+				
+			}
 			
 		
-			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal");
+			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning t ", "Slå", "Betal");
 			switch (res) {
 			case "Slå":
 				Dicebox db = new Dicebox();
@@ -67,6 +75,7 @@ public class GameController {
 			break;
 			
 			}
+			activePlayer.addjailtimecounter();
 		}
 
 	}
@@ -84,8 +93,8 @@ public class GameController {
 
 		ChanceCard[] cards = {
 			
-				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
-				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
+//				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
+//				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
 				new MoveCar("Du rykker 2 felter frem", 2),
 		};
 
@@ -481,10 +490,10 @@ public class GameController {
 		int r = box.roll();
 		GUI.setDice(box.getDice()[0].getValue(), box.getDice()[1].getValue());
 		players[playerTurn].setLastRoll(r);
-		if(players[playerTurn].getPosition() >= 0)
-			GUI.removeCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
+//		if(players[playerTurn].getPosition() >= 0)
+//			GUI.removeCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 		players[playerTurn].movePlayer(r);
-		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
+//		GUI.setCar(players[playerTurn].getPosition()+1, players[playerTurn].getName());
 	}
 	//TODO rewrite to something 3 lines long
 	public void switchTurn() {
