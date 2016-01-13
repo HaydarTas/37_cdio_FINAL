@@ -47,14 +47,14 @@ public class GameController {
 			
 			if(activePlayer.getJailTime()==3){
 				activePlayer.addToBalance(-1000);
-				GUI.showMessage("du har nu betalt 1000 dk.kr");
+			
 					activePlayer.setJailTime(0);
 					activePlayer.setJail(false);
 				
 			}
 			
 		
-			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning t ", "Slå", "Betal");
+			String res = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
 			switch (res) {
 			case "Slå":
 				Dicebox db = new Dicebox();
