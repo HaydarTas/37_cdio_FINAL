@@ -17,7 +17,7 @@ public class GoToJail extends Field {
 		p.movePlayer(-(GoToJail-VESTERFÆNGSEL));
 //		GUI.setCar(p.getPosition()+1, p.getName());
 
-		GUI.showMessage("en tur til fængsel");
+		GUI.showMessage("En tur til vester");
 
 	}
 }
