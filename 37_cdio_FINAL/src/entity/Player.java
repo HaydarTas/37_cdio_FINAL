@@ -169,8 +169,8 @@ public class Player {
 		// TODO Auto-generated method stub
 		
 	}
-	public void addjailtimecounter() {
-		jailTime++;
+	public void subjailtimecounter() {
+		jailTime--;
 		
 	}
 	
