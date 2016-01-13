@@ -54,8 +54,10 @@ public abstract class Ownable extends Field {
 			for(Field owned : p.getFields()){
 				if(owned instanceof Property){
 					Property prop = (Property)owned;
+					System.out.println("aaaaaaaaaa"+prop);
 					if(gc.canBuild(p, prop.getGroup())){
 						canBuy = true;
+						System.out.println("canbuy");
 						break;
 					}
 				}
@@ -84,12 +86,9 @@ public abstract class Ownable extends Field {
 		} else {
 			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
-				//Todo buy field
 				
-				p.addToBalance(-getPrice());
-				GUI.setOwner(p.getPosition()+1, p.getName());
-				setOwner(p);
-				GUI.setBalance(p.getName(), p.getBalance());
+				p.buyField(this);
+				
 			} else {
 				//Player didnt buy field
 			}
