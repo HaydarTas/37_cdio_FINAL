@@ -3,6 +3,8 @@ package field;
 
 import field.Field;
 
+import java.io.ObjectInputStream.GetField;
+
 import javax.swing.text.Position;
 
 import controller.GameController;
@@ -42,17 +44,14 @@ public abstract class Ownable extends Field {
 	// checks whether the territory is owned by another player or is for sale
 	// if field is owned by another player, checks the rent.
 	public void landOnField(Player p) {
-		for(Field f : p.getFields()){
-			System.out.println(f);
-		}
 		if (owner !=null && owner != p){ 
 			//TODO tell user that he landed on an owned field 
-			GUI.showMessage("Du er landet på" + getOwner().getName() + "'s felt - Betal venligst!");
+			GUI.showMessage("Du er landet på" + getOwner().getName() + "'s felt, - Betal venligst!");
 			p.addToBalance(-getRent());
 			getOwner().addToBalance(getRent());
 		} else if (owner !=null) {
 			//Tell user that it is his own field
-			GUI.showMessage("Du er landet på dit eget felt");
+			GUI.showMessage("Du er landet på dit eget felt "+field.getName());
 			boolean canBuy = false;
 			for(Field owned : p.getFields()){
 				if(owned instanceof Property){
@@ -90,6 +89,10 @@ public abstract class Ownable extends Field {
 							GUI.showMessage("Du har nu betalt "+ ((Property)field).getHousePrice());
 							GUI.setBalance(p.getName(), p.getBalance());
 							GUI.setHouses(i, ((Property)field).getHouseCount());
+							if (((Property) field).getHouseCount() > 4){
+								GUI.setHouses(i, 0);
+								GUI.setHotel(i, true);
+							}
 						}
 					}
 					
