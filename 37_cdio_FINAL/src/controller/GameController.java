@@ -52,47 +52,49 @@ public class GameController {
 		}else{
 
 			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
-		if(activePlayer.getJailed()){
+			if(activePlayer.getJailed()){
 
-			if(activePlayer.getJailTime()==1){
-				activePlayer.addToBalance(-1000);
-				GUI.showMessage("du har nu betalt 1000kr");
-//					activePlayer.setJailTime(0);
-				
-				activePlayer.setJail(false);
+				if(activePlayer.getJailTime()==1){
+					activePlayer.addToBalance(-1000);
+					GUI.showMessage("du har nu betalt 1000kr");
+					//					activePlayer.setJailTime(0);
 
-			} else {
-
-
-			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
-			switch (rs) {
-			case "Slå":
-				Dicebox db = new Dicebox();
-				db.roll();
-				//GUI.setDice(2, 4);
-				System.out.println(db.getDice()[0].getValue()+", "+ db.getDice()[1].getValue());
-				GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
-				if(db.isEqual()){
-					activePlayer.setJailTime(0);
 					activePlayer.setJail(false);
-					break;
+
+				} else {
+
+
+					String rs = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
+					switch (rs) {
+					case "Slå":
+						Dicebox db = new Dicebox();
+						db.roll();
+						//GUI.setDice(2, 4);
+						System.out.println(db.getDice()[0].getValue()+", "+ db.getDice()[1].getValue());
+						GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
+						if(db.isEqual()){
+							activePlayer.setJailTime(0);
+							activePlayer.setJail(false);
+							break;
+						}
+
+						break;
+					case "Betal":
+
+
+						activePlayer.addToBalance(-1000);
+						GUI.showMessage("du har nu betalt 1000 kr");
+						activePlayer.setJailTime(0);
+						activePlayer.setJail(false);
+						break;
+
+					}
+
+					activePlayer.subjailtimecounter();
+
 				}
-				
-				break;
-			case "Betal":
-		
-
-				activePlayer.addToBalance(-1000);
-				GUI.showMessage("du har nu betalt 1000 kr");
-				activePlayer.setJailTime(0);
-				activePlayer.setJail(false);
-				break;
-
 			}
-			
-			activePlayer.subjailtimecounter();
-			
-
+		}
 	}
 	private void playerTurn(Player player) {
 		roll();
