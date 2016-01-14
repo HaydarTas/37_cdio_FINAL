@@ -94,6 +94,7 @@ public abstract class Ownable extends Field {
 							p.addToBalance(-((Property)field).getHousePrice());
 							GUI.showMessage("Du har nu betalt "+ ((Property)field).getHousePrice());
 							GUI.setBalance(p.getName(), p.getBalance());
+							GUI.setBalance(((Property)field).owner.getName(), ((Property)field).owner.getBalance());
 							GUI.setHouses(i, ((Property)field).getHouseCount());
 							if (((Property) field).getHouseCount() > 4){
 								GUI.setHouses(i, 0);

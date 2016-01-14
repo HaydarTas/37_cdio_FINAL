@@ -19,8 +19,8 @@ public class Chance extends Field {
 	
 // her udføres i hvilken rækkefølge kortene skal tages/vælges
 	public void landOnField(Player p){
-		int r = (int) (Math.random()*cards.length);
-		System.out.println(cards.length + "" + r);
+		int r = (int) (Math.random()*cards.length );
+		System.out.println(cards.length + " card - drawn:" + r);
 		cards[r].docard(p);
 	}
 	
