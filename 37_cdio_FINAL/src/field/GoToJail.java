@@ -14,7 +14,7 @@ public class GoToJail extends Field {
 		p.setJailTime(3);
 	
 		
-		GUI.removeCar(p.getPosition()+1, p.getName());
+		GUI.removeCar(p.getPosition()+1, p.getName()  );
 		p.movePlayer(-(GoToJail-VESTERFÆNGSEL));
 		GUI.setCar(p.getPosition()+1, p.getName());
 
