@@ -3,6 +3,9 @@ package controller;
 
 
 import java.awt.Color;
+
+import javax.swing.plaf.ComponentInputMapUIResource;
+
 import desktop_codebehind.Car;
 //import desktop_fields.Brewery;
 import desktop_fields.Start;
@@ -30,12 +33,20 @@ public class GameController {
 		while (true){
 			//Kast med terninger
 			Player activePlayer = players[playerTurn];
+			if(activePlayer.isBankrupt()){
+				this.switchTurn();
+				continue;		}
+			
 			if (activePlayer.getJailed()){
 				jailTurn(activePlayer);
 			} else {
 				playerTurn(activePlayer);
 			}
-
+if( activePlayer.getBalance()<0 ){
+	
+	
+	activePlayer.setBankrupt();
+}
 			this.switchTurn();
 		}
 
@@ -85,7 +96,7 @@ public class GameController {
 
 
 						activePlayer.addToBalance(-1000);
-						GUI.showMessage("du har nu betalt 1000 kr");
+						GUI.showMessage("du har nu betalt 1000 kr"+ activePlayer.getBalance());
 						activePlayer.setJailTime(0);
 						activePlayer.setJail(false);
 						break;
