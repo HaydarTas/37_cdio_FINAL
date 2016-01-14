@@ -15,8 +15,8 @@ public class MoneyCard extends ChanceCard {
 	//bliver udskrevet text på GUI,// 
 	@Override
 	public void docard(Player p) {
-		p.addToBalance(500);
-		GUI.showMessage("Du har arbejdet hårdt du får 500 udbetalt");
+		p.addToBalance(amount);
+		GUI.showMessage(msg);
 	}
 
 }
