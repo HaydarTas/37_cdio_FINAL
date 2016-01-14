@@ -48,6 +48,9 @@ public abstract class Ownable extends Field {
 			//TODO tell user that he landed on an owned field 
 			GUI.showMessage("Du er landet på " + getOwner().getName() + "'s felt, - Betal venligst!");
 			p.addToBalance(-getRent());
+			if (p.getBalance()<0){
+				p.isBankrupt();
+			}
 			getOwner().addToBalance(getRent());
 		} else if (owner !=null) {
 			//Tell user that it is his own field
