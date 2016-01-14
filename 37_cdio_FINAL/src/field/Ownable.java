@@ -22,7 +22,7 @@ public abstract class Ownable extends Field {
 		this.price = price;
 		this.gc = gc;
 	}
-	
+
 	public int getPrice() {
 		return price;
 	}
@@ -56,10 +56,10 @@ public abstract class Ownable extends Field {
 			for(Field owned : p.getFields()){
 				if(owned instanceof Property){
 					Property prop = (Property)owned;
-					
+
 					if(gc.canBuild(p, prop.getGroup())){
 						canBuy = true;
-						
+
 						break;
 					}
 				}
@@ -69,20 +69,25 @@ public abstract class Ownable extends Field {
 				if(jaTak){
 					String[] properties = new String[25];
 					for(int i =0; i<8;i++)
-						
+
 					{ 
 						if (gc.canBuild(p,i )){
 							for (int j=0; j<gc.getPropertiesFromGroup(i).length;j++)
 								properties[i*3+j] = gc.getPropertiesFromGroup(i)[j].getName();
 						}
-						
+
 					}
 					String selection = GUI.getUserSelection("Køb på", properties);
 					Field[] fields = gc.getFields();
 					int i =0;
 					for (Field field : fields) {
+						if(!(field instanceof Property)) continue;
 						i++;
-						if (field.getName().equals(selection) && p.getBalance()>((Property) field).getHousePrice()){
+						if (field.getName().equals(selection)){
+							if (p.getBalance() < ((Property) field).getHousePrice()){
+								GUI.showMessage(p.getName()+", du har ikke nok penge til at købe et hus"+p.getBalance());
+								continue;
+							}
 							//Buy house
 							((Property)field).addHouse();
 							p.addToBalance(-((Property)field).getHousePrice());
@@ -95,20 +100,20 @@ public abstract class Ownable extends Field {
 							}
 						}
 					}
-					
+
 				} else {
-					
+
 				}
-				
+
 			}
-		    
+
 			//				p.setInformation(1);
 		} else {
 			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
-				
+
 				p.buyField(this);
-				
+
 			} else {
 				//Player didnt buy field
 			}
