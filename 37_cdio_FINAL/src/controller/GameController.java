@@ -4,7 +4,7 @@ package controller;
 
 import java.awt.Color;
 import desktop_codebehind.Car;
-import desktop_fields.Brewery;
+//import desktop_fields.Brewery;
 import desktop_fields.Start;
 //import desktop_fields.*;
 import desktop_fields.Street;
@@ -15,14 +15,14 @@ import field.*;
 
 
 public class GameController {
-	private static final Color red = null;
+//	private static final Color red = null;
 	private Dicebox box = new Dicebox();
 	private Player[] players;
 	private Field[] fields;
 	private int playerCount;
 	private int playerTurn =0;
-	private desktop_fields.Field[] start;
-	private String buttons;
+//	private desktop_fields.Field[] start;
+//	private String buttons;
 
 
 
@@ -43,61 +43,67 @@ public class GameController {
 	private void jailTurn(Player activePlayer) {
 		System.out.println(activePlayer.getJailTime());
 
-		if(activePlayer.getJailTime() == 0){
+		if(activePlayer.getJailTime() == 3){
 			activePlayer.addToBalance(-1000);
 			GUI.showMessage("du har nu betalt 1000 dk.kr");
 			activePlayer.setJailTime(0);
 
 
-		}else{
+//		}else{
+//
+//			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal");
+//		if(activePlayer.getJailed()){
+//			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
+//			if(activePlayer.getJailed()){
+//
+//				if(activePlayer.getJailTime()==1){
+//					activePlayer.addToBalance(-1000);
+//					GUI.showMessage("du har nu betalt 1000kr");
+//					//					activePlayer.setJailTime(0);
+//
+//					activePlayer.setJail(false);
 
-			String res = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal");
-		if(activePlayer.getJailed()){
-
-			if(activePlayer.getJailTime()==1){
-				activePlayer.addToBalance(-1000);
-				GUI.showMessage("du har nu betalt 1000kr");
-//					activePlayer.setJailTime(0);
-				
-				activePlayer.setJail(false);
-
-			} else {
+				} else {
 
 
-			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
-			switch (rs) {
-			case "Slå":
-				Dicebox db = new Dicebox();
-				db.roll();
-				//GUI.setDice(2, 4);
-				System.out.println(db.getDice()[0].getValue()+", "+ db.getDice()[1].getValue());
-				GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
-				if(db.isEqual()){
-					activePlayer.setJailTime(0);
-					activePlayer.setJail(false);
-					break;
+					String rs = GUI.getUserButtonPressed("vil du betale eller slå med terninger", "Slå", "Betal");
+					switch (rs) {
+					case "Slå":
+						Dicebox db = new Dicebox();
+						db.roll();
+						//GUI.setDice(2, 4);
+						System.out.println(db.getDice()[0].getValue()+", "+ db.getDice()[1].getValue());
+						GUI.setDice(db.getDice()[0].getValue(), db.getDice()[1].getValue());
+						if(db.isEqual()){
+							activePlayer.setJailTime(0);
+							activePlayer.setJail(false);
+							break;
+						}
+
+						break;
+					case "Betal":
+
+
+						activePlayer.addToBalance(-1000);
+						GUI.showMessage("du har nu betalt 1000 kr");
+						activePlayer.setJailTime(0);
+						activePlayer.setJail(false);
+						break;
+
+					}
+
+					activePlayer.subjailtimecounter();
+
 				}
-				
-				break;
-			case "Betal":
-		
-
-				activePlayer.addToBalance(-1000);
-				GUI.showMessage("du har nu betalt 1000 kr");
-				activePlayer.setJailTime(0);
-				activePlayer.setJail(false);
-				break;
-
 			}
-			
-			activePlayer.subjailtimecounter();
-			
-
-	}
+		
+		
+	
 	private void playerTurn(Player player) {
 		roll();
 		landOnField();
 
+		GUI.setBalance(player.getName(), player.getBalance());
 
 
 	}
@@ -109,25 +115,26 @@ public class GameController {
 		ChanceCard[] cards = {
 
 				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
-				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
-				//				new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-"),
-				//				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
 				new MoveCar("Du rykker 2 felter frem", 2),
+				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
+				new MoveCar("Du rykker 2 felter tilbage :(", -2),
+//				new MoneyCard(999, "Det fredag, modtag kr. 999,-"),
+//				
 		};
 
 		fields = new Field[] { 
 				new Refuge("Start",4000),
-				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5, this), 
+				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 4000, 5, this), 
 				new Chance("lykke1", 0, cards),
-				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 1000, 5, this),
+				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 4000, 5, this),
 				new Tax("Tax", 1000, 10),
 				new Shipping("DFDS seaways", 4000, this),
-				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7, this),
+				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 4500, 7, this),
 				new Chance("lykke2", 1, cards),
-				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7, this), 
-				new Property("Allegade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 1200, 7, this),
+				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 4500, 7, this), 
+				new Property("Allegade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 5000, 7, this),
 				new Refuge("VESTERFÆNGSEL",0),
-				new Property("Frederiksberg Alle", new int[]{400, 900, 1300, 1700, 2100, 2500}, 2300, 1300, 6, this), 
+				new Property("Frederiksberg Alle", new int[]{400, 900, 1300, 1700, 2100, 2500}, 2300, 5500, 6, this), 
 				new Brewer("Squash", 2500, 5000, this),
 				new Property("Bulowsvej", new int[]{400, 900, 1300, 1700, 2100, 2500 }, 2500, 5300, 6, this),
 				new Property("Gl.kongevej", new int[]{400, 1000, 1400, 1800, 2200, 2600 }, 2600, 6000, 6, this), 
@@ -339,7 +346,7 @@ public class GameController {
 
 		j = new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("jail").build();
 		j.displayOnCenter();
-		j.setDescription("Don't drop the soap");
+		j.setDescription("go tur");
 		j.setSubText("De fængsles");
 		fields[30] = j ;
 
@@ -615,5 +622,6 @@ public class GameController {
 
 
 }
+
 
 
