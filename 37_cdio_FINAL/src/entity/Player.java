@@ -10,7 +10,7 @@ public class Player {
 	private String name;
 	private Account account;
 	private boolean bankrupt = false;
-	private Field[] fields = new Field[40];
+	private Ownable[] fields = new Ownable[40];
 	private int number;
 	private int position;
 	//	private int info; // Information about whether the field is bought or not
@@ -60,7 +60,7 @@ public class Player {
 		bankrupt = true;
 	}
 
-	public Field[] getFields() {
+	public Ownable[] getFields() {
 		return fields;
 	}
 

@@ -43,7 +43,13 @@ public class GameController {
 				playerTurn(activePlayer);
 			}
 if( activePlayer.getBalance()<0 ){
-	
+	for(int i = 0; i < fields.length; i++){
+		Field f = fields[i];
+		if(!(f instanceof Ownable)) continue;
+		Ownable o = (Ownable) f;
+		o.setOwner(null);
+		GUI.removeOwner(i+1);
+	}
 	
 	activePlayer.setBankrupt();
 }

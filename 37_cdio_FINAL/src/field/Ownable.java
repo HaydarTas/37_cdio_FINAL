@@ -81,8 +81,14 @@ public abstract class Ownable extends Field {
 					Field[] fields = gc.getFields();
 					int i =0;
 					for (Field field : fields) {
+						if(!(field instanceof Property)) continue;
 						i++;
-						if (field.getName().equals(selection) && p.getBalance()>((Property) field).getHousePrice()){
+						
+						if (field.getName().equals(selection)){
+							if (p.getBalance() < ((Property) field).getHousePrice()){
+								GUI.showMessage(p.getName()+", du har ikke nok penge "+p.getBalance());
+								continue;
+							}
 							//Buy house
 							((Property)field).addHouse();
 							p.addToBalance(-((Property)field).getHousePrice());
@@ -102,7 +108,7 @@ public abstract class Ownable extends Field {
 				
 			}
 		    
-			//				p.setInformation(1);
+		
 		} else {
 			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
@@ -110,9 +116,9 @@ public abstract class Ownable extends Field {
 				p.buyField(this);
 				
 			} else {
-				//Player didnt buy field
+				
 			}
-			//				p.setInformation(0);
+		
 		}
 
 	}
