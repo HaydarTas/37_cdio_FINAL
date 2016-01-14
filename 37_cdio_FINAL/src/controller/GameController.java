@@ -43,7 +43,13 @@ public class GameController {
 				playerTurn(activePlayer);
 			}
 if( activePlayer.getBalance()<0 ){
-	
+	for(int i = 0; i < fields.length; i++){
+		Field f = fields[i];
+		if(!(f instanceof Ownable)) continue;
+		Ownable o = (Ownable) f;
+		o.setOwner(null);
+		GUI.removeOwner(i+1);
+	}
 	
 	activePlayer.setBankrupt();
 }
@@ -129,8 +135,8 @@ if( activePlayer.getBalance()<0 ){
 				new MoveCar("Du rykker 2 felter frem", 2),
 				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
 				new MoveCar("Du rykker 2 felter tilbage :(", -2),
-//				new MoneyCard(999, "Det fredag, modtag kr. 999,-"),
-//				
+				new MoneyCard(999, "Det fredag, modtag kr. 999,-"),
+				
 		};
 
 		fields = new Field[] { 
