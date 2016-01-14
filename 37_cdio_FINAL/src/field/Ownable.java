@@ -107,7 +107,7 @@ public abstract class Ownable extends Field {
 
 			}
 
-			//				p.setInformation(1);
+
 		} else {
 			boolean input = GUI.getUserLeftButtonPressed("Du er landet på et felt der ikke er ejet, vil du købe feltet?", "Ja tak", "Nej tak");
 			if (input){
@@ -115,9 +115,9 @@ public abstract class Ownable extends Field {
 				p.buyField(this);
 
 			} else {
-				//Player didnt buy field
+
 			}
-			//				p.setInformation(0);
+
 		}
 
 	}
