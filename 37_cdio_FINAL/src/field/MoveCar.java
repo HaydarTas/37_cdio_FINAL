@@ -18,7 +18,7 @@ public class MoveCar extends ChanceCard {
 
 		p.movePlayer(changeFieldPosition);
 		// TODO Auto-generated method stub
-		GUI.showMessage("Du rykker to felter frem");
+//		GUI.showMessage("Du rykker to felter frem");
 	}
 
 }
