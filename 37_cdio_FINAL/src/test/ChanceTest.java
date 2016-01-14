@@ -11,7 +11,7 @@ import field.MoveCar;
 import junit.framework.TestCase;;
 
 public class ChanceTest extends TestCase{
-	hhhhhh
+	
 	private Player spiller1;
 	private Chance chancecontroller;
 
