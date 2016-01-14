@@ -59,7 +59,7 @@ public abstract class Ownable extends Field {
 					
 					if(gc.canBuild(p, prop.getGroup())){
 						canBuy = true;
-						System.out.println("canbuy");
+						
 						break;
 					}
 				}
@@ -82,7 +82,7 @@ public abstract class Ownable extends Field {
 					int i =0;
 					for (Field field : fields) {
 						i++;
-						if (field.getName().equals(selection)){
+						if (field.getName().equals(selection) && p.getBalance()>((Property) field).getHousePrice()){
 							//Buy house
 							((Property)field).addHouse();
 							p.addToBalance(-((Property)field).getHousePrice());
@@ -116,6 +116,7 @@ public abstract class Ownable extends Field {
 		}
 
 	}
+
 }
 
 
