@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import controller.GameController;
 import entity.Player;
-import entity.Territory;
 import field.Property;
 
 public class PropertyTest {
