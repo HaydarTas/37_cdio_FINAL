@@ -59,7 +59,7 @@ public class PropertyTest {
 		
 		
 		// udregn det forventede resultat
-		int expected = 34000;
+		int expected = 40000-3700;
 		
 		//f� saldo ud af spillerens konto
 		int actual = spiller1.getBalance();
@@ -89,7 +89,7 @@ public class PropertyTest {
 		
 		property1.landOnField(spiller2);
 
-		saldo = 45000 - 1000;
+		saldo = 45000 - 3700;
 		
 		if(bought){
 			Assert.assertEquals(saldo, spiller2.getBalance());
@@ -120,7 +120,7 @@ public class PropertyTest {
 	// Vi tester om huslejlen passer med det forventede tal, som vi har
 	// defineret h�jere oppe i setUp metoden
 	public void testGetRent(){
-		int expected = 5000;
+		int expected = 1100;
 		int actual = property2.getRent();
 		
 		Assert.assertTrue(expected == actual);
@@ -128,7 +128,7 @@ public class PropertyTest {
 
 	//På samme måde tester vi prisen for feltet
 	public void testGetPrice(){
-		int expected = 11000;
+		int expected = 3800;
 		int actual = property2.getPrice();
 		
 		Assert.assertTrue(expected == actual);
