@@ -9,9 +9,10 @@ import field.Tax;
 // Vi definerer en klasse TaxTest, hvor vi tester felt typen TAX
 
 public class TaxTest {
-	private Tax tax_1;
-	private Tax tax_2;
-	private Tax tax_3;
+	private Tax taxAmount;
+	private int taxRate = -1;
+	private Player p;
+
 
 	private int startBeloeb;
 	
@@ -22,10 +23,9 @@ public class TaxTest {
 	public void setUp(){
 		
 		//opret 3 typer skat (beløb og procent )
-		tax_1 = new Tax("Betal 2000", 2000);
-		tax_2 = new Tax("Betal 1000 eller 10%", 1000, 10);
-		tax_3 = new Tax("Betal 4000", 4000);
-	
+		taxAmount = new Tax-1;
+		taxRate = new Tax
+				
 		//opret en ny spiller med 30.000kr i konto
 		spiller = new Player("Mouse", 1);
 		startBeloeb = spiller.getBalance();
