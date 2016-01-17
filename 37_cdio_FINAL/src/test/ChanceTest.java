@@ -10,13 +10,13 @@ import field.MoneyCard;
 import field.MoveCar;
 import junit.framework.TestCase;;
 
-public class ChanceTest extends TestCase{
+public class ChanceTest extends TestCase {
 	
 	private Player spiller1;
 	private Chance chancecontroller;
 
 	@Before
-	// setUp metoden bliver kaldt F�R hver test metode
+	// setUp metoden bliver kaldt FoR  test metode
 	public void setUp(){
 		MoneyCard Chancefield1 = new MoneyCard(300, "Du vinder i lotto, modtag kr. 300,-");
 		MoveCar Chancefield2 = new MoveCar("Du rykker 2 felter frem", 2);
@@ -25,8 +25,10 @@ public class ChanceTest extends TestCase{
 		
 		
 	}
+	// tester i hvilken rækkefølge kortene bliver trukket når de lander 
+	// chance felterne. // de bliver trukket fra 0-1. 
 	@Test
-	public void testLandonField(){
+	public void testChance(){
 	
 	chancecontroller.landOnField(spiller1);
 	
