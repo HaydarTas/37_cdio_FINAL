@@ -32,7 +32,7 @@ public class Tax extends Field {
 			if(btn1.equals(res)) pay();
 			else payPercent();
 		}
-//		p.setInformation(2);
+
 
 	}
 
