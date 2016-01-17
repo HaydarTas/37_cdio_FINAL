@@ -119,18 +119,18 @@ public class PropertyTest {
 
 	// Vi tester om huslejlen passer med det forventede tal, som vi har
 	// defineret h�jere oppe i setUp metoden
-	public void testGetRent(){
-		int expected = 1100;
-		int actual = property2.getRent();
-		
-		Assert.assertTrue(expected == actual);
-	}
-
-	//På samme måde tester vi prisen for feltet
-	public void testGetPrice(){
-		int expected = 3800;
-		int actual = property2.getPrice();
-		
-		Assert.assertTrue(expected == actual);
-	}
+//	public void testGetRent(){
+//		int expected = 1100;
+//		int actual = property2.getRent();
+//		
+//		Assert.assertTrue(expected == actual);
+//	}
+//
+//	//På samme måde tester vi prisen for feltet
+//	public void testGetPrice(){
+//		int expected = 3800;
+//		int actual = property2.getPrice();
+//		
+//		Assert.assertTrue(expected == actual);
+//	}
 }
