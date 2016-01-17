@@ -6,6 +6,7 @@ import entity.Player;
 public class MoveCar extends ChanceCard {
 
 	private int changeFieldPosition ;
+//	private String msg;
 
 	public MoveCar(String string, int changeinfieldposition) {
 		this.changeFieldPosition = changeinfieldposition;
@@ -18,7 +19,7 @@ public class MoveCar extends ChanceCard {
 
 		p.movePlayer(changeFieldPosition);
 		// TODO Auto-generated method stub
-//		GUI.showMessage("Du rykker to felter frem");
+//		GUI.showMessage(msg);
 	}
 
 }
