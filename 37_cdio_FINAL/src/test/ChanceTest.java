@@ -28,7 +28,7 @@ public class ChanceTest extends TestCase {
 	// tester i hvilken rækkefølge kortene bliver trukket når de lander 
 	// chance felterne. // de bliver trukket fra 0-1. 
 	@Test
-	public void testChanceLandonfield(){
+	public void TestChancecardsselections(){
 	
 	chancecontroller.landOnField(spiller1);
 	
