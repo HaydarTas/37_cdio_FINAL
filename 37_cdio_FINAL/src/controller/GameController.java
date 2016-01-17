@@ -18,15 +18,12 @@ import field.*;
 
 
 public class GameController {
-//	private static final Color red = null;
+
 	private Dicebox box = new Dicebox();
 	private Player[] players;
 	private Field[] fields;
 	private int playerCount;
 	private int playerTurn =0;
-//	private desktop_fields.Field[] start;
-//	private String buttons;
-
 
 
 	public void run() {
@@ -65,20 +62,6 @@ if( activePlayer.getBalance()<0 ){
 			GUI.showMessage("du har nu betalt 1000 dk.kr");
 			activePlayer.setJailTime(0);
 
-
-//		}else{
-//
-//			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal");
-//		if(activePlayer.getJailed()){
-//			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
-//			if(activePlayer.getJailed()){
-//
-//				if(activePlayer.getJailTime()==1){
-//					activePlayer.addToBalance(-1000);
-//					GUI.showMessage("du har nu betalt 1000kr");
-//					//					activePlayer.setJailTime(0);
-//
-//					activePlayer.setJail(false);
 
 				} else {
 
@@ -253,13 +236,13 @@ if( activePlayer.getBalance()<0 ){
 		st.setSubText("Pris: 2000");
 		fields[9] = st;
 
-		fields[10] = new desktop_fields.Refuge.Builder().setPicture(null).build();
+		//fields[10] = new desktop_fields.Refuge.Builder().setPicture(null).build();
 
-		//		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("VESTERFÆNGSEL").build();
-		//		j.displayOnCenter();
-		//		j.setDescription("VESTERFÆNGSEL");
-		//		j.setSubText("Du er på besøg");
-		//		fields[10] =j;
+				j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("VESTERFÆNGSEL").build();
+				j.displayOnCenter();
+				j.setDescription("VESTERFÆNGSEL");
+				j.setSubText("Du er på besøg");
+				fields[10] =j;
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Frederiksberg Alle").build();
 		st.setDescription("Frederiksberg Alle");
