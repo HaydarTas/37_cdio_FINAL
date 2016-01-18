@@ -18,12 +18,15 @@ import field.*;
 
 
 public class GameController {
-
+//	private static final Color red = null;
 	private Dicebox box = new Dicebox();
 	private Player[] players;
 	private Field[] fields;
 	private int playerCount;
 	private int playerTurn =0;
+//	private desktop_fields.Field[] start;
+//	private String buttons;
+
 
 
 	public void run() {
@@ -62,6 +65,20 @@ if( activePlayer.getBalance()<0 ){
 			GUI.showMessage("du har nu betalt 1000 dk.kr");
 			activePlayer.setJailTime(0);
 
+
+//		}else{
+//
+//			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal");
+//		if(activePlayer.getJailed()){
+//			String rs = GUI.getUserButtonPressed("vil du betale eller slå med terning eller vent ", "Slå", "Betal", "afsone");
+//			if(activePlayer.getJailed()){
+//
+//				if(activePlayer.getJailTime()==1){
+//					activePlayer.addToBalance(-1000);
+//					GUI.showMessage("du har nu betalt 1000kr");
+//					//					activePlayer.setJailTime(0);
+//
+//					activePlayer.setJail(false);
 
 				} else {
 
@@ -119,49 +136,50 @@ if( activePlayer.getBalance()<0 ){
 				new MoneyCard(-500, "Du har glemt at betale told, betal kr. 500,-"),
 				new MoveCar("Du rykker 2 felter tilbage :(", -2),
 				new MoneyCard(999, "Det fredag, modtag kr. 999,-"),
+				
 		};
 
 		fields = new Field[] { 
 				new Refuge("Start",4000),
-				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 1500, 2000, 5, this), 
+				new Property("Rødovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 4000, 5, this), 
 				new Chance("lykke1", 0, cards),
-				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 1500, 2000, 5, this),
+				new Property("Hvidovrevej", new int[]{200, 600, 1000, 1400, 1800, 2200}, 2000, 4000, 5, this),
 				new Tax("Tax", 1000, 10),
 				new Shipping("DFDS seaways", 4000, this),
-				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 1700, 2000, 7, this),
+				new Property("Roskilevej", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 4500, 7, this),
 				new Chance("lykke2", 1, cards),
-				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 1900, 2500, 7, this), 
-				new Property("Allegade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2000, 2500, 7, this),
+				new Property("valby langgade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 4500, 7, this), 
+				new Property("Allegade", new int[]{300, 800, 1200, 1600, 2000, 2400}, 2200, 5000, 7, this),
 				new Refuge("VESTERFÆNGSEL",0),
-				new Property("Frederiksberg Alle", new int[]{400, 900, 1300, 1700, 2100, 2500}, 2300, 2500, 6, this), 
+				new Property("Frederiksberg Alle", new int[]{400, 900, 1300, 1700, 2100, 2500}, 2300, 5500, 6, this), 
 				new Brewer("Squash", 2500, 5000, this),
-				new Property("Bulowsvej", new int[]{400, 900, 1300, 1700, 2100, 2500 }, 2500, 3000, 6, this),
-				new Property("Gl.kongevej", new int[]{400, 1000, 1400, 1800, 2200, 2600 }, 2600, 3000, 6, this), 
+				new Property("Bulowsvej", new int[]{400, 900, 1300, 1700, 2100, 2500 }, 2500, 5300, 6, this),
+				new Property("Gl.kongevej", new int[]{400, 1000, 1400, 1800, 2200, 2600 }, 2600, 6000, 6, this), 
 				new Shipping("CM port", 4000, this),
-				new Property("Bernstorffsvej", new int[]{400, 1100, 1500, 1900, 2300, 2700 }, 2700, 3500, 3, this),
+				new Property("Bernstorffsvej", new int[]{400, 1100, 1500, 1900, 2300, 2700 }, 2700, 6200, 3, this),
 				new Chance("lykke3", 3, cards),
-				new Property("Hellerupsvej", new int[]{400, 1100, 1500, 1900, 2300, 2700 }, 2800, 3500, 3, this),
-				new Property("Strandvej", new int[]{500, 1200, 1600, 2000, 2400, 2800 }, 2900, 4000, 3, this),
+				new Property("Hellerupsvej", new int[]{400, 1100, 1500, 1900, 2300, 2700 }, 2700, 7000, 3, this),
+				new Property("Strandvej", new int[]{500, 1200, 1600, 2000, 2400, 2800 }, 2800, 7500, 3, this),
 				new Refuge("Parking", 0),
-				new Property("Triaglen", new int[]{500, 1300, 1700, 2100, 2500, 2900 }, 3000, 4000, 4, this),
+				new Property("Triaglen", new int[]{500, 1300, 1700, 2100, 2500, 2900 }, 2900, 8000, 4, this),
 				new Chance("lykke4", 4, cards),
-				new Property("Østerbrogade", new int[]{500, 1300, 1700, 2100, 2500, 2900 }, 3100, 4500, 4, this),	
-				new Property("Grønningen", new int[]{600, 1500, 1900, 2300, 2700, 3100 }, 3200, 5000, 4, this),
+				new Property("Østerbrogade", new int[]{500, 1300, 1700, 2100, 2500, 2900 }, 2900, 9000, 4, this),	
+				new Property("Grønningen", new int[]{600, 1500, 1900, 2300, 2700, 3100 }, 3000, 10000, 4, this),
 				new Shipping("Rødby Havn", 4000, this),
-				new Property("Bredgade", new int[]{600, 1600, 2000, 2400, 2800, 3200 }, 3300, 6000, 2, this),
-				new Property("Kgs.nytorv",new int[]{600, 1700, 2100, 2500, 2900, 3300 }, 3300, 6500, 2, this),
+				new Property("Bredgade", new int[]{600, 1600, 2000, 2400, 2800, 3200 }, 3100, 12000, 2, this),
+				new Property("Kgs.nytorv",new int[]{600, 1700, 2100, 2500, 2900, 3300 }, 3200, 13000, 2, this),
 				new Brewer("Coca", 2500, 5000, this), 
-				new Property("Østergade",new int[]{700, 1800, 2200, 2600, 3000, 3400 }, 3300, 7000, 2, this),
+				new Property("Østergade",new int[]{700, 1800, 2200, 2600, 3000, 3400 }, 3300, 13000, 2, this),
 				new GoToJail("jail", playerCount),
-				new Property("Amagertorv",new int[]{700, 1800, 2200, 2600, 3000, 3400 }, 3400, 7000, 1, this),
-				new Property("Vimmelskaftet", new int[]{700, 1900, 2300, 2700, 3100, 3500 }, 3400, 8000, 1, this),
+				new Property("Amagertorv",new int[]{700, 1800, 2200, 2600, 3000, 3400 }, 3300, 13000, 1, this),
+				new Property("Vimmelskaftet", new int[]{700, 1900, 2300, 2700, 3100, 3500 }, 3400, 14000, 1, this),
 				new Chance("lykke5", 5, cards),
-				new Property("Nygade", new int[]{800, 2000, 2400, 2800, 3200, 3600 }, 3600, 8500, 1, this),
+				new Property("Nygade", new int[]{800, 2000, 2400, 2800, 3200, 3600 }, 3500, 13500, 1, this),
 				new Shipping("Helsingør Havn", 4000, this),
 				new Chance("lykke6", 6, cards),
-				new Property("Frederikberggade", new int[]{1000, 2200, 2600, 3000, 3400, 3800 }, 3900, 9500, 0, this),
+				new Property("Frederikberggade", new int[]{1000, 2200, 2600, 3000, 3400, 3800 }, 3700, 14500, 0, this),
 				new Tax("Tax", 500), 
-				new Property("Rådhuspladsen", new int[]{1100, 2300, 2700, 3100, 3500, 3900 }, 4000, 10000, 0, this),		
+				new Property("Rådhuspladsen", new int[]{1100, 2300, 2700, 3100, 3500, 3900 }, 3800, 15000, 0, this),		
 
 
 		};
@@ -190,7 +208,7 @@ if( activePlayer.getBalance()<0 ){
 
 		st = new Street.Builder().setBgColor(Color.blue).setTitle("Rødovrevej").build();
 		st.setDescription("Rødovrevej");
-		st.setSubText("pris: 1500");
+		st.setSubText("pris: 1000");
 		fields[1] = st;
 
 
@@ -200,8 +218,8 @@ if( activePlayer.getBalance()<0 ){
 		fields[2] = c;
 
 		st = new Street.Builder().setBgColor(Color.blue).setTitle("Hvidovrevej").build();
-		st.setDescription("Hvidovrevej");
-		st.setSubText("pris: 1500");
+		st.setDescription("pris: 1400");
+		st.setSubText("pris: 1400");
 		fields[3] = st;
 
 
@@ -218,7 +236,7 @@ if( activePlayer.getBalance()<0 ){
 
 		st = new Street.Builder().setBgColor(Color.orange).setTitle("Roskildevej").build();
 		st.setDescription("Roskildevej");
-		st.setSubText("Pris: 1700");
+		st.setSubText("Pris: 2000");
 		fields[6] = st;
 
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
@@ -228,25 +246,25 @@ if( activePlayer.getBalance()<0 ){
 
 		st = new Street.Builder().setBgColor(Color.orange).setTitle("Valby langgade").build();
 		st.setDescription("Valby langgade");
-		st.setSubText("Pris: 1900");
+		st.setSubText("Pris: 2500");
 		fields[8] = st;
 
 		st = new Street.Builder().setBgColor(Color.orange).setTitle("Allegade").build();
 		st.setDescription("Allegade");
-		st.setSubText("Pris: 2000");
+		st.setSubText("Pris: 4000");
 		fields[9] = st;
 
-		//fields[10] = new desktop_fields.Refuge.Builder().setPicture(null).build();
+		fields[10] = new desktop_fields.Refuge.Builder().setPicture(null).build();
 
-				j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("VESTERFÆNGSEL").build();
-				j.displayOnCenter();
-				j.setDescription("VESTERFÆNGSEL");
-				j.setSubText("Du er på besøg");
-				fields[10] =j;
+		//		j =new desktop_fields.Jail.Builder().setBgColor(Color.white).setTitle("VESTERFÆNGSEL").build();
+		//		j.displayOnCenter();
+		//		j.setDescription("VESTERFÆNGSEL");
+		//		j.setSubText("Du er på besøg");
+		//		fields[10] =j;
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Frederiksberg Alle").build();
 		st.setDescription("Frederiksberg Alle");
-		st.setSubText("Pris:2300");
+		st.setSubText("Pris:4800");
 		fields[11] = st;
 
 		desktop_fields.Brewery b=null;
@@ -257,12 +275,12 @@ if( activePlayer.getBalance()<0 ){
 
 		st = new Street.Builder().setBgColor(Color.green).setTitle("Bulowsvej").build();
 		st.setDescription("Bulowsvej");
-		st.setSubText("Pris: 2500");
+		st.setSubText("Pris: 5300");
 		fields[13] = st;
 
 		st= new Street.Builder().setBgColor(Color.green).setTitle("Gl. Kongevej").build();
 		st.setDescription("Gl. Kongevej");
-		st.setSubText("Pris: 2600");
+		st.setSubText("Pris: 6000");
 		fields[14] = st;
 
 		f = new desktop_fields.Shipping.Builder().setBgColor(Color.LIGHT_GRAY).setTitle("CM port").build();
@@ -272,7 +290,7 @@ if( activePlayer.getBalance()<0 ){
 
 		st = new Street.Builder().setBgColor(Color.gray).setTitle("Bernstorffsvej").build();
 		st.setDescription("Bernstorffsvej");
-		st.setSubText("Pris: 2700");
+		st.setSubText("Pris: 6200");
 		fields[16] = st;
 
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
@@ -282,12 +300,12 @@ if( activePlayer.getBalance()<0 ){
 
 		st = new Street.Builder().setBgColor(Color.gray).setTitle("Hellerupsvej").build();
 		st.setDescription("Hellerupsvej");
-		st.setSubText("Pris: 2800");
+		st.setSubText("Pris: 7000");
 		fields[18] = st;
 
 		st = new Street.Builder().setBgColor(Color.gray).setTitle("Strandvej").build();
 		st.setDescription("Strandvej");
-		st.setSubText("Pris: 2900");
+		st.setSubText("Pris: 7500");
 		fields[19] = st;
 
 
@@ -298,7 +316,7 @@ if( activePlayer.getBalance()<0 ){
 
 		st = new Street.Builder().setBgColor(Color.red).setTitle("Trianglen").build();
 		st.setDescription("Trianglen");
-		st.setSubText("Pris: 3000");
+		st.setSubText("Pris: 8000");
 		fields[21] = st;
 
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
@@ -308,12 +326,12 @@ if( activePlayer.getBalance()<0 ){
 
 		st= new Street.Builder().setBgColor(Color.red).setTitle("Østerbrogade").build();
 		st.setDescription("Østerbrogade");
-		st.setSubText("Pris: 3100");
+		st.setSubText("Pris: 9000");
 		fields[23] = st;
 
 		st= new Street.Builder().setBgColor(Color.red).setTitle("Grønning").build();
 		st.setDescription("Grønningen");
-		st.setSubText("Pris: 3200");
+		st.setSubText("Pris: 10000");
 		fields[24] =st;
 
 		f = new desktop_fields.Shipping.Builder().setBgColor(Color.CYAN).setTitle("Rødby havn").build();
@@ -323,13 +341,13 @@ if( activePlayer.getBalance()<0 ){
 
 		st= new Street.Builder().setBgColor(Color.white).setTitle("Bredgade").build();
 		st.setDescription("Bredgade");
-		st.setSubText("Pris: 3300");
+		st.setSubText("Pris: 12000");
 		fields[26]= st;
 
 
 		st= new Street.Builder().setBgColor(Color.white).setTitle("Kgs.Nytorv").build();
 		st.setDescription("Kgs.Nytorv");
-		st.setSubText("Pris: 3300");
+		st.setSubText("Pris: 13000");
 		fields[27]=st;
 
 		b=new desktop_fields.Brewery.Builder().setBgColor(Color.red).setTitle("COCA COLA").build();
@@ -339,7 +357,7 @@ if( activePlayer.getBalance()<0 ){
 
 		st= new Street.Builder().setBgColor(Color.white).setTitle("Østergade").build();
 		st.setDescription("Østergade");
-		st.setSubText("Pris: 3300");
+		st.setSubText("Pris: 13000");
 		fields[29]=st;
 
 
@@ -351,22 +369,22 @@ if( activePlayer.getBalance()<0 ){
 
 		st= new Street.Builder().setBgColor(Color.yellow).setTitle("Amagertorv").build();
 		st.setDescription("Amagertorv");
-		st.setSubText("Pris: 3400");
+		st.setSubText("Pris: 13000");
 		fields[31]=st;
 
 		st= new Street.Builder().setBgColor(Color.yellow).setTitle("Vimmelskaftet").build();
 		st.setDescription("Vimmelskaftet");
-		st.setSubText("Pris: 3500");
+		st.setSubText("Pris: 14000");
 		fields[32]=st;
 
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
-		c.setDescription("prøv lykken");
-		c.setSubText("better luck nextime");
+		c.setDescription("Prøv lykken");
+		c.setSubText("Better luck nextime");
 		fields[33] = c;
 
 		st= new Street.Builder().setBgColor(Color.yellow).setTitle("Nygade").build();
 		st.setDescription("Nygade");
-		st.setSubText("Pris: 3600");
+		st.setSubText("Pris: 14500");
 		fields[34]=st;
 
 		f = new desktop_fields.Shipping.Builder().setBgColor(Color.blue).setTitle("Helsingør Havn").build();
@@ -375,24 +393,24 @@ if( activePlayer.getBalance()<0 ){
 		fields[35] = f;
 
 		c =new desktop_fields.Chance.Builder().setBgColor(Color.white).build();
-		c.setDescription("prøv lykken");
-		c.setSubText("better luck nextime");
+		c.setDescription("Prøv lykken");
+		c.setSubText("Better luck nextime");
 		fields[36] = c;
 
 
 		st= new Street.Builder().setBgColor(Color.magenta).setTitle("Frederiksberggade").build();
 		st.setDescription("Frederiksberggade");
-		st.setSubText("Pris: 3900");
+		st.setSubText("Pris: 13000");
 		fields[37]=st;
 
-		t = new desktop_fields.Tax.Builder().setBgColor(Color.white).setDescription("tax").build();
-		t.setDescription("tax");
-		t.setSubText("betal din skat");
+		t = new desktop_fields.Tax.Builder().setBgColor(Color.white).setDescription("Skattevæsenet").build();
+		t.setDescription("Betal din skat");
+		t.setSubText("SKAT");
 		fields[38] = t;
 
 		st= new Street.Builder().setBgColor(Color.magenta).setTitle("Rådhuspladsen").build();
 		st.setDescription("Rådhuspladsen");
-		st.setSubText("Pris: 4000");
+		st.setSubText("Pris: 15000");
 		fields[39]=st;
 
 		GUI.create(fields);
@@ -464,7 +482,7 @@ if( activePlayer.getBalance()<0 ){
 			//Makes sure the players start at 1 and counts to playerCount.
 			int playerNumber = i + 1; 
 			//Lets the user decide the name of the player.
-			String playerNameTypedInByTheUser = GUI.getUserString(("Indtast Navn") + playerNumber);
+			String playerNameTypedInByTheUser = GUI.getUserString(("Indtast navn for spiller # ") + playerNumber);
 			Player player = new Player(playerNameTypedInByTheUser, playerNumber);
 			player.setName(playerNameTypedInByTheUser);
 			//Stores the newly created player in the Player array at index i.
